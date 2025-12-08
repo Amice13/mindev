@@ -1,7 +1,7 @@
 // Source:
 // https://www.kmu.gov.ua/npas/pro-zatverdzhennia-poriadku-obstezhennia-obiektiv-nerukhomoho-maina-dlia-prozhyvannia-s489290425
 
-export const conclusionTypes = [
+const conclusionTypes = [
   {
     title: 'Можливе використання ОНМ для ВПО',
     value: 'Наявна можливість використання об\'єкта нерухомого майна для проживання внутрішньо переміщених осіб',
@@ -63,3 +63,5 @@ export const conclusionTypes = [
     ]
   }
 ]
+
+export default conclusionTypes

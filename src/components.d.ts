@@ -11,9 +11,22 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ActForm: typeof import('./components/ActForm.vue')['default']
+    Address: typeof import('./components/Address.vue')['default']
     AppBar: typeof import('./components/AppBar.vue')['default']
     AppFooter: typeof import('./components/AppFooter.vue')['default']
+    CustomAddress: typeof import('./components/CustomAddress.vue')['default']
+    CustomPassport: typeof import('./components/CustomPassport.vue')['default']
+    CustomTaxId: typeof import('./components/CustomTaxId.vue')['default']
+    DictionaryValue: typeof import('./components/DictionaryValue.vue')['default']
+    Document: typeof import('./components/Document.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    OrganizationCode: typeof import('./components/OrganizationCode.vue')['default']
+    OrganizationForm: typeof import('./components/OrganizationForm.vue')['default']
+    PersonForm: typeof import('./components/PersonForm.vue')['default']
+    PersonPassport: typeof import('./components/PersonPassport.vue')['default']
+    PersonTaxId: typeof import('./components/PersonTaxId.vue')['default']
+    RenderDocument: typeof import('./components/RenderDocument.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     WorkPanel: typeof import('./components/WorkPanel.vue')['default']

@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app dark color="surface" density="comfortable" class="position-fixed">
+  <v-app-bar app dark color="main" density="comfortable" class="position-fixed">
     <div class="d-flex align-center">
       <router-link to="/" tag="a">
         <v-img

@@ -1,9 +1,9 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 import { documentData } from './document-data.schema.ts'
 import heritageCategories from '@/dicts/heritage-categories.ts'
 import heritageTypes from '@/dicts/heritage-types.ts'
 
-export const heritage: JSONSchema7 = {
+export const heritage = {
   title: 'Культурна пам\'ятка',
   properties: {
     monumentName: {
@@ -28,4 +28,4 @@ export const heritage: JSONSchema7 = {
       title: 'Охоронний номер'
     }
   }
-}
+} as const satisfies JSONSchema

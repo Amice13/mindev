@@ -1,7 +1,7 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 import { person } from './person.schema.ts'
 
-export const user: JSONSchema7 = {
+export const user = {
   title: 'Користувач',
   type: 'object',
   properties: {
@@ -12,4 +12,4 @@ export const user: JSONSchema7 = {
     },
     ...(person.properties ?? {})
   }
-}
+} as const satisfies JSONSchema

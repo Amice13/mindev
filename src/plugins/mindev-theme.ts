@@ -1,8 +1,9 @@
 export default {
   dark: false,
   colors: {
+    main: '#F5F3E9',
     background: '#FFFFFF',
-    surface: '#F5F3E9',
+    surface: '#FFFFFF',
     'surface-bright': '#FFFFFF',
     'surface-light': '#EEEEEE',
     'surface-variant': '#424242',

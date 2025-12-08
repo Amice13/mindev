@@ -2,34 +2,23 @@
 <div style="height:calc(100vh - 56px)">
   <v-layout class="rounded-md pa-3 h-100">
     <v-row>
-      <v-col cols="5" class="d-flex h-100">
-        <v-card class="d-flex flex-column h-100 w-100">
-          <v-card-text class="flex-grow-1 overflow-auto">
+      <v-col cols="5" class="d-flex h-100 pa-5">
+        <v-card color="main" class="d-flex flex-column h-100 w-100">
+          <v-card-text class="flex-grow-1 overflow-auto custom-scroll">
             <v-breadcrumbs :items="['Акти', 'Створення акту']">
               <template v-slot:divider>|</template>
             </v-breadcrumbs>
-            <div class="pa-4">
-              <div class="font-weight-bold mb-1 text-subtitle-1">Select field</div>
-              <v-select
-                :items="items"
-                v-model="value"
-                variant="solo-inverted"
-              ></v-select>
-
-              <div class="font-weight-bold mb-1 text-subtitle-1">Text field</div>
-              <v-text-field
-                v-model="value2"
-                variant="solo-inverted"
-              ></v-text-field>
-
-              <div v-for="i in 60" :key="i">Line {{ i }}</div>
-            </div>
+            <act-form v-model="act" />
           </v-card-text>
         </v-card>
       </v-col>
 
-      <v-col cols="7">
-        <v-card class="bg-white">
+      <v-col cols="7" class="d-flex h-100 pa-0">
+        <v-card class="d-flex flex-column h-100 w-100 bg-white" flat>
+          <v-card-text class="flex-grow-1 overflow-auto pa-5">
+            <div>{{ act }}</div>
+            <render-document />
+          </v-card-text>
         </v-card>
       </v-col>
     </v-row>
@@ -41,11 +30,33 @@
 .w-100 {
   width: 100%;
 }
+
+.custom-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #d7cfa7;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #2e6868;
+  border-radius: 5px;
+}
 </style>
 
-<script lang="ts" setup>
-const value = ref('Hello')
-const value2 = ref('Hello')
-const items = ['Hello', 'World']
-
+<script setup lang="ts">
+import type { Act } from '@/types'
+const act = <NonNullable<Act>>reactive({
+  ownerPerson: {},
+  ownerOrganization: {},
+  address: {},
+  parentOrganization: {},
+  buildingClass: {},
+  culturalHeritage: {},
+  buildingProperty: {},
+  constructionElements: {},
+  internalSystems: {},
+  rentInfo: {},
+  apartment: {},
+  appartmentInternalSystems: {},
+  landDocument: {}
+})
 </script>

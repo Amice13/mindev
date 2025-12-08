@@ -1,6 +1,6 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 
-export const rentInfo: JSONSchema7 = {
+export const rentInfo = {
   title: 'У разі, коли квартира перебуває у користуванні (оренді)',
   type: 'object',
   properties: {
@@ -17,4 +17,4 @@ export const rentInfo: JSONSchema7 = {
       type: 'number'
     }
   }
-}
+} as const satisfies JSONSchema

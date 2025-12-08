@@ -1,4 +1,4 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 
 export const internalSystems: JSONSchema7 = {
   title: 'Внутрішні інженерні системи',
@@ -41,4 +41,4 @@ export const internalSystems: JSONSchema7 = {
       type: 'string'
     }
   }
-} 
+} as const satisfies JSONSchema

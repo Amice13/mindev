@@ -11,13 +11,6 @@
           height="34"
           width="150"/>
       </router-link>
-<!--       <router-link to="/" tag="a" style="text-decoration: none;">
-        <div
-          class="hidden-sm-and-down pl-2 ml-2 cursor-pointer"
-          style="border-left: 1px solid #FFF; font-size: 120%; color: #FFF;">
-          {{ t(shortName) }}
-        </div>
-      </router-link> -->
     </div>
     <v-app-bar-title>Акти обстеження об'єктів нерухомого майна</v-app-bar-title>
     <template v-slot:append>

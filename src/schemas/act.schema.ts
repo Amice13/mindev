@@ -1,4 +1,4 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 
 // Schemas
 import { user } from './user.schema.ts'
@@ -6,21 +6,22 @@ import { address } from './address.schema.ts'
 import { organization } from './organization.schema.ts'
 import { heritage } from './heritage.schema.ts'
 import { buildingProperty } from './building-property.schema.ts'
-import { constructionElements } from './construction-elements.ts'
+import { constructionElements } from './construction-elements.schema.ts'
 import { internalSystems } from './internal-systems.schema.ts'
-import { conclusionTypes } from '@/dicts/conclusion-types.ts'
 import { rentInfo } from './rent-info.schema.ts'
 import { apartment } from './apartment.schema.ts'
-import { appartmentInternalSystems } from './apartment-internal-system.schema.ts'
+import { appartmentInternalSystems } from './apartment-internal-systems.schema.ts'
 import { documentData } from './document-data.schema.ts'
 import { person } from './person.schema.ts'
 
 // Dicts
 import estateTypes from '@/dicts/estate-types.ts'
+import conclusionTypes from '@/dicts/conclusion-types.ts'
+import ownerTypes from '@/dicts/owner-types.ts'
 
-const conclusionTypesValues = conclusionTypes.map(el => el.value)
+const conclusionTypesValues = conclusionTypes.map((el: Record<'value', string>) => el.value)
 
-const schema: JSONSchema7 = {
+export const act = {
   title: 'Акт обстеження об’єктів нерухомого майна',
   type: 'object',
   properties: {
@@ -54,6 +55,15 @@ const schema: JSONSchema7 = {
       type: 'string',
       enum: estateTypes
     },
+
+    ownerType: {
+      title: 'Тип власника',
+      type: 'string',
+      enum: ownerTypes
+    },
+
+    ownerPerson: person,
+    ownerOrganization: organization,
 
     // Buildings
     address,
@@ -92,8 +102,8 @@ const schema: JSONSchema7 = {
       enum: ['Державна власність', 'Комунальна власність', 'Приватна власність']
     },
     culturalHeritage: {
-      title: 'Дані про віднесення об’єкта до пам’яток культурної спадщини',
-      ...heritage
+      ...heritage,
+      title: 'Дані про віднесення об’єкта до пам’яток культурної спадщини'
     },
     buildingProperty,
     constructionElements,
@@ -118,8 +128,8 @@ const schema: JSONSchema7 = {
       type: 'string'
     },
     landDocument: {
-      title: 'Документи, що підтверджують право на земельну ділянку',
-      ...documentData
+      ...documentData,
+      title: 'Документи, що підтверджують право на земельну ділянку'
     },
     landObservations: {
       title: 'Результати обстеження земельної ділянки',
@@ -143,7 +153,6 @@ const schema: JSONSchema7 = {
       type: 'array',
       items: person
     }
-  }
-}
-
-export default schema
+  },
+  required: ['ownerPerson', 'ownerOrganization', 'address']
+} as const satisfies JSONSchema

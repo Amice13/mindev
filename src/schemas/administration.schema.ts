@@ -1,10 +1,10 @@
-import type { JSONSchema7 } from 'json-schema'
-import { organization } from './organizations.schema.ts'
+import type { JSONSchema } from 'json-schema-to-ts'
+import { organization } from './organization.schema.ts'
 
-export const administration: JSONSchema7 = {
+export const administration = {
   title: 'Адміністрація',
   type: 'object',
   properties: {
     ...(organization.properties ?? {})
   }
-}
+} as const satisfies JSONSchema

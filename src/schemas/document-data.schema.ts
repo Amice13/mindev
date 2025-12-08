@@ -1,6 +1,6 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
 
-export const documentData: JSONSchema7 = {
+export const documentData = {
   title: 'Номер та дата документу',
   type: 'object',
   properties: {
@@ -20,4 +20,4 @@ export const documentData: JSONSchema7 = {
       type: 'string'
     }
   }
-}
+} as const satisfies JSONSchema

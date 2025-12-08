@@ -1,9 +1,15 @@
-import type { JSONSchema7 } from 'json-schema'
+import type { JSONSchema } from 'json-schema-to-ts'
+import personalDocumentTypes from '@/dicts/personal-document-types'
 
-export const person: JSONSchema7 = {
+export const person = {
   title: 'Фізична особа',
   type: 'object',
   properties: {
+    documentType: {
+      title: 'Тип документа фізичної особи',
+      type: 'string',
+      enum: personalDocumentTypes
+    },
     taxId: {
       title: 'РНОКПП',
       type: 'string'
@@ -25,4 +31,4 @@ export const person: JSONSchema7 = {
       type: 'string'
     }
   }  
-}
+} as const satisfies JSONSchema
