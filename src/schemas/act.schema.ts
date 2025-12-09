@@ -13,11 +13,15 @@ import { apartment } from './apartment.schema.ts'
 import { appartmentInternalSystems } from './apartment-internal-systems.schema.ts'
 import { documentData } from './document-data.schema.ts'
 import { person } from './person.schema.ts'
+import { buildingClass } from './building-class.schema.ts'
+import { functionalPurpose } from './functional-purpose.schema.ts'
 
 // Dicts
 import estateTypes from '@/dicts/estate-types.ts'
 import conclusionTypes from '@/dicts/conclusion-types.ts'
 import ownerTypes from '@/dicts/owner-types.ts'
+import ownershipTypes from '@/dicts/ownership-types.ts'
+import consequenceClasses from '@/dicts/consequence-classes.ts'
 
 const conclusionTypesValues = conclusionTypes.map((el: Record<'value', string>) => el.value)
 
@@ -67,39 +71,23 @@ export const act = {
 
     // Buildings
     address,
-    functionalPurpose: {
-      title: 'Функціональне призначення',
-      type: 'string'
-    },
+    functionalPurpose,
     parentOrganization: {
       ...organization,
       title: 'Найменування підприємства, до складу якого входить об\'єкт'
     },
-    buildingClass: {
-      title: 'Код об\'єкта згідно з Національним класифікатором НК 018:2023 "Класифікатор будівель і споруд"',
-      type: 'object',
-      properties: {
-        title: {
-          title: 'Назва класу',
-          type: 'string',
-        },
-        code: {
-          title: 'Код класу',
-          type: 'string'
-        }
-      }
-    },
+    buildingClass,
     consequenceClass: {
       title: 'Клас наслідків згідно з проектною документацією',
       description: 'за наявності',
       type: 'string',
-      enum: ['СС1', 'СС2', 'СС3']
+      enum: consequenceClasses
     },
     formOfOwnership: {
       title: 'Форма власності',
       description: 'за наявності',
       type: 'string',
-      enum: ['Державна власність', 'Комунальна власність', 'Приватна власність']
+      enum: ownershipTypes
     },
     culturalHeritage: {
       ...heritage,
@@ -154,5 +142,13 @@ export const act = {
       items: person
     }
   },
-  required: ['ownerPerson', 'ownerOrganization', 'address']
+  required: [
+    'ownerPerson',
+    'ownerOrganization',
+    'parentOrganization',
+    'address',
+    'functionalPurpose',
+    'buildingClass',
+    'culturalHeritage'
+  ]
 } as const satisfies JSONSchema

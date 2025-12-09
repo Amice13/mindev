@@ -1,74 +1,65 @@
 <template>
-  <div>
-    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin1.title }}</div>
-
-    <v-text-field
-      v-model="model.title"
-      placeholder="Міністерство розвитку громад та територій України"
-      variant="solo-inverted"
-      name="organization.title"
-    />
-
-  </div>
+  <v-row>
+    <v-col cols="4">
+      <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.streetType.title }}</div>
+      <v-autocomplete
+        v-model="model.streetTypeCode"
+        :items="streetTypes"
+        name="streetType"
+        placeholder="вулиця"
+        item-title="title"
+        item-value="code"
+        variant="solo-inverted"
+      />      
+    </v-col>
+    <v-col cols="8">
+      <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.streetName.title }}</div>
+      <v-text-field
+        v-model="model.streetName"
+        placeholder="Тараса Шевченка"
+        name="streetName"
+        variant="solo-inverted"
+      />
+    </v-col>
+    <v-col cols="4">
+      <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.building.title }}</div>
+      <v-text-field
+        v-model="model.building"
+        placeholder="10"
+        name="building"
+        variant="solo-inverted"
+      />
+      
+    </v-col>
+    <v-col cols="4">
+      <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.block.title }}</div>
+      <v-text-field
+        v-model="model.block"
+        placeholder="Б"
+        name="block"
+        variant="solo-inverted"
+      />
+      
+    </v-col>
+    <v-col cols="4">
+      <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.apartmentNumber.title }}</div>
+      <v-text-field
+        v-model="model.apartmentNumber"
+        placeholder="155"
+        name="apartmentNumber"
+        variant="solo-inverted"
+      />
+      
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts" setup>
 import type { Act } from '@/types'
-import territories from '@/dicts/territories'
-type Address = Act['address']
-
-type Territory = {
-  code: string,
-  title: string
-}
-
-const admin1Pattern = /^UA([1-9]\d|\d[1-9])0000000000/
-const admin2Pattern = /^UA\d\d([1-9]\d|\d[1-9])00000000/
-const admin3Pattern = /^UA\d\d\d\d([1-9]\d\d|\d[1-9]\d|\d\d[1-9])00000/
-const admin4Pattern = /^UA\d\d\d\d\d\d\d([1-9]\d\d|\d[1-9]\d|\d\d[1-9])00/
-const admin5Pattern = /^UA\d\d\d\d\d\d\d\d\d\d([1-9]\d|\d[1-9])/
-
-const admin1List = []
-const admin2Lists: Record<string, Territory[]> = {}
-const admin3Lists: Record<string, Territory[]> = {}
-const admin4Lists: Record<string, Territory[]> = {}
-const admin5Lists: Record<string, Territory[]> = {}
-
-for (const territory of territories) {
-  if (admin1Pattern.test(territory.code)) {
-    admin1List.push(territory)
-    continue
-  }
-  if (admin2Pattern.test(territory.code)) {
-    const shortCode = territory.code.slice(0, 4)
-    if (admin2Lists[shortCode] === undefined) admin2Lists[shortCode] = []
-    admin2Lists[shortCode].push(territory)
-  }
-  if (admin3Pattern.test(territory.code)) {
-    const shortCode = territory.code.slice(0, 6)
-    if (admin3Lists[shortCode] === undefined) admin3Lists[shortCode] = []
-    admin3Lists[shortCode].push(territory)
-  }
-  if (admin4Pattern.test(territory.code)) {
-    const shortCode = territory.code.slice(0, 9)
-    if (admin4Lists[shortCode] === undefined) admin4Lists[shortCode] = []
-    admin4Lists[shortCode].push(territory)
-  }
-  if (admin5Pattern.test(territory.code)) {
-    const shortCode = territory.code.slice(0, 12)
-    if (admin5Lists[shortCode] === undefined) admin5Lists[shortCode] = []
-    admin5Lists[shortCode].push(territory)
-  }
-}
-
-console.log(admin1List)
-console.log(admin2Lists)
-console.log(admin3Lists)
-console.log(admin4Lists)
-console.log(admin5Lists)
-
-
 import { address as schema } from '@/schemas/address.schema'
+import streetTypes from '@/dicts/street-types'
+
+type Address = Act['address']
 
 interface Props {
   modelValue: NonNullable<Address>
@@ -83,6 +74,15 @@ const emit = defineEmits<{
 const model = computed({
   get: () => props.modelValue,
   set: (value: Partial<Address>) => emit('update:modelValue', value)
+})
+
+watch(() => model.value.streetTypeCode, () => {
+  if (model.value.streetTypeCode === undefined) {
+    delete model.value.streetType
+    return
+  }
+  const title = streetTypes.find(streetType => streetType.code === model.value.streetTypeCode)?.title
+  model.value.streetType = title ?? ''
 })
 
 </script>

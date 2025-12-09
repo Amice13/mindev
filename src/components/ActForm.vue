@@ -26,11 +26,37 @@
       v-model="model.ownerOrganization"
     />
 
-    <h5 class="text-h5 mt-6 mb-4">Загальні відомості про об’єкт</h5>
-    <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об’єкта</p>
-    <custom-address
-      v-model="model.address"
+    <h5 class="text-h5 mt-6 mb-4">Адреса</h5>
+    <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
+    <territory v-model="model.address" />
+    <custom-address v-model="model.address" />
+
+    <h5 class="text-h5 mt-6 mb-4">Призначення</h5>
+    <p class="text-subtitle-1 mb-6">Вкажіть призначення (згідно з проектною документацією на будівництво об’єкта/станом на час проведення обстеження)</p>
+
+    <functional-purpose v-model="model.functionalPurpose" />
+
+    <h5 class="text-h5 mt-6 mb-4">Батьківська організація</h5>
+    <p class="text-subtitle-1 mb-6">Визначте підприємство (комплекс), до складу якого входить об'єкт (за потреби)</p>
+
+    <organization-form v-model="model.parentOrganization" />
+
+    <h5 class="text-h5 mt-6 mb-4">Классифікація</h5>
+    <p class="text-subtitle-1 mb-6">Оберіть код об'єкта згідно з Національним класифікатором НК 018:2023 “Класифікатор будівель і споруд” (НК 018:2023)</p>
+
+    <building-class v-model="model.buildingClass" />
+    <p class="text-subtitle-1 mb-6">Зазначте клас наслідків (відповідальності) згідно з проектною документацією (за наявності)</p>
+
+    <dictionary-value
+      v-model="model.consequenceClass"
+      dictionary="consequenceClasses"
     />
+
+    <h5 class="text-h5 mt-6 mb-4">Культурна спадщина</h5>
+    <p class="text-subtitle-1 mb-6">дані про віднесення об’єкта до пам’яток культурної спадщини, зона регулювання забудови та історичного ареалу</p>
+
+    <cultural-heritage v-model="model.culturalHeritage" />
+
   </div>
 </template>
 

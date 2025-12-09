@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Act } from '@/types';
+import type { Act } from '@/types'
 type Organization = Act['ownerOrganization']
 
 import { organization as schema } from '@/schemas/organization.schema'

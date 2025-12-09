@@ -5,7 +5,7 @@ export const territory = {
   type: 'object',
   properties: {
     admin1: {
-      title: 'Область',
+      title: 'Область або місто зі спеціальним статусом',
       type: 'string'
     },
     code1: {
@@ -34,6 +34,14 @@ export const territory = {
     },
     code4: {
       title: 'КАТОТТГ населеного пункту',
+      type: 'string'
+    },
+    admin5: {
+      title: 'Район у місті',
+      type: 'string'
+    },
+    code5: {
+      title: 'КАТОТТГ району у місті',
       type: 'string'
     }
   }

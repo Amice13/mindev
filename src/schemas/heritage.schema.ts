@@ -5,7 +5,12 @@ import heritageTypes from '@/dicts/heritage-types.ts'
 
 export const heritage = {
   title: 'Культурна пам\'ятка',
+  type: 'object',
   properties: {
+    isHeritage: {
+      title: 'Об\'єкт відноситься до пам\'яток культурної спадщини',
+      type: 'boolean'
+    },
     monumentName: {
       title: 'Назва пам\'ятки / об\'єкта',
       type: 'string'
@@ -27,5 +32,8 @@ export const heritage = {
     protectionNumber: {
       title: 'Охоронний номер'
     }
-  }
+  },
+  required: [
+    'protectionDecision'
+  ]
 } as const satisfies JSONSchema

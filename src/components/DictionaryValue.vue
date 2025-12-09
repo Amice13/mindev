@@ -6,12 +6,11 @@
     placeholder="Натисніть, щоб обрати"
     variant="solo-inverted"
     return-object
-  ></v-select>
+  />
 </template>
 
 <script setup lang="ts">
 import type { SelectItemKey } from 'vuetify/lib/util/helpers.mjs'
-import buildingClassifier from '@/dicts/building-classifier'
 import consequenceClasses from '@/dicts/consequence-classes'
 import estateTypes from '@/dicts/estate-types'
 import heritageCategories from '@/dicts/heritage-categories'
@@ -38,7 +37,6 @@ const model = computed({
 })
 
 const availableDicts = {
-  buildingClassifier,
   consequenceClasses,
   personalDocumentTypes,
   estateTypes,

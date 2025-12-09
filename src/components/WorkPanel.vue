@@ -48,9 +48,13 @@ const act = <NonNullable<Act>>reactive({
   ownerPerson: {},
   ownerOrganization: {},
   address: {},
+  functionalPurpose: {},
   parentOrganization: {},
   buildingClass: {},
-  culturalHeritage: {},
+  culturalHeritage: {
+    isHeritage: false,
+    protectionDecision: {}
+  },
   buildingProperty: {},
   constructionElements: {},
   internalSystems: {},

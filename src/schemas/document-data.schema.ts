@@ -10,13 +10,15 @@ export const documentData = {
       description: 'Постанова Ради Міністрів УРСР, Рішення обласної ради, Наказ МКУ тощо'
     },
     number: {
+      title: 'Номер документу',
       type: 'string'
     },
     date: {
+      title: 'Дата прийняття документу',
       type: 'string'
     },
     comment: {
-      title: 'Інформація про редакції',
+      title: 'Інформація про редакції документу',
       type: 'string'
     }
   }

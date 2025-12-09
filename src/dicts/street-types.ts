@@ -1,0 +1,31 @@
+const streetTypes = [
+  { code: '1', title: 'Вулиця' },
+  { code: '2', title: 'Площа' },
+  { code: '3', title: 'Майдан' },
+  { code: '4', title: 'Шосе' },
+  { code: '5', title: 'Проспект' },
+  { code: '6', title: 'Бульвар' },
+  { code: '7', title: 'Алея' },
+  { code: '8', title: 'Провулок' },
+  { code: '9', title: 'Проїзд' },
+  { code: '10', title: 'Узвіз' },
+  { code: '11', title: 'Тупик' },
+  { code: '12', title: 'Набережна' },
+  { code: '13', title: 'Шлях' },
+  { code: '14', title: 'Дорога' },
+  { code: '15', title: 'Заїзд' },
+  { code: '16', title: 'В\'їзд' },
+  { code: '17', title: 'Завулок' },
+  { code: '18', title: 'Лінія' },
+  { code: '20', title: 'Інше' },
+  { code: '101', title: 'Квартал' },
+  { code: '102', title: 'Мікрорайон' },
+  { code: '103', title: 'Жилий масив' },
+  { code: '104', title: 'Містечко' },
+  { code: '105', title: 'Урочище' },
+  { code: '106', title: 'Хутір' },
+  { code: '107', title: 'Садове товариство' },
+  { code: '108', title: 'Гаражний кооператив' }
+]
+
+export default streetTypes

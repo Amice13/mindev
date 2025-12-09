@@ -15,11 +15,15 @@ declare module 'vue' {
     Address: typeof import('./components/Address.vue')['default']
     AppBar: typeof import('./components/AppBar.vue')['default']
     AppFooter: typeof import('./components/AppFooter.vue')['default']
+    BuildingClass: typeof import('./components/BuildingClass.vue')['default']
+    CulturalHeritage: typeof import('./components/CulturalHeritage.vue')['default']
     CustomAddress: typeof import('./components/CustomAddress.vue')['default']
     CustomPassport: typeof import('./components/CustomPassport.vue')['default']
     CustomTaxId: typeof import('./components/CustomTaxId.vue')['default']
     DictionaryValue: typeof import('./components/DictionaryValue.vue')['default']
     Document: typeof import('./components/Document.vue')['default']
+    DocumentReference: typeof import('./components/DocumentReference.vue')['default']
+    FunctionalPurpose: typeof import('./components/FunctionalPurpose.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     OrganizationCode: typeof import('./components/OrganizationCode.vue')['default']
     OrganizationForm: typeof import('./components/OrganizationForm.vue')['default']
@@ -29,6 +33,7 @@ declare module 'vue' {
     RenderDocument: typeof import('./components/RenderDocument.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Territory: typeof import('./components/Territory.vue')['default']
     WorkPanel: typeof import('./components/WorkPanel.vue')['default']
   }
 }
