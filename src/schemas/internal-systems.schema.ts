@@ -1,6 +1,6 @@
 import type { JSONSchema } from 'json-schema-to-ts'
 
-export const internalSystems: JSONSchema7 = {
+export const internalSystems = {
   title: 'Внутрішні інженерні системи',
   type: 'object',
   properties: {

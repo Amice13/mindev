@@ -1,6 +1,6 @@
 import type { JSONSchema } from 'json-schema-to-ts'
 
-export const appartmentInternalSystems = {
+export const apartmentInternalSystems = {
   title: 'Внутрішні інженерні системи',
   type: 'object',
   properties: {
@@ -24,5 +24,6 @@ export const appartmentInternalSystems = {
       title: 'Система вентиляції (обладнання безперебійно функціонуючою системою вентиляції)',
       type: 'string'
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

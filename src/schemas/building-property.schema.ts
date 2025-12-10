@@ -37,8 +37,6 @@ export const buildingProperty = {
       title: 'Площа приміщень основного призначення',
       type: 'number'
     },
-
-    // Office buildings
     officeArea: {
       title: 'Площа офісних (адміністративних) приміщень',
       type: 'number'
@@ -53,6 +51,10 @@ export const buildingProperty = {
     },
 
     // Warehouses
+    floorHeight: {
+      title: 'Висота поверхів, метрів',
+      type: 'number'
+    },
     productionArea: {
       title: 'Площа виробничих приміщень',
       type: 'number'
@@ -71,6 +73,14 @@ export const buildingProperty = {
     },
     additionalArea: {
       title: 'Площа приміщень, що не використовуються за призначенням',
+      type: 'number'
+    },
+    categoryOfDanger: {
+      title: 'Категорія підвищеної небезпеки',
+      type: 'number'
+    },
+    fireSafety: {
+      title: 'Категорія вибухопожежної і пожежної небезпеки',
       type: 'number'
     },
 
@@ -100,24 +110,7 @@ export const buildingProperty = {
     numberOfFreePlaces: {
       title: 'Кількість вільних місць для проживання',
       type: 'number'
-    },
-
-    otherIndicators: {
-      title: 'Інші показники (за наявності/потреби)',
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          title: {
-            title: 'Назва показника',
-            type: 'string'
-          },
-          value: {
-            title: 'Значення показника',
-            type: 'string'
-          }
-        }
-      }
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

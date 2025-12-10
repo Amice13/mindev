@@ -58,9 +58,13 @@ const act = <NonNullable<Act>>reactive({
   buildingProperty: {},
   constructionElements: {},
   internalSystems: {},
-  rentInfo: {},
+  rentInfo: {
+    isRent: false
+  },
   apartment: {},
-  appartmentInternalSystems: {},
-  landDocument: {}
+  apartmentInternalSystems: {},
+  landDocument: {},
+  otherIndicators: [],
+  landCategory: {}
 })
 </script>

@@ -32,5 +32,6 @@ export const apartment = {
       title: 'Кількість кімнат, що можуть бути використані для проживання внутрішньо переміщених осіб (вільна площа)',
       type: 'number'
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

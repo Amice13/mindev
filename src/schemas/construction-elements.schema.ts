@@ -47,5 +47,6 @@ export const constructionElements = {
       title: 'Об’єкти фонду захисних споруд цивільного захисту, зокрема ті, що використовуються як найпростіші укриття (на об\'єкті або на відстані до 500 метрів)',
       type: 'string'
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

@@ -10,11 +10,12 @@ import { constructionElements } from './construction-elements.schema.ts'
 import { internalSystems } from './internal-systems.schema.ts'
 import { rentInfo } from './rent-info.schema.ts'
 import { apartment } from './apartment.schema.ts'
-import { appartmentInternalSystems } from './apartment-internal-systems.schema.ts'
+import { apartmentInternalSystems } from './apartment-internal-systems.schema.ts'
 import { documentData } from './document-data.schema.ts'
 import { person } from './person.schema.ts'
 import { buildingClass } from './building-class.schema.ts'
 import { functionalPurpose } from './functional-purpose.schema.ts'
+import { landCategory } from './land-category.schema.ts'
 
 // Dicts
 import estateTypes from '@/dicts/estate-types.ts'
@@ -89,6 +90,10 @@ export const act = {
       type: 'string',
       enum: ownershipTypes
     },
+    ownershipInfo: {
+      title: 'Інформація про речові права, похідні від права власності',
+      type: 'string'
+    },
     culturalHeritage: {
       ...heritage,
       title: 'Дані про віднесення об’єкта до пам’яток культурної спадщини'
@@ -100,8 +105,28 @@ export const act = {
     // Apartments
     rentInfo,
     apartment,
-    appartmentInternalSystems,
+    apartmentInternalSystems,
 
+    // Additional data
+    otherIndicators: {
+      title: 'Інші показники (за наявності/потреби)',
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          title: {
+            title: 'Назва показника',
+            type: 'string'
+          },
+          value: {
+            title: 'Значення показника',
+            type: 'string'
+          }
+        },
+        required: ['title', 'value'],
+        additionalProperties: false
+      }
+    },
     // Lands
     cadastreNumber: {
       title: 'Кадастровий номер земельної ділянки',
@@ -112,12 +137,16 @@ export const act = {
       type: 'number'
     },
     landCategory: {
-      title: 'Категорія земель',
-      type: 'string'
+      ...landCategory,
+      title: 'Категорія земель'
     },
     landDocument: {
       ...documentData,
       title: 'Документи, що підтверджують право на земельну ділянку'
+    },
+    landRestrictions: {
+      title: 'Наявність обмеження у використанні земель, охоронних зон, зон санітарної охорони, санітарно-захисних зон, зон особливого режиму використання земель',
+      type: 'string'
     },
     landObservations: {
       title: 'Результати обстеження земельної ділянки',
@@ -149,6 +178,15 @@ export const act = {
     'address',
     'functionalPurpose',
     'buildingClass',
-    'culturalHeritage'
+    'culturalHeritage',
+    'buildingProperty',
+    'constructionElements',
+    'internalSystems',
+    'otherIndicators',
+    'rentInfo',
+    'apartment',
+    'apartmentInternalSystems',
+    'landCategory',
+    'landDocument'
   ]
 } as const satisfies JSONSchema

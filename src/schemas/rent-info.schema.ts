@@ -4,6 +4,10 @@ export const rentInfo = {
   title: 'У разі, коли квартира перебуває у користуванні (оренді)',
   type: 'object',
   properties: {
+    isRent: {
+      title: 'Квартира перебуває у користуванні (оренді)',
+      type: 'boolean'
+    },
     reason: {
       title: 'Правові підстави для користування',
       type: 'string'
