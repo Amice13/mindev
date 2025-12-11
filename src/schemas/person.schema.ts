@@ -30,5 +30,6 @@ export const person = {
       title: 'По батькові',
       type: 'string'
     }
-  }  
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

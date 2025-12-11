@@ -101,7 +101,7 @@ const numericMaska = {
 const add = (): void => {
   model.value.push({
     title: '',
-    value: ''
+    value: 0
   })
 }
 

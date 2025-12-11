@@ -4,7 +4,7 @@ import { act } from '@/schemas/act.schema.ts'
 import { address } from '@/schemas/address.schema.ts'
 import { administration } from '@/schemas/administration.schema.ts'
 import { apartment } from '@/schemas/apartment.schema.ts'
-import { appartmentInternalSystems } from '@/schemas/apartment-internal-systems.schema.ts'
+import { apartmentInternalSystems } from '@/schemas/apartment-internal-systems.schema.ts'
 import { buildingProperty } from '@/schemas/building-property.schema.ts'
 import { constructionElements } from '@/schemas/construction-elements.schema.ts'
 import { documentData } from '@/schemas/document-data.schema.ts'
@@ -20,7 +20,7 @@ export type Act = FromSchema<typeof act>
 export type Address = FromSchema<typeof address>
 export type Administration = FromSchema<typeof administration>
 export type Apartment = FromSchema<typeof apartment>
-export type AppartmentInternalSystems = FromSchema<typeof appartmentInternalSystems>
+export type AppartmentInternalSystems = FromSchema<typeof apartmentInternalSystems>
 export type BuildingProperty = FromSchema<typeof buildingProperty>
 export type ConstructionElements = FromSchema<typeof constructionElements>
 export type DocumentData = FromSchema<typeof documentData>

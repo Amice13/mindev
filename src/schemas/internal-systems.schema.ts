@@ -40,5 +40,6 @@ export const internalSystems = {
       title: 'Протипожежне водопостачання (зовнішнє та внутрішнє)',
       type: 'string'
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

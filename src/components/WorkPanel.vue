@@ -16,8 +16,10 @@
       <v-col cols="7" class="d-flex h-100 pa-0">
         <v-card class="d-flex flex-column h-100 w-100 bg-white" flat>
           <v-card-text class="flex-grow-1 overflow-auto pa-5">
-            <div>{{ act }}</div>
-            <render-document />
+            <!-- <div>{{ act }}</div> -->
+            <render-document
+              :data="act"
+            />
           </v-card-text>
         </v-card>
       </v-col>
@@ -44,7 +46,9 @@
 
 <script setup lang="ts">
 import type { Act } from '@/types'
+
 const act = <NonNullable<Act>>reactive({
+  createdBy: {},
   ownerPerson: {},
   ownerOrganization: {},
   address: {},
@@ -64,7 +68,8 @@ const act = <NonNullable<Act>>reactive({
   apartment: {},
   apartmentInternalSystems: {},
   landDocument: {},
-  otherIndicators: [],
+  otherIndicators: [] as Act['otherIndicators'],
   landCategory: {}
 })
+
 </script>

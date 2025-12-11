@@ -28,5 +28,6 @@ export const landCategory = {
       title: 'Застарілий класифікатор КВЦПЗ',
       type: 'string'
     }
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

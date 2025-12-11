@@ -52,7 +52,7 @@ export const act = {
       type: 'string'
     },
     createdBy: user,
-    userOrganization: organization,
+    commission: organization,
 
     // Global data
     estateType: {
@@ -111,6 +111,7 @@ export const act = {
     otherIndicators: {
       title: 'Інші показники (за наявності/потреби)',
       type: 'array',
+      minItems: 0,
       items: {
         type: 'object',
         properties: {
@@ -120,7 +121,7 @@ export const act = {
           },
           value: {
             title: 'Значення показника',
-            type: 'string'
+            type: 'number'
           }
         },
         required: ['title', 'value'],
@@ -172,6 +173,9 @@ export const act = {
     }
   },
   required: [
+    'date',
+    'number',
+    'createdBy',
     'ownerPerson',
     'ownerOrganization',
     'parentOrganization',

@@ -35,6 +35,7 @@ const allowedValues = [
   'warehouseArea',
   'administrativeArea',
   'householdArea',
+  'otherArea',
   'additionalArea',
   'categoryOfDanger',
   'fireSafety'

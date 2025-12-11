@@ -12,7 +12,7 @@
       clearable
     />
 
-    <div v-show="model.code1" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.subsection.title }}</div>
+    <div v-show="model.sectionCode" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.subsection.title }}</div>
     <v-select
       v-show="model.sectionCode"
       v-model="model.subsectionCode"

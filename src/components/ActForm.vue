@@ -217,4 +217,10 @@ const model = computed({
   set: (value: Partial<Act>) => emit('update:modelValue', value)
 })
 
+watch(() => model.value.ownerType, () => {
+  model.value.ownerPerson = {}
+  model.value.ownerOrganization = {}
+},
+{ deep: true })
+
 </script>
