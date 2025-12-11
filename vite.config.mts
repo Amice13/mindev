@@ -14,7 +14,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./mindev",
+  base: "https://amice13.github.io/mindev/",
   plugins: [
     VueRouter({
       dts: 'src/typed-router.d.ts',
