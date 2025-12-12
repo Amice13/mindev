@@ -12,6 +12,10 @@
   background: #dbefef;
   display: inline-block;
 }
+.document .alert {
+  background: #FFCDD2;
+  display: inline;
+}
 
 .document div > table {
   margin: 20px 0px;
@@ -83,7 +87,8 @@ import docxtemplater from 'docxtemplater'
 import expressionParser from 'docxtemplater/expressions.js'
 // const expressionParser = require("docxtemplater/expressions.js")
 
-const formatDate = (date: string): string => {
+const formatDate = (date: string | undefined): string => {
+  if (!date) date = new Date() as unknown as string
   return new Date(date).toLocaleDateString('uk-UA', {
     day: '2-digit',
     month: 'long',
@@ -104,7 +109,7 @@ const parser = expressionParser.configure({ filters: {
     return s
   },
   toLowerCase (s:string) {
-    return s.toLowerCase()
+    return s?.toLowerCase() ?? ''
   }
 }})
 
@@ -131,6 +136,9 @@ const fetchDoc = async () => {
       'p[style-name=\'Paragraph-Even\'] => p.paragraph-even:fresh',
       'r[style-name=\'Paragraph-Even\'] => p.paragraph:fresh',
       'p[style-name=\'Centered\'] => p.text-center',
+      'p[style-name=\'Alert\'] => p.alert',
+      'r[style-name=\'Alert\'] => p.alert',
+      'r[style-name=\'Alert Char\'] => span.alert',
       'p[style-name=\'CustomTitle\'] => p.text-center.mt-6.mb-6.custom-title',
       'p[style-name=\'Highlighted-centered\'] => p.highlighted-centered',
       'p[style-name=\'Highlighted-bold\'] => p.highlighted',
