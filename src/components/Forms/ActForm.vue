@@ -168,6 +168,8 @@
           variant="solo-inverted"
         />
 
+        <p class="text-subtitle-1 mb-6">Зазначте результати обстеження земельної ділянки, у тому числі наявність на земельній ділянці збудованих або встановлених об'єктів та споруд, плодово-ягідних та інших багаторічних насаджень</p>
+
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.landObservations.title }}</div>
         <v-textarea
           v-model="model.landObservations"
@@ -195,6 +197,12 @@
         variant="solo-inverted"
       />
     </div>
+
+    <h5 class="text-h5 mt-6 mb-4">Завантажити документ</h5>
+    <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
+
+    <v-btn color="primary-darken-1">Завантажити</v-btn>
+
   </div>
 </template>
 

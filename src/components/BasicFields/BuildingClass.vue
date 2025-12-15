@@ -62,11 +62,11 @@ const classList2 = computed(() => {
 })
 const classList3 = computed(() => {
   if (model.value.class2 === undefined) return []
-  return buildingClasses.filter(el => el.code.length === 3 && el.code.startsWith(model.value.code1 ?? 'NA'))
+  return buildingClasses.filter(el => el.code.length === 3 && el.code.startsWith(model.value.code2 ?? 'NA'))
 })
 const classList4 = computed(() => {
   if (model.value.class3 === undefined) return []
-  return buildingClasses.filter(el => el.code.length === 4 && el.code.startsWith(model.value.code1 ?? 'NA'))
+  return buildingClasses.filter(el => el.code.length === 4 && el.code.startsWith(model.value.code3 ?? 'NA'))
 })
 
 type BuildingClass = Act['buildingClass']
