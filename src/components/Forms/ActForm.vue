@@ -1,5 +1,26 @@
 <template>
   <div class="pa-4">
+    <h5 class="text-h5 mb-4">Інформація про акт</h5>
+
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.date.title }}</div>
+    <v-text-field
+      v-model="model.data"
+      name="date"
+      id="date"
+      placeholder="DD.MM.YYYY"
+      variant="solo-inverted"
+    />
+
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.number.title }}</div>
+    <v-text-field
+      v-model="model.number"
+      name="number"
+      id="number"
+      placeholder="123/12"
+      variant="solo-inverted"
+    />
+
+    <h5 class="text-h5 mt-6 mb-4">Об'єкт ОНМ</h5>
     <p class="text-subtitle-1 mb-6">Для початку роботи оберіть тип обстежуваного об'єкту нерухомого майна</p>
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.estateType.title }}</div>
@@ -176,11 +197,9 @@
           rows="4"
           variant="solo-inverted"
         />
-
       </div>
 
-
-
+      <!-- Conclusion -->
       <h5 class="text-h5 mt-6 mb-4">Узагальнюючий висновок</h5>
       <p class="text-subtitle-1 mb-6">Визначте відповідний висновок та надайте коментар за потреби</p>
 
@@ -198,20 +217,30 @@
       />
     </div>
 
+    <h5 class="text-h5 mt-6 mb-4">Залучені особи</h5>
+    <p class="text-subtitle-1 mb-6">Якщо на засіданні були присутні залучені до обстеження особи, зазначте їх</p>
+    <involved-list v-model="model.involved" />
+
     <h5 class="text-h5 mt-6 mb-4">Завантажити документ</h5>
     <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
-    <v-btn color="primary-darken-1">Завантажити</v-btn>
-
+    <v-btn @click="downloadDocument" color="primary-darken-1">Завантажити</v-btn>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
+import { useAppStore } from '@/stores/app'
+import useGenerateDocument from '@/composables/generate-document'
+import useDownload from '@/composables/download'
+
+const { user, commission, commissionMembers } = useAppStore() 
+const { generateDocument } = useGenerateDocument()
+const { download } = useDownload()
 
 interface Props {
-  modelValue: NonNullable<Act>
+  modelValue: Partial<Act>
 }
 
 const props = defineProps<Props>()
@@ -221,14 +250,63 @@ const emit = defineEmits<{
 }>()
 
 const model = computed({
-  get: () => props.modelValue,
+  get: () => props.modelValue as Act,
   set: (value: Partial<Act>) => emit('update:modelValue', value)
 })
 
+const getDefaultAct = (): Partial<Act> => {
+  return {
+    createdBy: user as Act['createdBy'],
+    commission,
+    commissionMembers,
+    ownerType: undefined,
+    ownerPerson: {},
+    ownerOrganization: {},
+    address: {},
+    functionalPurpose: {},
+    parentOrganization: {},
+    buildingClass: {},
+    culturalHeritage: {
+      isHeritage: false,
+      protectionDecision: {}
+    },
+    buildingProperty: {},
+    constructionElements: {},
+    internalSystems: {},
+    rentInfo: {
+      isRent: false
+    },
+    apartment: {},
+    apartmentInternalSystems: {},
+    landDocument: {},
+    otherIndicators: [] as Act['otherIndicators'],
+    landCategory: {}
+  }
+}
+
+// Reset the form if estateType is changed
+watch(() => model.value.estateType, (estateType) => {
+  emit('update:modelValue', {
+    ...getDefaultAct(),
+    estateType
+  })
+})
+
+// Reset ownership data
 watch(() => model.value.ownerType, () => {
   model.value.ownerPerson = {}
   model.value.ownerOrganization = {}
 },
 { deep: true })
 
+// Reset building properties
+watch(() => model.value.buildingClass?.code3, () => {
+  model.value.buildingProperty = {}
+  model.value.buildingProperty = {}
+})
+
+const downloadDocument = () => {
+  const doc = generateDocument(model.value as Act)
+  download(doc, new Date().toLocaleString('sv').substring(0, 10) + ' - Акт обстеження.docx')
+}
 </script>

@@ -4,42 +4,36 @@
       <router-link to="/" tag="a">
         <v-img
           router-link
-          :alt="logoDescription"
-          :src="logo"
+          alt="Мінрозвитку - Акти обстеження об'єктів нерухомого майна"
+          :src="logo()"
           class="shrink ml-2 mr-2 cursor-pointer"
           contain
           height="34"
           width="150"/>
       </router-link>
-<!--       <router-link to="/" tag="a" style="text-decoration: none;">
-        <div
-          class="hidden-sm-and-down pl-2 ml-2 cursor-pointer"
-          style="border-left: 1px solid #FFF; font-size: 120%; color: #FFF;">
-          {{ t(shortName) }}
-        </div>
-      </router-link> -->
     </div>
     <v-app-bar-title>Акти обстеження об'єктів нерухомого майна</v-app-bar-title>
     <template v-slot:append>
-      <v-btn class="mr-2" color="primary-darken-1" variant="flat">Акти</v-btn>
-      <v-btn class="mr-2" color="primary-darken-1" variant="flat">Комісія</v-btn>
-      <v-btn color="primary-darken-2" icon="mdi-dots-vertical" variant="tonal"></v-btn>
+      <v-btn to="/" class="mr-2" color="primary-darken-1" variant="flat">Акти</v-btn>
+      <v-btn to="/admin" class="mr-2" color="primary-darken-1" variant="flat">Комісія</v-btn>
+      <v-btn
+        @click="emit('changeDrawer')"
+        class="hidden-md-and-up"
+        color="primary-darken-2"
+        icon="mdi-dots-vertical"
+        variant="tonal"
+      />
     </template>
   </v-app-bar>
 </template>
 
 <script lang="ts" setup>
-const name = 'Test'
-const logoDescription = computed(() => {
-  return `${name} logo`
-})
 
-const logout = () => {
-  console.log('logout')
+const emit = defineEmits<{
+  (e: 'changeDrawer'): void
+}>()
+
+const logo = () => {
+  return `${import.meta.env.BASE_URL}/logo.svg`
 }
-
-const logo = computed(() => {
-  return `/logo.svg`
-})
-
 </script>

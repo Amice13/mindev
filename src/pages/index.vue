@@ -1,5 +1,5 @@
 <template>
-  <work-panel />
+  <search-panel />
 </template>
 
 <script lang="ts" setup>

@@ -31,6 +31,11 @@ export const act = {
   type: 'object',
   properties: {
     // Metadata
+    id: {
+      title: 'Унікальний ідентифікатор',
+      description: 'Унікальний ідентифікатор',
+      type: 'string'
+    },
     createdAt: {
       title: 'Фактичні дата та час створення документа',
       description: 'Відмітка часу',
@@ -53,6 +58,11 @@ export const act = {
     },
     createdBy: user,
     commission: organization,
+    commissionMembers: {
+      title: 'Члени комісії',
+      type: 'array',
+      enum: user
+    },
 
     // Global data
     estateType: {
@@ -169,7 +179,7 @@ export const act = {
     involved: {
       title: 'Залучені до обстеження особи',
       type: 'array',
-      items: person
+      items: user
     }
   },
   required: [
@@ -191,6 +201,8 @@ export const act = {
     'apartment',
     'apartmentInternalSystems',
     'landCategory',
-    'landDocument'
+    'landDocument',
+    'involved',
+    'commission'
   ]
 } as const satisfies JSONSchema

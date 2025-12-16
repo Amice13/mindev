@@ -1,8 +1,9 @@
 <template>
-  <app-bar />
-  <v-navigation-drawer v-model="open">
+  <app-bar @changeDrawer="open = !open" />
+  <v-navigation-drawer temporary v-model="open">
     <v-list nav>
-      <v-list-item title="Navigation drawer" link></v-list-item>
+      <v-list-item to="/" title="Акти"></v-list-item>
+      <v-list-item to="/admin" title="Комісія"></v-list-item>
     </v-list>
   </v-navigation-drawer>
   <v-main>

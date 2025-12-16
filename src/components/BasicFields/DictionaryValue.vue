@@ -11,6 +11,7 @@
 
 <script setup lang="ts">
 import type { SelectItemKey } from 'vuetify/lib/util/helpers.mjs'
+import commissionMemberTypes from '@/dicts/commission-member-types'
 import consequenceClasses from '@/dicts/consequence-classes'
 import estateTypes from '@/dicts/estate-types'
 import heritageCategories from '@/dicts/heritage-categories'
@@ -37,6 +38,7 @@ const model = computed({
 })
 
 const availableDicts = {
+  commissionMemberTypes,
   consequenceClasses,
   personalDocumentTypes,
   estateTypes,

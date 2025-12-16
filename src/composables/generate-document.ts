@@ -22,6 +22,9 @@ const shortenName = (user: Person) => {
 
 const parser = expressionParser.configure({ filters: {
   formatDate,
+  firstLetter (s: string): string {
+    return s.substring(0, 1)
+  },
   zeroText (s: string | number | undefined): string {
     if (s === undefined) return ''
     if (s === 0) return '0'
@@ -37,7 +40,6 @@ const parser = expressionParser.configure({ filters: {
 }})
 
 // Base document
-
 const res = await fetch(docUrl)
 const docx = await res.arrayBuffer()
 

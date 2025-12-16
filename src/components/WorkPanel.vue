@@ -16,10 +16,7 @@
       <v-col cols="7" class="d-flex h-100 pa-0">
         <v-card class="d-flex flex-column h-100 w-100 bg-white" flat>
           <v-card-text class="flex-grow-1 overflow-auto pa-5">
-            <!-- <div>{{ act }}</div> -->
-            <render-document
-              :data="act"
-            />
+            <render-document :data="act" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -46,30 +43,41 @@
 
 <script setup lang="ts">
 import type { Act } from '@/types'
+import { useAppStore } from '@/stores/app'
+import useActs from '@/composables/database'
 
-const act = <NonNullable<Act>>reactive({
-  createdBy: {},
-  ownerPerson: {},
-  ownerOrganization: {},
-  address: {},
-  functionalPurpose: {},
-  parentOrganization: {},
-  buildingClass: {},
-  culturalHeritage: {
-    isHeritage: false,
-    protectionDecision: {}
-  },
-  buildingProperty: {},
-  constructionElements: {},
-  internalSystems: {},
-  rentInfo: {
-    isRent: false
-  },
-  apartment: {},
-  apartmentInternalSystems: {},
-  landDocument: {},
-  otherIndicators: [] as Act['otherIndicators'],
-  landCategory: {}
-})
+const { user, commission, commissionMembers } = useAppStore() 
+
+const getDefaultAct = (): Partial<Act> => {
+  return {
+    createdBy: user as Act['createdBy'],
+    commission,
+    commissionMembers,
+    ownerPerson: {},
+    ownerOrganization: {},
+    address: {},
+    functionalPurpose: {},
+    parentOrganization: {},
+    buildingClass: {},
+    culturalHeritage: {
+      isHeritage: false,
+      protectionDecision: {}
+    },
+    buildingProperty: {},
+    constructionElements: {},
+    internalSystems: {},
+    rentInfo: {
+      isRent: false
+    },
+    apartment: {},
+    apartmentInternalSystems: {},
+    landDocument: {},
+    otherIndicators: [] as Act['otherIndicators'],
+    landCategory: {},
+    involved: []
+  }
+}
+
+const act = ref<Partial<Act>>(getDefaultAct())
 
 </script>
