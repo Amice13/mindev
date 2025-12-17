@@ -4,7 +4,7 @@
       <v-list-item
         v-for="(person, i) in model"
         :key="[person.familyName, person.givenName, person.additionalName].join(',')"
-        :title="[person.familyName, person.givenName, person.additionalName].join(',')"
+        :title="[person.familyName, person.givenName, person.additionalName].join(' ')"
       >
         <template v-slot:append>
           <v-btn
@@ -50,9 +50,6 @@ const personId = ref<string | undefined>()
 
 const add = (person: User) => {
   model.value = [...(model.value ?? []), person]
-  nextTick(() => {
-    console.log(model.value, person)
-  })
 }
 
 const remove = (n: number) => {

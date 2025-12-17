@@ -47,7 +47,7 @@ const generateDocument = (source: Act): ArrayBuffer => {
   const zip = new PizZip(docx)
   const newDoc = new docxtemplater(zip, { parser, linebreaks: true })
   const data = toRaw(source)
-  data.createdBy.shortName = shortenName(data.createdBy)
+  if (data.createdBy) data.createdBy.shortName = shortenName(data.createdBy)
   data.isFirst = ['112', '113'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isSecond = ['121', '122', '123', '124', '126'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isThird = ['125', '127'].includes(data.buildingClass?.code3 ?? 'N/A')

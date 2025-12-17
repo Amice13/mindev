@@ -8,15 +8,14 @@
             <v-breadcrumbs :items="['Акти', 'Створення акту']">
               <template v-slot:divider>|</template>
             </v-breadcrumbs>
-            <act-form v-model="act" />
+            <act-form v-model="model" />
           </v-card-text>
         </v-card>
       </v-col>
-
       <v-col cols="7" class="d-flex h-100 pa-0">
         <v-card class="d-flex flex-column h-100 w-100 bg-white" flat>
           <v-card-text class="flex-grow-1 overflow-auto pa-5">
-            <render-document :data="act" />
+            <render-document :data="model" />
           </v-card-text>
         </v-card>
       </v-col>
@@ -45,14 +44,20 @@
 import type { Act } from '@/types'
 import { useAppStore } from '@/stores/app'
 import useActs from '@/composables/database'
+const { acts } = useActs()
 
 const { user, commission, commissionMembers } = useAppStore() 
+
+const route = useRoute()
+const { _id } = route.params as Record<string, string | undefined>
 
 const getDefaultAct = (): Partial<Act> => {
   return {
     createdBy: user as Act['createdBy'],
+    date: new Date().toLocaleString('sv').substring(0, 10),
     commission,
     commissionMembers,
+    ownerType: undefined,
     ownerPerson: {},
     ownerOrganization: {},
     address: {},
@@ -73,11 +78,47 @@ const getDefaultAct = (): Partial<Act> => {
     apartmentInternalSystems: {},
     landDocument: {},
     otherIndicators: [] as Act['otherIndicators'],
-    landCategory: {},
-    involved: []
+    landCategory: {}
   }
 }
 
-const act = ref<Partial<Act>>(getDefaultAct())
+const model = ref<Act>(getDefaultAct() as Act)
+const initialized = ref<boolean>(false)
+
+onBeforeMount(async () => {
+  if (_id === 'new') {
+    initialized.value = true
+    return
+  }
+  const act = await acts.get(_id)
+  model.value = { ...act } as Act
+  nextTick(() => {
+    initialized.value = true    
+  })
+})
+
+// Reset the form if estateType is changed
+watch(() => model.value.estateType, (estateType) => {
+  if (!initialized.value) return
+  model.value = {
+    ...getDefaultAct(),
+    estateType
+  } as Act
+})
+
+// Reset ownership data
+watch(() => model.value.ownerType, () => {
+  if (!initialized.value) return
+  model.value.ownerPerson = {}
+  model.value.ownerOrganization = {}
+},
+{ deep: true })
+
+// Reset building properties
+watch(() => model.value.buildingClass?.code3, () => {
+  if (!initialized.value) return
+  model.value.buildingProperty = {}
+  model.value.buildingProperty = {}
+})
 
 </script>

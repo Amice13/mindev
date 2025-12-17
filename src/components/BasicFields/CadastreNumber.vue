@@ -26,16 +26,13 @@ const model = computed({
 })
 
 const tokens = {
-  D: {
-    pattern: /:/
-  },
   A: {
     pattern: /\d/
   }
 }
 
 const cadastreMaska = {
-  mask: 'AAAAAAAAAADAADAAADAAAA',
+  mask: 'AAAAAAAAAA:AA:AAA:AAAA',
   tokens
 }
 </script>

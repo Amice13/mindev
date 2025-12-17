@@ -17,12 +17,7 @@
     />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.date.title }}</div>
-    <v-text-field
-      v-model="model.date"
-      placeholder="2025-02-21"
-      variant="solo-inverted"
-      name="documentDate"
-    />
+    <custom-date v-model="model.date" :max="new Date()" />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.comment.title }}</div>
     <v-textarea

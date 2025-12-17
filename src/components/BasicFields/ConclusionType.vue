@@ -6,6 +6,7 @@
     item-value="value"
     placeholder="Натисніть, щоб обрати"
     variant="solo-inverted"
+    clearable
   />
 </template>
 

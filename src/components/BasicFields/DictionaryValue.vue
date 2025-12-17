@@ -6,6 +6,7 @@
     placeholder="Натисніть, щоб обрати"
     variant="solo-inverted"
     return-object
+    clearable
   />
 </template>
 

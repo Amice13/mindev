@@ -20,4 +20,31 @@ export default createVuetify({
       mindev
     }
   },
+  locale: {
+    locale: 'uk',
+    fallback: 'en',
+    messages: {
+      uk: {
+        open: 'Відкрити',
+        input: {
+          clear: 'Очистити'
+        },
+        datePicker: {
+          ariaLabel: {
+            selectDate: 'Вибрати дату',
+            changeMonth: 'Змінити місяць',
+            changeYear: 'Змінити рік',
+            previousYear: 'Минулий рік',
+            nextYear: 'Наступний рік',
+            previousMonth: 'Попередній місяць',
+            nextMonth: 'Наступний місяць',
+            selectYear: 'Обрати рік',
+            selectMonth: 'Обрати місяць',
+            currentDate: 'Поточна дата',
+            close: 'Закрити'
+          }
+        }
+      }
+    }
+  }
 })

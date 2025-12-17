@@ -3,13 +3,7 @@
     <h5 class="text-h5 mb-4">Інформація про акт</h5>
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.date.title }}</div>
-    <v-text-field
-      v-model="model.data"
-      name="date"
-      id="date"
-      placeholder="DD.MM.YYYY"
-      variant="solo-inverted"
-    />
+    <custom-date v-model="model.date" :max="new Date()" />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.number.title }}</div>
     <v-text-field
@@ -225,17 +219,25 @@
     <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
     <v-btn @click="downloadDocument" color="primary-darken-1">Завантажити</v-btn>
+
+    <h5 class="text-h5 mt-6 mb-4">Завершити роботу</h5>
+
+    <v-btn @click="saveDocument" color="primary-darken-1">Зберегти</v-btn>
+    <v-btn v-if="model.id" @click="deleteDocument" color="error" class="ml-4" variant="tonal">Видалити</v-btn>
+
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
-import { useAppStore } from '@/stores/app'
 import useGenerateDocument from '@/composables/generate-document'
 import useDownload from '@/composables/download'
-
-const { user, commission, commissionMembers } = useAppStore() 
+import useActs from '@/composables/database'
+import { v7 as uuid } from 'uuid'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const { acts } = useActs()
 const { generateDocument } = useGenerateDocument()
 const { download } = useDownload()
 
@@ -249,64 +251,34 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: Partial<Act>): void
 }>()
 
-const model = computed({
+const model = computed<Act>({
   get: () => props.modelValue as Act,
   set: (value: Partial<Act>) => emit('update:modelValue', value)
-})
-
-const getDefaultAct = (): Partial<Act> => {
-  return {
-    createdBy: user as Act['createdBy'],
-    commission,
-    commissionMembers,
-    ownerType: undefined,
-    ownerPerson: {},
-    ownerOrganization: {},
-    address: {},
-    functionalPurpose: {},
-    parentOrganization: {},
-    buildingClass: {},
-    culturalHeritage: {
-      isHeritage: false,
-      protectionDecision: {}
-    },
-    buildingProperty: {},
-    constructionElements: {},
-    internalSystems: {},
-    rentInfo: {
-      isRent: false
-    },
-    apartment: {},
-    apartmentInternalSystems: {},
-    landDocument: {},
-    otherIndicators: [] as Act['otherIndicators'],
-    landCategory: {}
-  }
-}
-
-// Reset the form if estateType is changed
-watch(() => model.value.estateType, (estateType) => {
-  emit('update:modelValue', {
-    ...getDefaultAct(),
-    estateType
-  })
-})
-
-// Reset ownership data
-watch(() => model.value.ownerType, () => {
-  model.value.ownerPerson = {}
-  model.value.ownerOrganization = {}
-},
-{ deep: true })
-
-// Reset building properties
-watch(() => model.value.buildingClass?.code3, () => {
-  model.value.buildingProperty = {}
-  model.value.buildingProperty = {}
 })
 
 const downloadDocument = () => {
   const doc = generateDocument(model.value as Act)
   download(doc, new Date().toLocaleString('sv').substring(0, 10) + ' - Акт обстеження.docx')
 }
+
+const saveDocument = async () => {
+  const act = JSON.parse(JSON.stringify(model.value))
+  act.id = uuid()
+  try {
+    await acts.put(act)
+  } catch (err) {
+    alert('Сталася невідома помилка')
+  }
+  router.push({ name: '/' })
+}
+
+const deleteDocument = async () => {
+  try {
+    await acts.delete(model.value.id)
+  } catch (err) {
+    alert('Сталася невідома помилка')
+  }
+  router.push({ name: '/' })
+}
+
 </script>
