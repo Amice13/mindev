@@ -3,7 +3,7 @@
     <div class="d-flex align-content-space mb-4">
       <h5 class="text-h5 w-100">Акти комісії</h5>
       <v-btn
-        to="/act"
+        to="/acts/new"
         :disabled="errors.length > 0"
         prepend-icon="mdi-plus"
         color="primary-darken-1"

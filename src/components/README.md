@@ -33,3 +33,11 @@ When your template is rendered, the component's import will automatically be inl
   import MyComponent from '@/components/MyComponent.vue'
 </script>
 ```
+
+## References
+
+* https://www.kmu.gov.ua/npas/pro-zatverdzhennia-poriadku-obstezhennia-obiektiv-nerukhomoho-maina-dlia-prozhyvannia-s489290425
+
+## TO DO:
+
+* (дата та номер документа, найменування юридичної особи чи прізвище, власне ім’я та по батькові (за наявності) власника та/або користувача земельною ділянкою, а також орган, який здійснив державну реєстрацію прав, номер та дата державної реєстрації прав (за наявності)

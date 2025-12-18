@@ -50,6 +50,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SearchPanel: typeof import('./components/SearchPanel.vue')['default']
+    SignForm: typeof import('./components/Forms/SignForm.vue')['default']
     TabularData: typeof import('./components/ComplexFields/TabularData.vue')['default']
     Territory: typeof import('./components/BasicFields/Territory.vue')['default']
     TextData: typeof import('./components/ComplexFields/TextData.vue')['default']
