@@ -54,6 +54,7 @@ declare module 'vue' {
     TabularData: typeof import('./components/ComplexFields/TabularData.vue')['default']
     Territory: typeof import('./components/BasicFields/Territory.vue')['default']
     TextData: typeof import('./components/ComplexFields/TextData.vue')['default']
+    UploadBox: typeof import('./components/BasicFields/CustomFile/UploadBox.vue')['default']
     WorkPanel: typeof import('./components/WorkPanel.vue')['default']
   }
 }

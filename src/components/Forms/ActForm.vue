@@ -215,10 +215,11 @@
     <p class="text-subtitle-1 mb-6">Якщо на засіданні були присутні залучені до обстеження особи, зазначте їх</p>
     <involved-list v-model="model.involved" />
 
-    <h5 class="text-h5 mt-6 mb-4">Завантажити документ</h5>
+    <h5 class="text-h5 mt-6 mb-4">Завантажити та підписати</h5>
     <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
     <v-btn @click="downloadDocument" color="primary-darken-1">Завантажити</v-btn>
+    <sign-form v-model="actToSave" @cancel="discardDocument" />
 
     <h5 class="text-h5 mt-6 mb-4">Завершити роботу</h5>
 
@@ -231,15 +232,11 @@
 <script lang="ts" setup>
 import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
-import useGenerateDocument from '@/composables/generate-document'
-import useDownload from '@/composables/download'
 import useActs from '@/composables/database'
 import { v7 as uuid } from 'uuid'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const { acts } = useActs()
-const { generateDocument } = useGenerateDocument()
-const { download } = useDownload()
 
 interface Props {
   modelValue: Partial<Act>
@@ -256,9 +253,14 @@ const model = computed<Act>({
   set: (value: Partial<Act>) => emit('update:modelValue', value)
 })
 
+const actToSave = ref<Partial<Act>>({})
+
 const downloadDocument = () => {
-  const doc = generateDocument(model.value as Act)
-  download(doc, new Date().toLocaleString('sv').substring(0, 10) + ' - Акт обстеження.docx')
+  actToSave.value = model.value
+}
+
+const discardDocument = () => {
+  actToSave.value = {}
 }
 
 const saveDocument = async () => {
