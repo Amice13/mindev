@@ -1,14 +1,7 @@
 <template>
-  <div
-    v-for="item in items"
-    :key="item.key"
-  >
+  <div v-for="item in items" :key="item.key">
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ item.title }}</div>
-    <v-textarea
-      v-model="model[item.key]"
-      rows="2"
-      variant="solo-inverted"
-    />
+    <v-textarea v-model="model[item.key]" rows="2" variant="solo-inverted" />
   </div>
 </template>
 

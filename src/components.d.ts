@@ -49,6 +49,8 @@ declare module 'vue' {
     RentInfo: typeof import('./components/ComplexFields/RentInfo.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SchemaSelectField: typeof import('./components/ComplexFields/SchemaSelectField.vue')['default']
+    SchemaTextField: typeof import('./components/ComplexFields/SchemaTextField.vue')['default']
     SearchPanel: typeof import('./components/SearchPanel.vue')['default']
     SignForm: typeof import('./components/Forms/SignForm.vue')['default']
     TabularData: typeof import('./components/ComplexFields/TabularData.vue')['default']

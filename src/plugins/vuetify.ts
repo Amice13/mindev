@@ -25,6 +25,8 @@ export default createVuetify({
     fallback: 'en',
     messages: {
       uk: {
+        noDataText: 'Немає даних',
+        close: 'Закрити',
         open: 'Відкрити',
         input: {
           clear: 'Очистити'

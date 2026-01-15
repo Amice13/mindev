@@ -2,6 +2,7 @@ export default {
   dark: false,
   colors: {
     main: '#F5F3E9',
+    'main-darken-1': '#ecebd8',
     background: '#FFFFFF',
     surface: '#FFFFFF',
     'surface-bright': '#FFFFFF',

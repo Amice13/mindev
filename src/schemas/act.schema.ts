@@ -57,7 +57,10 @@ export const act = {
       type: 'string'
     },
     createdBy: user,
-    commission: organization,
+    commission: {
+      ...organization,
+      required: ['title', 'code']
+    },
     commissionMembers: {
       title: 'Члени комісії',
       type: 'array',
@@ -139,6 +142,10 @@ export const act = {
       }
     },
     // Lands
+    cadastreNumberExist: {
+      title: 'Чи сформований кадастровий номер земельної ділянки',
+      type: 'boolean'
+    },
     cadastreNumber: {
       title: 'Кадастровий номер земельної ділянки',
       type: 'string'
