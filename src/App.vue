@@ -5,5 +5,6 @@
 </template>
 
 <script lang="ts" setup>
+import '@/composables/activity-info'
   //
 </script>
