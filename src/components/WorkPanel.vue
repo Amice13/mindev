@@ -23,9 +23,9 @@
     <v-fab
       @click="showPreview = !showPreview"
       :icon="showPreview ? 'mdi-pencil' : 'mdi-text-box-search-outline'"
+      class="hidden-md-and-up"
       color="primary-darken-1"
       absolute
-      class="pb-10"
       style="position: fixed; right: 20px; top: -12px"
     />
   </v-layout>

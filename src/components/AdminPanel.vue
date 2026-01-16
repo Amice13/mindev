@@ -24,9 +24,9 @@
     <v-fab
       @click="showCommissionMembers = !showCommissionMembers"
       :icon="showCommissionMembers ? 'mdi-office-building-marker' : 'mdi-account-multiple'"
+      class="hidden-md-and-up"
       color="primary-darken-1"
       absolute
-      class="pb-10"
       style="position: fixed; right: 20px; top: -12px"
     />
   </v-layout>
