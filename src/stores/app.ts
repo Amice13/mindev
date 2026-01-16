@@ -8,8 +8,6 @@ export const useAppStore = defineStore('app', () => {
   const commissionMembers = ref<User[]>([])
 
   const saveUser = (newUser: User) => {
-    console.log(newUser)
-    console.log(user)
     user.value = newUser
   }
 

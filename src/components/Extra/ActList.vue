@@ -12,12 +12,12 @@
     <v-data-table
       :headers="headers"
       :items="items"
-      hide-actions
-      class="elevation-1"
+      :items-per-page="0"
+      class="elevation-1 hidden-md-and-down"
       item-key="id"
       hide-default-footer
-      :items-per-page="0"
       no-data-text="Ви ще не додали жодного акта"
+      hide-actions
     >
       <template v-slot:[`item.id`]="{ item }">
         <v-btn :to="`/acts/${item.id}`" fab icon="mdi-pencil" size="x-small" color="primary-darken-1"></v-btn>
@@ -32,6 +32,19 @@
         {{ getType(item.conclusionType) }}
       </template>
     </v-data-table>
+    <div class="hidden-md-and-up">
+      <v-card v-for="act in items" :key="act.id" class="mb-4" style="border-left: 12px solid #2e6868;">
+        <v-card-text>
+          <div class="font-weight-bold text-caption">{{ new Date(act.date).toLocaleString('uk').substring(0, 10) }}</div>
+          <div class="my-4">{{ generateTitle(act) }}</div>
+          <div class="font-weight-bold">{{ getType(act.conclusionType) }}</div>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn color="primary-darken-1" size="small" prepend-icon="mdi-pencil">Редагувати</v-btn>
+        </v-card-actions>
+      </v-card>
+    </div>
     <v-alert
       v-if="errors.length > 0"
       class="mt-6"
@@ -58,6 +71,7 @@ import type { Act } from '@/types'
 import { useAppStore } from '@/stores/app'
 import useActs from '@/composables/database'
 import conclusionTypes from '@/dicts/conclusion-types'
+import type { DataTableHeader } from 'vuetify'
 
 interface Filters {
   minDate: string
@@ -90,7 +104,7 @@ const headers = [
   { key: 'title', title: 'Назва' },
   { key: 'conclusionType', title: 'Висновок' },
   { key: 'signature', title: 'Підпис' }
-]
+] as DataTableHeader[]
 
 const items = ref<Act[]>([])
 

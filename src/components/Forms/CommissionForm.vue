@@ -7,7 +7,7 @@
     <territory v-model="model" />
 
     <v-btn
-      @click="saveCommission"
+      @click="saveNewCommission"
       class="mt-4"
       color="primary-darken-1"
       :disabled="!isChanged"
@@ -22,7 +22,7 @@ import { useAppStore } from '@/stores/app'
 
 const model = ref<Organization & Partial<Territory>>({})
 
-const { commission } = useAppStore()
+const { commission, saveCommission } = useAppStore()
 const isChanged = ref<boolean>(false)
 
 onBeforeMount(() => {
@@ -37,11 +37,11 @@ watch(() => model, (): void => {
   deep: true
 })
 
-const saveCommission = () => {
+const saveNewCommission = () => {
   if (!model.value.admin4) return alert('Не визначено місцезнаходження комісії')
   if (!model.value.title) return alert('Не визначена назва комісії')
   if (!model.value.code) return alert('Не визначено код ЄДРПОУ комісії')
-  commission.value = model.value
+  saveCommission(model.value)
   isChanged.value = false
 }
 </script>

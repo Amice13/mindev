@@ -77,11 +77,11 @@ export const buildingProperty = {
     },
     categoryOfDanger: {
       title: 'Категорія підвищеної небезпеки',
-      type: 'number'
+      type: 'string'
     },
     fireSafety: {
       title: 'Категорія вибухопожежної і пожежної небезпеки',
-      type: 'number'
+      type: 'string'
     },
 
     // Misc

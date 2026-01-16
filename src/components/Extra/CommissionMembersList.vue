@@ -5,7 +5,7 @@
       :headers="headers"
       :items="commissionMembers"
       hide-actions
-      class="elevation-1"
+      class="elevation-1 hidden-sm-and-down"
       item-key="id"
       hide-default-footer
       no-data-text="Ви ще не додали жодного члена комісії"
@@ -22,8 +22,21 @@
       <template v-slot:[`item.id`]="{ item }">
         <v-btn @click="remove(item.id)" color="error" variant="tonal" size="small">Видалити</v-btn>
       </template>
-
     </v-data-table>
+    <div class="hidden-md-and-up">
+      <v-card v-for="commissionMember in commissionMembers" :key="commissionMember.id" class="mb-4" style="border-left: 12px solid #2e6868;">
+        <v-card-text>
+          <v-chip label color="primary-darken-2">{{ commissionMember.status }}</v-chip>
+          <div v-if="commissionMember.id === user.id" class="font-weight-bold my-4">Поточний користувач</div>
+          <div class="my-4">{{ [commissionMember.familyName, commissionMember.givenName, commissionMember.additionalName].filter(Boolean).join(' ') }}</div>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+          <v-btn @click="remove(commissionMember.id)" color="error" size="small" prepend-icon="mdi-delete">Видалити</v-btn>
+        </v-card-actions>
+      </v-card>
+    </div>
+
     <v-btn @click="add" color="primary" class="mt-6">Додати</v-btn>
     <commission-member-dialog :id="commissionMemberId" @cancel="commissionMemberId = undefined" />
   </div>

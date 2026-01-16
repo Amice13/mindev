@@ -5,7 +5,7 @@
     :key="`block-${i}`"
     class="block pa-4"
   >
-    <div v-for="element in getElements(block)" :key="element">
+    <div v-for="(element, j) in getElements(block)" :key="element">
       <schema-select-field
         v-if="getDict(element)"
         v-model="model"
@@ -71,5 +71,19 @@ const getDict = (element: keyof ConstructionElements): string[] | undefined => {
   const property = constructionElements.properties[element] as unknown as Record<string, string[]>
   return property.enum
 } 
+
+const firstKeys = blocks.map(el => el[0])
+watch(
+  () => firstKeys.map(k => props.modelValue[k as keyof ConstructionElements]),
+  (newValues, oldValues) => {
+    newValues.forEach((value, index) => {
+      if (value === oldValues?.[index]) return
+      if (props.modelValue[blocks?.[index]?.[0] as keyof ConstructionElements] !== 'відсутні') return
+      for (const key of blocks?.[index] ?? []) {
+        delete props.modelValue[key]
+      }
+    })
+  }
+)
 
 </script>

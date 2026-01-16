@@ -12,5 +12,6 @@ export const organization = {
       title: 'Код ЄДРПОУ юридичної особи',
       type: 'string'
     }    
-  }
+  },
+  additionalProperties: false
 } as const satisfies JSONSchema

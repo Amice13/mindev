@@ -1,10 +1,24 @@
 <template>
-  <tabular-data
-    v-model="model"
-    :schema="buildingProperty"
-    value-type="number"
-    :allowedValues="allowedValues"
-  />
+  <div>
+    <tabular-data
+      v-model="model"
+      :schema="buildingProperty"
+      value-type="number"
+      :allowedValues="allowedValues"
+    />
+    <div class="mt-6">
+      <danger-category
+        v-model="modelString['categoryOfDanger']"
+        :title="buildingProperty.properties.categoryOfDanger.title"
+      />
+    </div>
+    <div class="mt-6">
+      <danger-category
+        v-model="modelString['fireSafety']"
+        :title="buildingProperty.properties.fireSafety.title"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -23,7 +37,12 @@ const emit = defineEmits<{
 }>()
 
 const model = computed({
-  get: () => props.modelValue,
+  get: () => props.modelValue as Record<string, number | undefined>,
+  set: (value: Partial<BuildingProperty>) => emit('update:modelValue', value)
+})
+
+const modelString = computed({
+  get: () => props.modelValue as Record<string, string>,
   set: (value: Partial<BuildingProperty>) => emit('update:modelValue', value)
 })
 
@@ -36,8 +55,6 @@ const allowedValues = [
   'administrativeArea',
   'householdArea',
   'otherArea',
-  'additionalArea',
-  'categoryOfDanger',
-  'fireSafety'
-]
+  'additionalArea'
+] as (keyof BuildingProperty)[]
 </script>

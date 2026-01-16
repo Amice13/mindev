@@ -1,6 +1,6 @@
 <template>
   <div class="pa-4 document">
-    <div v-html="html"></div>
+    <div :class="data.involved?.length ? 'two-tables' : 'one-table'" v-html="html"></div>
   </div>
 </template>
 
@@ -42,6 +42,10 @@
   font-weight: 500;
 }
 
+.document table {
+  width: 100%;
+}
+
 .document table:nth-child(1) td:nth-child(1) {
   width: 55%;
 }
@@ -74,17 +78,17 @@
 }
 
 .document div > table:nth-last-of-type(1),
-.document div > table:nth-last-of-type(2) {
+.document div.two-tables > table:nth-last-of-type(2) {
   width: 100%;
 }
 
 .document div > table:nth-last-of-type(1) td:nth-child(1),
-.document div > table:nth-last-of-type(2) td:nth-child(1) {
+.document div.two-tables > table:nth-last-of-type(2) td:nth-child(1) {
   width: 20%;
 }
 
 .document div > table:nth-last-of-type(1) tr:nth-child(even) td:nth-child(1),
-.document div > table:nth-last-of-type(2) tr:nth-child(even) td:nth-child(1) {
+.document div.two-tables > table:nth-last-of-type(2) tr:nth-child(even) td:nth-child(1) {
   padding-top: 4px;
   width: 20%;
   text-align: center;
@@ -92,12 +96,12 @@
 }
 
 .document div > table:nth-last-of-type(1) tr:nth-child(odd) td:nth-child(2),
-.document div > table:nth-last-of-type(2) tr:nth-child(odd) td:nth-child(2) {
+.document div.two-tables > table:nth-last-of-type(2) tr:nth-child(odd) td:nth-child(2) {
   padding-left: 24px;
 }
 
 .document div > table:nth-last-of-type(1) td:nth-child(2) table,
-.document div > table:nth-last-of-type(2) td:nth-child(2) table {
+.document div.two-tables > table:nth-last-of-type(2) td:nth-child(2) table {
   width: 100%;
 }
 

@@ -1,10 +1,10 @@
 <template>
 <div style="height:calc(100vh - 56px)">
   <v-layout class="rounded-md pa-3 h-100">
-    <v-row>
-      <v-col cols="5" class="d-flex h-100 pa-5">
+    <v-row class="w-100">
+      <v-col cols="12" md="5" class="d-md-flex h-100 pa-0 pa-sm-5" :class="{ 'hidden-sm-and-down': showPreview }">
         <v-card color="main" class="d-flex flex-column h-100 w-100">
-          <v-card-text class="flex-grow-1 overflow-auto custom-scroll">
+          <v-card-text class="flex-grow-1 overflow-auto custom-scroll pa-1 pa-md-4">
             <v-breadcrumbs :items="['Акти', 'Створення акту']">
               <template v-slot:divider>|</template>
             </v-breadcrumbs>
@@ -12,14 +12,22 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="7" class="d-flex h-100 pa-0">
+      <v-col cols="12" md="7" class="d-flex h-100 pa-0">
         <v-card class="d-flex flex-column h-100 w-100 bg-white" flat>
-          <v-card-text class="flex-grow-1 overflow-auto pa-5">
+          <v-card-text class="flex-grow-1 overflow-auto pa-0 pa-md-4">
             <render-document :data="model" />
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
+    <v-fab
+      @click="showPreview = !showPreview"
+      :icon="showPreview ? 'mdi-pencil' : 'mdi-text-box-search-outline'"
+      color="primary-darken-1"
+      absolute
+      class="pb-10"
+      style="position: fixed; right: 20px; top: -12px"
+    />
   </v-layout>
 </div>
 </template>
@@ -84,6 +92,7 @@ const getDefaultAct = (): Partial<Act> => {
 
 const model = ref<Act>(getDefaultAct() as Act)
 const initialized = ref<boolean>(false)
+const showPreview = ref<boolean>(false)
 
 onBeforeMount(async () => {
   if (_id === 'new') {

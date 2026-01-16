@@ -23,7 +23,7 @@ const emit = defineEmits<{
 }>()
 
 const model = computed({
-  get: () => props.modelValue,
+  get: () => props.modelValue as Record<string, number | undefined>,
   set: (value: Partial<BuildingProperty>) => emit('update:modelValue', value)
 })
 

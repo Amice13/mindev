@@ -32,6 +32,7 @@ declare module 'vue' {
     CulturalHeritage: typeof import('./components/Forms/CulturalHeritage.vue')['default']
     CustomAddress: typeof import('./components/ComplexFields/CustomAddress.vue')['default']
     CustomDate: typeof import('./components/BasicFields/CustomDate.vue')['default']
+    DangerCategory: typeof import('./components/BasicFields/DangerCategory.vue')['default']
     DictionaryValue: typeof import('./components/BasicFields/DictionaryValue.vue')['default']
     DocumentReference: typeof import('./components/Forms/DocumentReference.vue')['default']
     FunctionalPurpose: typeof import('./components/ComplexFields/FunctionalPurpose.vue')['default']

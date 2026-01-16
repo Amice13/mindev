@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.streetType.title }}</div>
       <v-autocomplete
         v-model="model.streetTypeCode"
@@ -10,9 +10,10 @@
         item-title="title"
         item-value="code"
         variant="solo-inverted"
+        hide-details
       />      
     </v-col>
-    <v-col cols="8">
+    <v-col cols="12" md="8">
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.streetName.title }}</div>
       <v-text-field
         v-model="model.streetName"
@@ -21,33 +22,36 @@
         variant="solo-inverted"
       />
     </v-col>
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.building.title }}</div>
       <v-text-field
         v-model="model.building"
         placeholder="10"
         name="building"
         variant="solo-inverted"
+        hide-details
       />
       
     </v-col>
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.block.title }}</div>
       <v-text-field
         v-model="model.block"
         placeholder="Б"
         name="block"
         variant="solo-inverted"
+        hide-details
       />
       
     </v-col>
-    <v-col cols="4">
+    <v-col cols="12" md="4">
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.apartmentNumber.title }}</div>
       <v-text-field
         v-model="model.apartmentNumber"
         placeholder="155"
         name="apartmentNumber"
         variant="solo-inverted"
+        hide-details
       />
       
     </v-col>

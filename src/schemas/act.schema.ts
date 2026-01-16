@@ -58,8 +58,7 @@ export const act = {
     },
     createdBy: user,
     commission: {
-      ...organization,
-      required: ['title', 'code']
+      ...organization
     },
     commissionMembers: {
       title: 'Члени комісії',

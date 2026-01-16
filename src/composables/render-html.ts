@@ -1,4 +1,4 @@
-import sanitizeHtml from 'sanitize-html'
+import DOMPurify from 'dompurify'
 import mammoth from 'mammoth'
 
 const styleMap = [
@@ -17,17 +17,9 @@ const styleMap = [
   'r[style-name=\'Superscript Char\'] => span.superscript'
 ]
 
-const allowedAttributes = {
-  '*': [ 'class' ]
-}
-
 const renderHtml = async (arrayBuffer: ArrayBuffer) => {
   const result = await mammoth.convertToHtml({ arrayBuffer }, { styleMap })
-  return sanitizeHtml(result.value, {
-    allowedAttributes: {
-      '*': [ 'class' ]
-    }
-  })
+  return DOMPurify.sanitize(result.value)
 }
 
 const useRenderHtml = () => {
