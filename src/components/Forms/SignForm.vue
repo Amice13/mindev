@@ -7,7 +7,7 @@
     transition="dialog-transition"
   >
     <v-card color="main">
-      <v-card-title primary-title>
+      <v-card-title primary-title class="bg-primary-darken-2">
         Зберегти та підписати акт
       </v-card-title>
       <v-card-text>
@@ -43,7 +43,7 @@
               <v-card-text>
                 <div class="mb-6">Завантажте підписаний документ та отриманий файл підпису *.pks до системи. Після завантаження натисніт кнопку "Завершити".</div>
                 <upload-box v-model="files" accept=".docx,.pks" />
-                <v-btn color="primary-darken-1">Завершити</v-btn>
+                <v-btn @click="upload" color="primary-darken-1">Завершити</v-btn>
               </v-card-text>
             </v-card>
           </template>
@@ -66,6 +66,8 @@
 import type { Act } from '@/types'
 import useGenerateDocument from '@/composables/generate-document'
 import useDownload from '@/composables/download'
+import { put, uploadFile } from '@/composables/activity-info'
+
 const { generateDocument } = useGenerateDocument()
 const { download } = useDownload()
 
@@ -94,6 +96,13 @@ const files = ref([])
 const downloadDocument = () => {
   const doc = generateDocument(model.value as Act)
   download(doc, new Date().toLocaleString('sv').substring(0, 10) + ' - Акт обстеження.docx')
+}
+
+const upload = async () => {
+  console.log(files.value)
+  uploadFile('bc291n0ggfda3u0e56w647oy', files.value[0])
+  // const result = await put(model.value as Act)
+  // console.log(result)
 }
 
 </script>

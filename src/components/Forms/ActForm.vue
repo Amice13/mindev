@@ -233,7 +233,6 @@
 import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
 import useActs from '@/composables/database'
-import { v7 as uuid } from 'uuid'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const { acts } = useActs()
@@ -265,7 +264,6 @@ const discardDocument = () => {
 
 const saveDocument = async () => {
   const act = JSON.parse(JSON.stringify(model.value))
-  act.id = uuid()
   try {
     await acts.put(act)
   } catch (err) {

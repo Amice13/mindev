@@ -68,7 +68,11 @@ export default defineConfig({
       'unplugin-vue-router/data-loaders/basic',
     ],
   },
-  define: { 'process.env': {} },
+  define: {
+    'process.env': {
+      activityInfoToken: '62437f5af715e03c0c905d1ff53d0641'
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('src', import.meta.url)),

@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import type { Act, User } from '@/types'
-import { v7 as uuid } from 'uuid'
+import { generateId } from '@/composables/generate-id';
 
 interface Props {
   modelValue: Act['involved']
@@ -57,7 +57,7 @@ const remove = (n: number) => {
 }
 
 const create = () => {
-  personId.value = uuid()
+  personId.value = generateId()
 }
 
 const cancel = () => {

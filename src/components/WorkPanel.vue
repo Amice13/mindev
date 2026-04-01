@@ -52,6 +52,8 @@
 import type { Act } from '@/types'
 import { useAppStore } from '@/stores/app'
 import useActs from '@/composables/database'
+import { generateId } from '@/composables/generate-id'
+
 const { acts } = useActs()
 
 const { user, commission, commissionMembers } = useAppStore() 
@@ -95,8 +97,10 @@ const initialized = ref<boolean>(false)
 const showPreview = ref<boolean>(false)
 
 onBeforeMount(async () => {
-  if (_id === 'new') {
+  if (_id === 'new' || _id === undefined) {
     initialized.value = true
+    model.value.id = generateId()
+    console.log(model.value.id)
     return
   }
   const act = await acts.get(_id)

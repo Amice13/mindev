@@ -6,5 +6,6 @@
 
 <script lang="ts" setup>
 import '@/composables/activity-info'
+console.log(process.env)
   //
 </script>

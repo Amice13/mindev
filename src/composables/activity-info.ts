@@ -1,31 +1,40 @@
-import { type JSONSchema } from 'json-schema-to-ts'
-import { act } from '@/schemas/act.schema'
+import { type Act } from '@/types'
 
-interface ActivityInfoForm {
-  id: string
-  label: string
-  schemaVersion: string
-  databaseId: string
-  elements: ActivityInfoField[]
+const BASE_URL = 'https://mindev-proxy.vercel.app/api'
+
+const post = async (body: Act): Promise<null | Response> => {
+  const url = `${BASE_URL}/create`
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(body)
+  }).catch(err => {
+    alert(err)
+    return null
+  })
+  return response
 }
 
-interface ActivityInfoField {
-  id: string
-  code: string
-  label: string
-  description?: string
-  relevanceCondition?: string
-  validationCondition?: string
-  key: boolean
-  required: boolean
-  type: 'FREE_TEXT' | 'serial' | 'month' | 'attachment' | 'geopoint' | 'FREE_TEXT' | 'quantity' | 'enumerated' | 'multiselectreference' | 'epiweek' | 'subform' | 'date' | 'calculated' | 'reversereference' | 'reference' | 'NARRATIVE'
+export const put = async (body: Act) => {
+  const response = await post(body)
+  const json = await response?.json()
+  return { status: 200, data: json }
 }
 
-const fields: ActivityInfoField[] = []
+export const uploadFile = async (recordId: string, file: unknown) => {
+  const url = `${BASE_URL}/upload`
+  const form = new FormData()
+  form.append('recordId', recordId)
+  form.append('blobId', 'helloworld01')
+  form.append('file', file.file)
 
-const createField = (element: JSONSchema): ActivityInfoField | undefined => {
-  if (typeof element !== 'object') return
-  if (element.properties)
+  const response = await fetch(url, {
+    method: 'POST',
+    body: form
+  }).catch(err => {
+    console.log(err)
+    alert(err)
+    return null
+  })
+  console.log(file)
 }
 
-console.log(act)

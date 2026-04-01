@@ -45,7 +45,7 @@
 <script lang="ts" setup>
 import { useAppStore } from '@/stores/app'
 import type { DataTableHeader } from 'vuetify'
-import { v7 as uuid } from 'uuid'
+import { generateId } from '@/composables/generate-id'
 
 const store = useAppStore()
 const { commissionMembers, user } = storeToRefs(store)
@@ -61,7 +61,7 @@ const headers: DataTableHeader[] = [
 const commissionMemberId = ref<string | undefined>()
 
 const add = () => {
-  commissionMemberId.value = uuid()
+  commissionMemberId.value = generateId()
 }
 const remove = (id: string) => {
   removeCommissionMember(id)

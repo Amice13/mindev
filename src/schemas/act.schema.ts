@@ -39,16 +39,19 @@ export const act = {
     createdAt: {
       title: 'Фактичні дата та час створення документа',
       description: 'Відмітка часу',
+      format: 'date-time',
       type: 'number'
     },
     updatedAt: {
       title: 'Фактичні дата та час оновлення документа',
       description: 'Відмітка часу',
+      format: 'date-time',
       type: 'number'
     },
     date: {
       title: 'Дата затвердження акту',
       description: 'Дата затвердження акту',
+      format: 'date-time',
       type: 'string'
     },
     number: {
@@ -56,9 +59,13 @@ export const act = {
       description: 'Номер акту',
       type: 'string'
     },
-    createdBy: user,
+    createdBy: {
+      ...user,
+      title: 'Автор'
+    },
     commission: {
-      ...organization
+      ...organization,
+      title: 'Комісія'
     },
     commissionMembers: {
       title: 'Члени комісії',
@@ -79,11 +86,20 @@ export const act = {
       enum: ownerTypes
     },
 
-    ownerPerson: person,
-    ownerOrganization: organization,
+    ownerPerson: {
+      ...person,
+      title: 'Власник ОНМ (фізична особа)'
+    },
+    ownerOrganization: {
+      ...organization,
+      title: 'Власник ОНМ (юридична особа)'
+    },
 
     // Buildings
-    address,
+    address: {
+      ...address,
+      title: 'Адреса ОНМ'
+    },
     functionalPurpose,
     parentOrganization: {
       ...organization,
@@ -189,6 +205,7 @@ export const act = {
     }
   },
   required: [
+    'id',
     'date',
     'number',
     'createdBy',
