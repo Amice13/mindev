@@ -51,7 +51,7 @@
 <script setup lang="ts">
 import type { Act } from '@/types'
 import { useAppStore } from '@/stores/app'
-import useActs from '@/composables/database'
+import { useActs } from '@/composables/database'
 import { generateId } from '@/composables/generate-id'
 
 const { acts } = useActs()
@@ -63,6 +63,7 @@ const { _id } = route.params as Record<string, string | undefined>
 
 const getDefaultAct = (): Partial<Act> => {
   return {
+    id: generateId(),
     createdBy: user as Act['createdBy'],
     date: new Date().toLocaleString('sv').substring(0, 10),
     commission,
@@ -99,8 +100,6 @@ const showPreview = ref<boolean>(false)
 onBeforeMount(async () => {
   if (_id === 'new' || _id === undefined) {
     initialized.value = true
-    model.value.id = generateId()
-    console.log(model.value.id)
     return
   }
   const act = await acts.get(_id)

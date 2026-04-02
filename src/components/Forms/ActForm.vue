@@ -232,7 +232,7 @@
 <script lang="ts" setup>
 import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
-import useActs from '@/composables/database'
+import { useActs } from '@/composables/database'
 import { useRouter } from 'vue-router'
 const router = useRouter()
 const { acts } = useActs()

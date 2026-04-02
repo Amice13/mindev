@@ -64,9 +64,14 @@
 
 <script setup lang="ts">
 import type { Act } from '@/types'
+import type { CustomFile } from '@/types/files'
 import useGenerateDocument from '@/composables/generate-document'
 import useDownload from '@/composables/download'
-import { put, uploadFile } from '@/composables/activity-info'
+import { uploadAct, uploadFile } from '@/composables/activity-info'
+import { useActs, useFiles } from '@/composables/database'
+
+const { acts } = useActs()
+const { files: filesRepository } = useFiles()
 
 const { generateDocument } = useGenerateDocument()
 const { download } = useDownload()
@@ -91,7 +96,7 @@ const dialog = computed(() => {
   return Object.values(model.value).length > 0
 })
 
-const files = ref([])
+const files = ref<CustomFile[]>([])
 
 const downloadDocument = () => {
   const doc = generateDocument(model.value as Act)
@@ -99,10 +104,47 @@ const downloadDocument = () => {
 }
 
 const upload = async () => {
-  console.log(files.value)
-  uploadFile('bc291n0ggfda3u0e56w647oy', files.value[0])
-  // const result = await put(model.value as Act)
-  // console.log(result)
+  console.log(model.value)
+  if (model.value.id === undefined) return
+  model.value.synced = false
+  
+  const act = await acts.get(model.value.id)
+  if (act === undefined) {
+    // Upload act to the database
+    if (!process.env.IS_TEST && navigator.onLine) {
+      const actIsUploaded = await uploadAct(model.value as Act).catch(err => {
+        console.log(err)
+        alert('Неможливо завантажити акт')
+        return false
+      })
+      if (actIsUploaded === false) return
+      model.value.synced = true
+    }
+    acts.put(JSON.parse(JSON.stringify(model.value)))
+  }
+
+  for (const file of files.value) {
+    const existingFile = await filesRepository
+      .where('[parentId+name]')
+      .equals([model.value.id, file.name])
+      .first()
+    if (existingFile) {
+      alert(`Файл ${file.name} для цього акту вже був завантажений`)
+      continue
+    }
+
+    file.parentId = model.value.id
+    if (!process.env.IS_TEST && navigator.onLine) {
+      const fileIsUploaded = await uploadFile(file).catch(err => {
+        console.log(err)
+        alert(`Неможливо завантажити файл ${file.name}`)
+        return false
+      })
+      if (fileIsUploaded === false) continue
+      file.synced = true
+    }
+    filesRepository.put(file)
+  }
 }
 
 </script>

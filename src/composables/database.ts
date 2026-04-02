@@ -1,11 +1,13 @@
 import type { Act } from '@/types'
+import type { CustomFile } from '@/types/files'
 import { Dexie, type EntityTable } from 'dexie'
 
 const db = new Dexie('mindev') as Dexie & {
-  acts: EntityTable<Act, 'id'>
+  acts: EntityTable<Act, 'id'>,
+  files: EntityTable<CustomFile, 'id'>
 }
 
-const fields = [
+const actsFields = [
   '&id',
   'date',
   'estateType',
@@ -17,10 +19,25 @@ const fields = [
   'conclusionType'
 ]
 
-db.version(1).stores({ acts: fields.join(',') })
+const filesFields = [
+  '&id',
+  'parentId',
+  'name',
+  '[parentId+name]',
+  'size',
+  'lastModified',
+  'synced'
+]
 
-const useActs = () => {
+db.version(2).stores({
+  acts: actsFields.join(','),
+  files: filesFields.join(',')
+})
+
+export const useActs = () => {
   return { acts: db.acts }
 }
 
-export default useActs
+export const useFiles = () => {
+  return { files: db.files }
+}

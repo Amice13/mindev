@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import type { Act } from '@/types'
 import { useAppStore } from '@/stores/app'
-import useActs from '@/composables/database'
+import { useActs } from '@/composables/database'
 import conclusionTypes from '@/dicts/conclusion-types'
 import type { DataTableHeader } from 'vuetify'
 

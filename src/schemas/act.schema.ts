@@ -202,6 +202,15 @@ export const act = {
       title: 'Залучені до обстеження особи',
       type: 'array',
       items: user
+    },
+
+    isSigned: {
+      title: 'Акт складено та підписано',
+      type: 'boolean'
+    },
+    synced: {
+      title: 'Акт завантажено',
+      type: 'boolean'
     }
   },
   required: [

@@ -37,14 +37,14 @@
           @input="upload(($event.target as HTMLInputElement).files)"
           class="d-none box__file" type="file"
           :accept="accept"
-          :name="'files' + uid + '[]'"
-          :id="'file' + uid"
+          :name="'files' + uid() + '[]'"
+          :id="'file' + uid()"
           data-multiple-caption="{count} files selected"
           multiple
         />
         <v-icon x-large class="mb-4">mdi-upload</v-icon>
         <br/>
-        <label :for="'file' + uid">
+        <label :for="'file' + uid" @click="fileInput?.click()">
           <strong class="mr-2">Оберіть файли</strong>
           <div class="box__dragndrop"> або перетягніть їх до цього вікна</div>
         </label>
@@ -106,14 +106,8 @@
 </style>
 
 <script lang="ts" setup>
-
-interface CustomFile {
-  name: string
-  type: string
-  size: number
-  lastModified: number
-  file: File
-}
+import { type CustomFile } from '@/types/files'
+import { generateId } from '@/composables/generate-id'
 
 interface Props {
   modelValue?: CustomFile[]
@@ -147,6 +141,7 @@ const upload = async (fileList: FileList | null | undefined) => {
   if (!fileList?.length) return
   for (const file of [...fileList]) {
     model.value.push({
+      id: generateId(),
       name: file.name,
       type: file.type,
       size: file.size,
