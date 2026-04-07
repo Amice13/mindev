@@ -27,6 +27,7 @@ declare module 'vue' {
     CommissionForm: typeof import('./components/Forms/CommissionForm.vue')['default']
     CommissionMemberDialog: typeof import('./components/Forms/CommissionMemberDialog.vue')['default']
     CommissionMembersList: typeof import('./components/Extra/CommissionMembersList.vue')['default']
+    CommissionSelector: typeof import('./components/BasicFields/CommissionSelector.vue')['default']
     ConclusionType: typeof import('./components/BasicFields/ConclusionType.vue')['default']
     ConstructionElements: typeof import('./components/ComplexFields/ConstructionElements.vue')['default']
     CulturalHeritage: typeof import('./components/Forms/CulturalHeritage.vue')['default']
@@ -57,6 +58,7 @@ declare module 'vue' {
     TabularData: typeof import('./components/ComplexFields/TabularData.vue')['default']
     Territory: typeof import('./components/BasicFields/Territory.vue')['default']
     TextData: typeof import('./components/ComplexFields/TextData.vue')['default']
+    UkrainianText: typeof import('./components/BasicFields/UkrainianText.vue')['default']
     UploadBox: typeof import('./components/BasicFields/CustomFile/UploadBox.vue')['default']
     WorkPanel: typeof import('./components/WorkPanel.vue')['default']
   }

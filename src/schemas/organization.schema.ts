@@ -1,4 +1,5 @@
 import type { JSONSchema } from 'json-schema-to-ts'
+import { address } from './address.schema.ts'
 
 export const organization = {
   title: 'Юридична особа',
@@ -11,7 +12,8 @@ export const organization = {
     code: {
       title: 'Код ЄДРПОУ юридичної особи',
       type: 'string'
-    }    
+    },
+    address
   },
   additionalProperties: false
 } as const satisfies JSONSchema

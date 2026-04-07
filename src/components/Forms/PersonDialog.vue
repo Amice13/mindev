@@ -8,13 +8,13 @@
   >
     <v-card color="main">
       <v-card-title primary-title>
-        Додати члена комісії
+        Додати особу
       </v-card-title>
       <v-card-text>
         <p class="text-subtitle-1 mb-6">Зазначте прізвище, ім'я та по батькові особи</p>
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.familyName.title }}</div>
-        <v-text-field
+        <ukrainian-text
           v-model="model.familyName"
           placeholder="Дія"
           variant="solo-inverted"

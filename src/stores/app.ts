@@ -3,9 +3,15 @@ import type { User, Organization } from '@/types'
 const persistStoreKey = 'mindev-acts'
 
 export const useAppStore = defineStore('app', () => {
+  const commissionIsPredefined = ref<Boolean>(true)
   const commission = ref<Organization>({})
   const user = ref<Partial<User>>({})
   const commissionMembers = ref<User[]>([])
+
+  const changePredefinedComission = (value: boolean) => {
+    console.log(value)
+    commissionIsPredefined.value = value
+  }
 
   const saveUser = (newUser: User) => {
     user.value = newUser
@@ -28,6 +34,8 @@ export const useAppStore = defineStore('app', () => {
   }
 
   return {
+    commissionIsPredefined,
+    changePredefinedComission,
     commission,
     commissionMembers,
     user,

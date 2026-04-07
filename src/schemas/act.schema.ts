@@ -48,6 +48,17 @@ export const act = {
       format: 'date-time',
       type: 'number'
     },
+    actDate: {
+      title: 'Дата складання акту',
+      description: 'Дата затвердження акту',
+      format: 'date-time',
+      type: 'string'
+    },
+    actNumber: {
+      title: 'Номер акту',
+      description: 'Номер акту',
+      type: 'string'
+    },
     date: {
       title: 'Дата затвердження акту',
       description: 'Дата затвердження акту',
@@ -55,8 +66,8 @@ export const act = {
       type: 'string'
     },
     number: {
-      title: 'Номер документа',
-      description: 'Номер акту',
+      title: 'Номер документа, яким затверджено акт',
+      description: 'Номер документа, яким затверджено акт',
       type: 'string'
     },
     createdBy: {
@@ -70,7 +81,7 @@ export const act = {
     commissionMembers: {
       title: 'Члени комісії',
       type: 'array',
-      enum: user
+      items: user
     },
 
     // Global data

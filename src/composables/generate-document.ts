@@ -52,6 +52,7 @@ const generateDocument = (source: Act): ArrayBuffer => {
   data.isFirst = ['112', '113'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isSecond = ['121', '122', '123', '124', '126'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isThird = ['125', '127'].includes(data.buildingClass?.code3 ?? 'N/A')
+  data.headOfCommission = source.commissionMembers?.find(m => m.status === 'Голова комісії')
   newDoc.render(data)
   const docToRender = newDoc.getZip().generate({ type: 'uint8array' })
   return docToRender as unknown as ArrayBuffer
