@@ -2,6 +2,20 @@
   <div class="pa-4">
     <h5 class="text-h5 mb-4">Інформація про акт</h5>
 
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actDate.title }}</div>
+    <custom-date v-model="model.actDate" :max="new Date()" />
+
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actNumber.title }}</div>
+    <v-text-field
+      v-model="model.actNumber"
+      name="number"
+      id="number"
+      placeholder="123/12"
+      variant="solo-inverted"
+    />
+
+    <h5 class="text-h5 mb-4">Інформація про затвердження акту</h5>
+
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.date.title }}</div>
     <custom-date v-model="model.date" :max="new Date()" />
 

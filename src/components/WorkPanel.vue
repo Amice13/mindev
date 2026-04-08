@@ -66,6 +66,7 @@ const getDefaultAct = (): Partial<Act> => {
     id: generateId(),
     createdBy: user as Act['createdBy'],
     date: new Date().toLocaleString('sv').substring(0, 10),
+    actDate: new Date().toLocaleString('sv').substring(0, 10),
     commission,
     commissionMembers,
     ownerType: undefined,
