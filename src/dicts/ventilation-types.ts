@@ -2,7 +2,7 @@ const ventilationTypes = [
   'природна',
   'механічна',
   'відсутнє',
-  'відсутня інформація'
+  'відомості відсутні'
 ]
 
 export default ventilationTypes

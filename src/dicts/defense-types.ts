@@ -1,7 +1,7 @@
 const defenseTypes = [
   'наявне',
   'відсутнє',
-  'відсутня інформація'
+  'відомості відсутні'
 ]
 
 export default defenseTypes

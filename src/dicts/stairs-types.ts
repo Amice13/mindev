@@ -5,7 +5,7 @@ const stairsTypes = [
   'скляні',
   'комбіновані',
   'відсутні',
-  'відсутня інформація'
+  'відомості відсутні'
 ]
 
 export default stairsTypes

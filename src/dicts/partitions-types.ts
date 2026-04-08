@@ -5,7 +5,7 @@ const partitionsTypes = [
   'склянні',
   'дерев\'яні',
   'відсутні',
-  'відсутня інформація'
+  'відомості відсутні'
 ]
 
 export default partitionsTypes

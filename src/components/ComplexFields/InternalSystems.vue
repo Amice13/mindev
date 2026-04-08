@@ -56,7 +56,7 @@ const model = computed({
   set: (value: Partial<InternalSystems>) => emit('update:modelValue', value)
 })
 
-const naValues = ['відсутні', 'відсутня інформація', undefined, null]
+const naValues = ['відсутні', 'відомості відсутні', undefined, null]
 
 const getElements = (blocks: (keyof InternalSystems)[]): (keyof InternalSystems)[] => {
   if (blocks.length === 0) return []
