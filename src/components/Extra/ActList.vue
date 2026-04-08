@@ -20,7 +20,31 @@
       hide-actions
     >
       <template v-slot:[`item.id`]="{ item }">
-        <v-btn :to="`/acts/${item.id}`" fab icon="mdi-pencil" size="x-small" color="primary-darken-1"></v-btn>
+        <v-tooltip text="Редагувати" location="top">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              v-bind="props"
+              :to="`/acts/${item.id}`"
+              fab
+              icon="mdi-pencil"
+              size="x-small"
+              color="primary-darken-1"
+              class="mr-2"
+            />
+          </template>
+        </v-tooltip>
+        <v-tooltip text="Видалити" location="top">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              v-bind="props"
+              @click="remove(item.id)"
+              fab
+              icon="mdi-delete"
+              size="x-small"
+              color="red-darken-3"
+            />
+          </template>
+        </v-tooltip>
       </template>
       <template v-slot:[`item.date`]="{ item }">
         {{ new Date(item.date).toLocaleString('uk').substring(0, 10) }}
@@ -63,6 +87,7 @@
         color="primary-darken-1"
       >Налаштувати</v-btn>
     </v-alert>
+    <ConfirmationDialog ref="confirmationDialog" />
   </div>
 </template>
 
@@ -72,6 +97,10 @@ import { useAppStore } from '@/stores/app'
 import { useActs } from '@/composables/database'
 import conclusionTypes from '@/dicts/conclusion-types'
 import type { DataTableHeader } from 'vuetify'
+
+const { acts } = useActs()
+
+const confirmationDialog = ref()
 
 interface Filters {
   minDate: string
@@ -97,7 +126,7 @@ const errors = computed(() => {
 })
 
 const headers = [
-  { key: 'id', title: '' },
+  { key: 'id', title: 'Дії' },
   { key: 'date', title: 'Дата' },
   { key: 'number', title: 'Номер' },
   { key: 'estateType', title: 'Тип' },
@@ -109,7 +138,6 @@ const headers = [
 const items = ref<Act[]>([])
 
 const load = async () => {
-  const { acts } = useActs()
   if (!props.filters) {
     items.value = await acts.toArray()
     return
@@ -152,6 +180,15 @@ const getType = (value?: string) => {
   if (!value) return ''
   const conclusionType = conclusionTypes.find(el => el.value === value)
   if (conclusionType) return conclusionType.title
+}
+
+const remove = async (id: string) => {
+  const isConfirmed = await confirmationDialog.value.open({
+    title: 'Видалення акту',
+    description: 'Ви дійсно хочете видалити цей акт?'
+  })
+  if (isConfirmed) await acts.delete(id)
+  load()
 }
 
 watch(() => props.filters, () => {

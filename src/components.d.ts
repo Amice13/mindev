@@ -29,6 +29,7 @@ declare module 'vue' {
     CommissionMembersList: typeof import('./components/Extra/CommissionMembersList.vue')['default']
     CommissionSelector: typeof import('./components/BasicFields/CommissionSelector.vue')['default']
     ConclusionType: typeof import('./components/BasicFields/ConclusionType.vue')['default']
+    ConfirmationDialog: typeof import('./components/Forms/ConfirmationDialog.vue')['default']
     ConstructionElements: typeof import('./components/ComplexFields/ConstructionElements.vue')['default']
     CulturalHeritage: typeof import('./components/Forms/CulturalHeritage.vue')['default']
     CustomAddress: typeof import('./components/ComplexFields/CustomAddress.vue')['default']
