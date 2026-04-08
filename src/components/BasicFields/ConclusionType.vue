@@ -3,6 +3,7 @@
     v-model="model"
     :items="items"
     :item-title="getTitle"
+    aria-lable="Тип висновку"
     item-value="value"
     placeholder="Натисніть, щоб обрати"
     variant="solo-inverted"

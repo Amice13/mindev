@@ -5,7 +5,7 @@
     scrollable
     persistent
     :overlay="false"
-    max-width="500px"
+    max-width="800px"
     transition="dialog-transition"
     class="dialog-confirmation"
   >
@@ -15,21 +15,16 @@
       </v-card-title>
 
       <v-card-text>
-        <div>{{ showDescription }}</div>
+        <div class="mb-4 mt-4">На жаль, вашу форму неможливо завантажити, оскільки вона містить наступні помилки:</div>
+        <div>
+          <ul class="pl-10">
+            <li v-for="error in errors">{{ error }}</li>
+          </ul>
+        </div>
       </v-card-text>
 
       <v-card-actions>
         <v-spacer />
-
-        <v-btn
-          ref="cancelButton"
-          color="red-darken-3"
-          text
-          @click="cancel"
-        >
-          Відмінити
-        </v-btn>
-
         <v-btn
           ref="agreeButton"
           color="primary-darken-1"
@@ -48,17 +43,17 @@ import { VBtn } from 'vuetify/components'
 
 type DialogOptions = {
   title?: string
-  description?: string
+  errors: string[]
 }
 
 const defaultValues: Required<DialogOptions> = {
   title: '',
-  description: ''
+  errors: []
 }
 
 const dialog = ref(false)
 const title = ref<string | undefined>()
-const description = ref<string | undefined>()
+const errors = ref<string[]>([])
 
 const resolveRef = ref<((value: boolean) => void) | null>(null)
 
@@ -68,11 +63,7 @@ const agreeButton = ref<VBtn>()
 
 // Computed
 const showTitle = computed(() =>
-  title.value || 'Підтвердження дії'
-)
-
-const showDescription = computed(() =>
-  description.value || 'Ви дійсно хочете Підтвердити цю дію?'
+  title.value || 'Помилка валідації'
 )
 
 // Methods
@@ -84,11 +75,10 @@ const open = (options?: DialogOptions): Promise<boolean> => {
   })
 
   title.value = defaultValues.title
-  description.value = defaultValues.description
 
   if (options) {
     if ('title' in options) title.value = options.title
-    if ('description' in options) description.value = options.description
+    if ('errors' in options) errors.value = options.errors
   }
 
   return new Promise<boolean>((resolve) => {

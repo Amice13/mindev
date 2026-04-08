@@ -3,6 +3,7 @@
     v-model="model"
     v-maska="options"
     :rules="rules"
+    aria-label="Номер паспорта"
     class="passport"
     placeholder="АН 000000 / 123456789"
     validate-on="blur"

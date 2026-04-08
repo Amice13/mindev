@@ -3,6 +3,7 @@
     v-model="model"
     v-maska="options"
     :rules="validationRules"
+    aria-label="РНОКПП"
     placeholder="1234567890"
     class="tax-id"
     validate-on="blur"
@@ -67,7 +68,6 @@ const validationRules = [
     !value || /^\d+$/.test(value) || 'РНОКПП має містити тільки цифри',
   (value: string) => {
     if (!value) return true
-    if (value === '0000000000') return true
     return validateTaxIdSafe(value) ?? 'Невірний номер РНОКПП'
   }
 ]

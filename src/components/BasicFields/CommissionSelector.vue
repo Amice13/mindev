@@ -4,6 +4,7 @@
     <v-select
       v-model="model"
       :items="commissionsList"
+      aria-label="Комісія"
       item-title="title"
       placeholder="Натисніть, щоб обрати"
       variant="solo-inverted"

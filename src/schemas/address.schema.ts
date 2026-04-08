@@ -10,7 +10,7 @@ export const address = {
   properties: {
     ...(territory.properties ?? {}),
     streetType: {
-      title: 'Тип',
+      title: 'Тип вулиці',
       type: 'string',
       enum: streetTypesTitles
     },

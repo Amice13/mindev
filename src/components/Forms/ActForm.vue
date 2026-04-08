@@ -3,11 +3,16 @@
     <h5 class="text-h5 mb-4">Інформація про акт</h5>
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actDate.title }}</div>
-    <custom-date v-model="model.actDate" :max="new Date()" />
+    <custom-date
+      v-model="model.actDate"
+      :aria-label="schema.properties.actDate.title"
+      :max="new Date()"
+    />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actNumber.title }}</div>
     <v-text-field
       v-model="model.actNumber"
+      :aria-label="schema.properties.actNumber.title"
       name="number"
       id="number"
       placeholder="123/12"
@@ -17,11 +22,16 @@
     <h5 class="text-h5 mb-4">Інформація про затвердження акту</h5>
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.date.title }}</div>
-    <custom-date v-model="model.date" :max="new Date()" />
+    <custom-date
+      v-model="model.date"
+      :aria-label="schema.properties.date.title"
+      :max="new Date()"
+    />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.number.title }}</div>
     <v-text-field
       v-model="model.number"
+      :aria-label="schema.properties.number.title"
       name="number"
       id="number"
       placeholder="123/12"
@@ -34,7 +44,8 @@
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.estateType.title }}</div>
     <dictionary-value
       v-model="model.estateType"
-      dictionary="estateTypes"
+     :aria-label="schema.properties.actNumber.title"
+     dictionary="estateTypes"
     />
 
     <div v-if="model.estateType">
@@ -50,12 +61,14 @@
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.ownerType.title }}</div>
         <dictionary-value
           v-model="model.ownerType"
+          :aria-label="schema.properties.ownerType.title"
           dictionary="ownerTypes"
         />
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.ownershipType.title }}</div>
         <dictionary-value
           v-model="model.ownershipType"
+          :aria-label="schema.properties.ownershipType.title"
           dictionary="ownershipTypes"
         />
 
@@ -94,7 +107,7 @@
 
         <h5 class="text-h5 mt-6 mb-4">Загальна інформація</h5>
         <p class="text-subtitle-1 mb-6">Зазаначте кадастровий номер земельної ділянки та її площу</p>
-   
+
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.cadastreNumber.title }}</div>
         <cadastre-number
           v-model="model.cadastreNumber"
@@ -104,15 +117,17 @@
         <numeric-field v-model="model.landArea" />
 
         <h5 class="text-h5 mt-6 mb-4">Власник ОНМ</h5>
-        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.formOfOwnership.title }}</div>
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.ownershipType.title }}</div>
         <dictionary-value
-          v-model="model.formOfOwnership"
+          v-model="model.ownershipType"
+          :aria-label="schema.properties.ownershipType.title"
           dictionary="ownershipTypes"
         />
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.ownershipInfo.title }}</div>
         <v-textarea
           v-model="model.ownershipInfo"
+          :aria-label="schema.properties.ownershipInfo.title"
           rows="4"
           variant="solo-inverted"
         />
@@ -149,6 +164,7 @@
 
         <dictionary-value
           v-model="model.consequenceClass"
+          :aria-label="schema.properties.consequenceClass.title"
           dictionary="consequenceClasses"
         />
 
@@ -210,13 +226,14 @@
       <div v-if="model.estateType === 'Земельні ділянки'">
         <h5 class="text-h5 mt-6 mb-4">Документи</h5>
         <p class="text-subtitle-1 mb-6">Документи, що підтверджують право на земельну ділянку (за наявності)</p>
-        <document-reference v-model="model.landDocument" />        
+        <document-reference v-model="model.landDocument" />
 
         <h5 class="text-h5 mt-6 mb-4">Результати обстеження</h5>
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.landRestrictions.title }}</div>
         <v-textarea
           v-model="model.landRestrictions"
+          :aria-label="schema.properties.landRestrictions.title"
           rows="4"
           variant="solo-inverted"
         />
@@ -226,6 +243,7 @@
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.landObservations.title }}</div>
         <v-textarea
           v-model="model.landObservations"
+          :aria-label="schema.properties.landObservations.title"
           rows="4"
           variant="solo-inverted"
         />
@@ -244,6 +262,7 @@
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.conclusionText.title }}</div>
       <v-textarea
         v-model="model.conclusionText"
+        :aria-label="schema.properties.conclusionText.title"
         rows="4"
         variant="solo-inverted"
       />
@@ -256,13 +275,14 @@
     <h5 class="text-h5 mt-6 mb-4">Завантажити та підписати</h5>
     <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
-    <v-btn @click="downloadDocument" color="primary-darken-1">Завантажити</v-btn>
+    <v-btn @click="uploadDocument" color="primary-darken-1">Завантажити</v-btn>
     <sign-form v-model="actToSave" @cancel="discardDocument" />
 
     <h5 class="text-h5 mt-6 mb-4">Завершити роботу</h5>
 
     <v-btn @click="saveDocument" color="primary-darken-1">Зберегти</v-btn>
     <v-btn v-if="model.id" @click="deleteDocument" color="error" class="ml-4" variant="tonal">Видалити</v-btn>
+    <ValidationDialog ref="validationDialog" />
     <ConfirmationDialog ref="confirmationDialog" />
   </div>
 </template>
@@ -273,11 +293,13 @@ import { act as schema } from '@/schemas/act.schema'
 import { useActs } from '@/composables/database'
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/stores/app'
-const { commission } = useAppStore() 
+import { validateAct } from '@/composables/validate-act'
 
+const { commission } = useAppStore()
 const router = useRouter()
 const { acts } = useActs()
 const confirmationDialog = ref()
+const validationDialog = ref()
 
 interface Props {
   modelValue: Partial<Act>
@@ -296,7 +318,13 @@ const model = computed<Act>({
 
 const actToSave = ref<Partial<Act>>({})
 
-const downloadDocument = () => {
+const uploadDocument = async () => {
+  model.value.updatedAt = new Date().toISOString()
+  const errors = validateAct(toRaw(model.value))
+  await validationDialog.value.open({
+    errors
+  })
+  if (errors.length > 0) return
   actToSave.value = model.value
 }
 
@@ -306,6 +334,7 @@ const discardDocument = () => {
 
 const saveDocument = async () => {
   const act = JSON.parse(JSON.stringify(model.value))
+  act.updatedAt = new Date().toISOString()
   try {
     await acts.put(act)
   } catch (err) {

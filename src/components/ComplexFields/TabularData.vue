@@ -19,6 +19,7 @@
         <td class="pt-2 pb-2">
           <numeric-field
             v-model="model[item.key]"
+            aria-label="Значення (цифра)"
             density="compact"
             variant="solo-inverted"
             inputmode="decimal"

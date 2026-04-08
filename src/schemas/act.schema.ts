@@ -40,13 +40,13 @@ export const act = {
       title: 'Фактичні дата та час створення документа',
       description: 'Відмітка часу',
       format: 'date-time',
-      type: 'number'
+      type: 'string'
     },
     updatedAt: {
       title: 'Фактичні дата та час оновлення документа',
       description: 'Відмітка часу',
       format: 'date-time',
-      type: 'number'
+      type: 'string'
     },
     actDate: {
       title: 'Дата складання акту',
@@ -128,12 +128,6 @@ export const act = {
       description: 'за наявності',
       type: 'string',
       enum: consequenceClasses
-    },
-    formOfOwnership: {
-      title: 'Форма власності',
-      description: 'за наявності',
-      type: 'string',
-      enum: ownershipTypes
     },
     ownershipInfo: {
       title: 'Інформація про речові права, похідні від права власності',

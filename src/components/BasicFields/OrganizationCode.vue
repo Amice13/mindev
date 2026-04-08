@@ -3,7 +3,7 @@
     v-model="model"
     v-maska="options"
     :rules="validationRules"
-    aria-label="Код організації"
+    aria-label="Код ЄДРПОУ організації"
     placeholder="12345678"
     class="organization-id"
     validate-on="blur"

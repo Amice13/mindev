@@ -12,10 +12,12 @@
       </v-card-title>
       <v-card-text>
         <v-stepper
-          :items="['Генерація', 'Підписання', 'Завантаження']"
+          v-model="step"
+          :items="['Генерація', 'Підписання', 'Завантаження', 'Результат']"
           next-text="Продовжити"
           color="primary-darken-2"
-          prev-text="Повернутися"
+          :hide-actions="step === 4"
+          :prev-text="step === 1 ? '' : 'Повернутися'"
           stepper-item-avatar-color="red"
           flat
           class="bg-transparent flat"
@@ -47,10 +49,22 @@
               </v-card-text>
             </v-card>
           </template>
+          <template v-slot:item.4>
+            <v-card title="Результат" flat class="bg-transparent">
+              <v-card-text>
+                <div class="mb-2">
+                  <v-icon color="green" class="mr-2">mdi-check</v-icon> Завантаження акту
+                </div>
+                <div class="mb-2">
+                  <v-icon color="green" class="mr-2">mdi-check</v-icon> Завантаження файлів
+                </div>
+              </v-card-text>
+            </v-card>
+          </template>
         </v-stepper>
       </v-card-text>
       <v-card-actions>
-        <v-btn @click="emit('cancel')">Скасувати</v-btn>
+        <v-btn @click="emit('cancel')">{{ step === 4 ? 'Завершити' : 'Скасувати' }}</v-btn>
       </v-card-actions>
     </v-card>    
   </v-dialog>  
@@ -72,9 +86,10 @@ import { useActs, useFiles } from '@/composables/database'
 
 const { acts } = useActs()
 const { files: filesRepository } = useFiles()
-
 const { generateDocument } = useGenerateDocument()
 const { download } = useDownload()
+
+const step = ref(1)
 
 interface Props {
   modelValue: Partial<Act>
@@ -104,7 +119,6 @@ const downloadDocument = () => {
 }
 
 const upload = async () => {
-  console.log(model.value)
   if (model.value.id === undefined) return
   model.value.synced = false
   

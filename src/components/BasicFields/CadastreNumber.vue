@@ -2,6 +2,7 @@
   <v-text-field
     v-model="model"
     v-maska="cadastreMaska"
+    aria-label="Кадастровий номер земельної ділянки"
     placeholder="1234567890:12:123:1234"
     variant="solo-inverted"
   />

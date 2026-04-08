@@ -29,6 +29,7 @@
         <td class="pt-2 pb-2" v-if="model[i] !== undefined">
           <v-textarea
             v-model="model[i].title"
+            aria-label="Найменування показника"
             rows="1"
             density="compact"
             variant="solo-inverted"
@@ -41,6 +42,7 @@
           <v-text-field
             v-model.number="model[i].value"
             v-maska="numericMaska"
+            aria-label="Значення показника"
             density="compact"
             variant="solo-inverted"
             inputmode="decimal"

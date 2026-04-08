@@ -4,6 +4,7 @@
     <v-select
       v-model="model"
       :items="dangerCategories"
+      aria-label="Категорія підвищеної небезпеки"
       item-title="title"
       item-value="value"
       placeholder="Натисніть, щоб обрати"

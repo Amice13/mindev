@@ -63,6 +63,7 @@ const { _id } = route.params as Record<string, string | undefined>
 const getDefaultAct = (): Partial<Act> => {
   return {
     id: generateId(),
+    createdAt: new Date().toISOString(),
     createdBy: user as Act['createdBy'],
     date: new Date().toLocaleString('sv').substring(0, 10),
     actDate: new Date().toLocaleString('sv').substring(0, 10),

@@ -27,6 +27,7 @@
             <v-date-picker
               v-model="model"
               v-show="showCalendar"
+              :aria-label="ariaLabel"
               title="Оберіть дату"
               :max="maxDate"
               :min="minDate"
@@ -50,6 +51,7 @@ import { vMaska } from 'maska/vue'
 // Props
 const props = defineProps<{
   modelValue?: string | number | Date
+  ariaLabel?: string
   max?: Date
   min?: Date
   label?: string

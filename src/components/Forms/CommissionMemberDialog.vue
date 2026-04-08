@@ -7,7 +7,7 @@
     transition="dialog-transition"
   >
     <v-card color="main">
-      <v-card-title primary-title>
+      <v-card-title primary-title class="bg-primary-darken-2">
         Додати члена комісії
       </v-card-title>
       <v-card-text>
