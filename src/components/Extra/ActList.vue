@@ -120,8 +120,10 @@ const { user, commission, commissionMembers } = useAppStore()
 const errors = computed(() => {
   const problems = []
   if (!user.familyName) problems.push('Не визначено користувача системи')
-  if (!commission.title) problems.push('Не зазначено інформацюі про комісію')
+  if (!commission.title) problems.push('Не зазначено інформацію про комісію')
   if (commissionMembers.length === 0) problems.push('Не внесено жодного члена комісії')
+  const headOfCommission = commissionMembers.find(member => member.status === 'Голова комісії')
+  if (headOfCommission === undefined) problems.push('Не зазначено голову комісії')
   return problems
 })
 

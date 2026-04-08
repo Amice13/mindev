@@ -41,8 +41,8 @@
           <template v-slot:item.3>
             <v-card title="Завантаження документу" flat class="bg-transparent">
               <v-card-text>
-                <div class="mb-6">Завантажте підписаний документ та отриманий файл підпису *.pks до системи. Після завантаження натисніт кнопку "Завершити".</div>
-                <upload-box v-model="files" accept=".docx,.pks" />
+                <div class="mb-6">Завантажте архів із підписаними документами та отриманим файлом підпису (*.p7s, *.asice, *.asics) до системи. Ви можете також завантажити додаткові файли у форматах *.pdf, *.jpg та *.jpeg розміром не більше 5 Мб. Після завантаження натисніть кнопку "Завершити".</div>
+                <upload-box v-model="files" accept=".docx,.p7s,.zip,.asice,.asics,.jpg,.jpeg,.pdf" />
                 <v-btn @click="upload" color="primary-darken-1">Завершити</v-btn>
               </v-card-text>
             </v-card>

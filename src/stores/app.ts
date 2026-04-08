@@ -2,6 +2,12 @@ import { defineStore } from 'pinia'
 import type { User, Organization } from '@/types'
 const persistStoreKey = 'mindev-acts'
 
+const priority: Record<string, number> = {
+  'Голова комісії': 3,
+  'Заступник голови комісії': 2,
+  'Секретар комісії': 1
+}
+
 export const useAppStore = defineStore('app', () => {
   const commissionIsPredefined = ref<Boolean>(true)
   const commission = ref<Organization>({})
@@ -9,7 +15,6 @@ export const useAppStore = defineStore('app', () => {
   const commissionMembers = ref<User[]>([])
 
   const changePredefinedComission = (value: boolean) => {
-    console.log(value)
     commissionIsPredefined.value = value
   }
 
@@ -23,6 +28,14 @@ export const useAppStore = defineStore('app', () => {
 
   const addCommisionMember = (user: User): void => {
     commissionMembers.value.push(user)
+    const members = toRaw(commissionMembers.value)
+    members.sort((a, b) => {
+      const pa = priority[a.status ?? ''] ?? 0
+      const pb = priority[b.status ?? ''] ?? 0
+      if (pa !== pb) return pb - pa
+      return (a.familyName ?? '').localeCompare(b.familyName ?? '')
+    })
+    commissionMembers.value = [...members]
   }
 
   const removeCommissionMember = (id: string): void => {

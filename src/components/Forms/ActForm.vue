@@ -263,7 +263,7 @@
 
     <v-btn @click="saveDocument" color="primary-darken-1">Зберегти</v-btn>
     <v-btn v-if="model.id" @click="deleteDocument" color="error" class="ml-4" variant="tonal">Видалити</v-btn>
-
+    <ConfirmationDialog ref="confirmationDialog" />
   </div>
 </template>
 
@@ -277,6 +277,7 @@ const { commission } = useAppStore()
 
 const router = useRouter()
 const { acts } = useActs()
+const confirmationDialog = ref()
 
 interface Props {
   modelValue: Partial<Act>
@@ -315,6 +316,11 @@ const saveDocument = async () => {
 
 const deleteDocument = async () => {
   try {
+    const isConfirmed = await confirmationDialog.value.open({
+      title: 'Видалення акту',
+      description: 'Ви дійсно хочете видалити цей акт?'
+    })
+    if (!isConfirmed) return false
     await acts.delete(model.value.id)
   } catch (err) {
     alert('Сталася невідома помилка')
