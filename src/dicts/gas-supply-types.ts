@@ -1,7 +1,8 @@
 const gasSupplyTypes = [
   'стандартне',
   'нестандартне',
-  'відсутнє'
+  'відсутнє',
+  'відсутня інформація'
 ]
 
 export default gasSupplyTypes

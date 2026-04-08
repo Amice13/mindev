@@ -56,11 +56,12 @@ const model = computed({
   set: (value: Partial<ConstructionElements>) => emit('update:modelValue', value)
 })
 
+const naValues = ['відсутні', 'відсутня інформація', undefined, null]
+
 const getElements = (blocks: (keyof ConstructionElements)[]): (keyof ConstructionElements)[] => {
   if (blocks.length === 0) return []
   const value = props.modelValue[blocks[0] as keyof ConstructionElements]
-  if (value === undefined) return blocks.slice(0, 1)
-  if (value === 'відсутні') return blocks.slice(0, 1)
+  if (naValues.includes(value)) return blocks.slice(0, 1)
   return blocks
 }
 
@@ -78,8 +79,9 @@ watch(
   (newValues, oldValues) => {
     newValues.forEach((value, index) => {
       if (value === oldValues?.[index]) return
-      if (props.modelValue[blocks?.[index]?.[0] as keyof ConstructionElements] !== 'відсутні') return
-      for (const key of blocks?.[index] ?? []) {
+      const firstValue = props.modelValue[blocks?.[index]?.[0] as keyof ConstructionElements]
+      if (!naValues.includes(firstValue)) return
+      for (const key of blocks?.[index]?.slice(1) ?? []) {
         delete props.modelValue[key]
       }
     })

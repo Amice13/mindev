@@ -1,7 +1,8 @@
 const roofingTypes = [
   'скатна',
   'плоска',
-  'відсутні'
+  'відсутні',
+  'відсутня інформація'
 ]
 
 export default roofingTypes

@@ -2,7 +2,8 @@ const powerSupplyTypes = [
   'централізоване',
   'децентралізоване',
   'комбіноване',
-  'відсутнє'
+  'відсутнє',
+  'відсутня інформація'
 ]
 
 export default powerSupplyTypes

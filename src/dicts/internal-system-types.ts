@@ -1,7 +1,8 @@
 const internalSystemTypes = [
   'централізоване',
   'автономне',
-  'відсутнє'
+  'відсутнє',
+  'відсутня інформація'
 ]
 
 export default internalSystemTypes

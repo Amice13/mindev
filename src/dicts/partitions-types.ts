@@ -4,7 +4,8 @@ const partitionsTypes = [
   'гипсові',
   'склянні',
   'дерев\'яні',
-  'відсутні'
+  'відсутні',
+  'відсутня інформація'
 ]
 
 export default partitionsTypes

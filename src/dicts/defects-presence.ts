@@ -1,6 +1,7 @@
 const defectsPresence = [
   'наявні',
-  'відсутні'
+  'відсутні',
+  'відсутня інформація'
 ]
 
 export default defectsPresence

@@ -50,11 +50,12 @@ const model = computed({
   set: (value: Partial<ApartmentInternalSystems>) => emit('update:modelValue', value)
 })
 
+const naValues = ['відсутні', 'відсутня інформація', undefined, null]
+
 const getElements = (blocks: (keyof ApartmentInternalSystems)[]): (keyof ApartmentInternalSystems)[] => {
   if (blocks.length === 0) return []
   const value = props.modelValue[blocks[0] as keyof ApartmentInternalSystems]
-  if (value === undefined) return blocks.slice(0, 1)
-  if (value === 'відсутні') return blocks.slice(0, 1)
+  if (naValues.includes(value)) return blocks.slice(0, 1)
   return blocks
 }
 
@@ -72,8 +73,9 @@ watch(
   (newValues, oldValues) => {
     newValues.forEach((value, index) => {
       if (value === oldValues?.[index]) return
-      if (!['відсутнє', 'відсутні'].includes(props.modelValue[blocks?.[index]?.[0] as keyof ApartmentInternalSystems] as string)) return
-      for (const key of blocks?.[index] ?? []) {
+      const firstValue = props.modelValue[blocks?.[index]?.[0] as keyof ApartmentInternalSystems]
+      if (!naValues.includes(firstValue)) return
+      for (const key of blocks?.[index]?.slice(1) ?? []) {
         delete props.modelValue[key]
       }
     })
