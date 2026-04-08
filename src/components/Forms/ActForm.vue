@@ -53,6 +53,12 @@
           dictionary="ownerTypes"
         />
 
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.ownershipType.title }}</div>
+        <dictionary-value
+          v-model="model.ownershipType"
+          dictionary="ownershipTypes"
+        />
+
         <person-form
           v-if="model.ownerType === 'Фізична особа'"
           v-model="model.ownerPerson"
@@ -145,7 +151,12 @@
 
         <cultural-heritage v-model="model.culturalHeritage" />
 
-        <h5 class="text-h5 mt-6 mb-4">Основні технічні показники об'єкта</h5>
+        <h5
+          class="text-h5 mt-6 mb-4"
+          v-if="['112', '113', '121', '122', '123', '124', '126', '125', '127'].includes(model.buildingClass?.code3 ?? 'N/A')"
+        >
+          Основні технічні показники об'єкта
+        </h5>
         <building-properties-first
           v-if="['112', '113'].includes(model.buildingClass?.code3 ?? 'N/A')"
           v-model="model.buildingProperty"
@@ -159,8 +170,15 @@
           v-model="model.buildingProperty"
         />
 
-        <h5 class="text-h5 mt-6 mb-4">Інші технічні показники</h5>
-        <additional-data v-model="model.otherIndicators" />
+        <h5
+          v-if="['112', '113'].includes(model.buildingClass?.code3 ?? 'N/A')"
+          class="text-h5 mt-6 mb-4">
+          Інші технічні показники
+        </h5>
+        <additional-data
+          v-if="['112', '113'].includes(model.buildingClass?.code3 ?? 'N/A')"
+          v-model="model.otherIndicators"
+        />
 
         <h5 class="text-h5 mt-6 mb-4">Основні будівельні конструкції</h5>
         <construction-elements v-model="model.constructionElements" />

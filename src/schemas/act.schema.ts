@@ -97,6 +97,12 @@ export const act = {
       enum: ownerTypes
     },
 
+    ownershipType: {
+      title: 'Тип власності',
+      type: 'string',
+      enum: ownershipTypes
+    },
+
     ownerPerson: {
       ...person,
       title: 'Власник ОНМ (фізична особа)'
