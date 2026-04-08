@@ -9,6 +9,10 @@ export const address = {
   type: 'object',
   properties: {
     ...(territory.properties ?? {}),
+    postalCode: {
+      title: 'Поштовий індекс',
+      type: 'string',
+    },
     streetType: {
       title: 'Тип вулиці',
       type: 'string',

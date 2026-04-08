@@ -203,10 +203,14 @@ watch(() => model.value.code3, () => {
     const title = admin3List.value.find(territory => territory.code === model.value.code3)?.title
     model.value.admin3 = title ?? ''
   }
-  delete model.value.code4
-  delete model.value.admin4
-  delete model.value.code5
-  delete model.value.admin5
+  if (!model.value.code4?.startsWith(model.value?.code3?.slice(0, 9) ?? 'NA')) {
+    delete model.value.code4
+    delete model.value.admin4
+  }
+  if (!model.value.code5?.startsWith(model.value?.code3?.slice(0, 9) ?? 'NA')) {
+    delete model.value.code5
+    delete model.value.admin5
+  }
 })
 
 watch(() => model.value.code2, () => {
@@ -216,12 +220,18 @@ watch(() => model.value.code2, () => {
     const title = admin2List.value.find(territory => territory.code === model.value.code2)?.title
     model.value.admin2 = title ?? ''
   }
-  delete model.value.code3
-  delete model.value.admin3
-  delete model.value.code4
-  delete model.value.admin4
-  delete model.value.code5
-  delete model.value.admin5
+  if (!model.value.code3?.startsWith(model.value?.code2?.slice(0, 6) ?? 'NA')) {
+    delete model.value.code3
+    delete model.value.admin3
+  }
+  if (!model.value.code4?.startsWith(model.value?.code2?.slice(0, 6) ?? 'NA')) {
+    delete model.value.code4
+    delete model.value.admin4
+  }
+  if (!model.value.code5?.startsWith(model.value?.code2?.slice(0, 6) ?? 'NA')) {
+    delete model.value.code5
+    delete model.value.admin5
+  }
 })
 
 watch(() => model.value.code1, () => {
@@ -231,13 +241,21 @@ watch(() => model.value.code1, () => {
     const title = admin1List.find(territory => territory.code === model.value.code1)?.title
     model.value.admin1 = title ?? ''
   }
-  delete model.value.code2
-  delete model.value.admin2
-  delete model.value.code3
-  delete model.value.admin3
-  delete model.value.code4
-  delete model.value.admin4
-  delete model.value.code5
-  delete model.value.admin5
+  if (!model.value.code2?.startsWith(model.value?.code1?.slice(0, 4) ?? 'NA')) {
+    delete model.value.code2
+    delete model.value.admin2
+  }
+  if (!model.value.code3?.startsWith(model.value?.code1?.slice(0, 4) ?? 'NA')) {
+    delete model.value.code3
+    delete model.value.admin3
+  }
+  if (!model.value.code4?.startsWith(model.value?.code1?.slice(0, 4) ?? 'NA')) {
+    delete model.value.code4
+    delete model.value.admin4
+  }
+  if (!model.value.code5?.startsWith(model.value?.code1?.slice(0, 4) ?? 'NA')) {
+    delete model.value.code5
+    delete model.value.admin5
+  }
 })
 </script>
