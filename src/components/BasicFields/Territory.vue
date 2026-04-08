@@ -4,6 +4,8 @@
     <v-select
       v-model="model.code1"
       :items="admin1List"
+      :aria-label="schema.properties.admin1.title"
+      :disabled="disabled?.includes('code1')"
       item-title="title"
       item-value="code"
       placeholder="Київська"
@@ -16,6 +18,8 @@
       v-show="admin2List.length"
       v-model="model.code2"
       :items="admin2List"
+      :aria-label="schema.properties.admin2.title"
+      :disabled="disabled?.includes('code2')"
       :placeholder="admin2List[0]?.title ?? 'Білоцерківський'"
       no-data-text="Немає даних"
       item-title="title"
@@ -29,6 +33,8 @@
       v-show="admin3List.length"
       v-model="model.code3"
       :items="admin3List"
+      :aria-label="schema.properties.admin3.title"
+      :disabled="disabled?.includes('code3')"
       :placeholder="admin3List[0]?.title ?? 'Білоцерківська'"
       no-data-text="Немає даних"
       item-title="title"
@@ -42,6 +48,8 @@
       v-show="admin4List.length"
       v-model="model.code4"
       :items="admin4List"
+      :aria-label="schema.properties.admin4.title"
+      :disabled="disabled?.includes('code4')"
       :placeholder="admin4List[0]?.title ?? 'Біла церква'"
       no-data-text="Немає даних"
       item-title="title"
@@ -55,6 +63,8 @@
       v-show="admin5List.length"
       v-model="model.code5"
       :items="admin5List"
+      :aria-label="schema.properties.admin5.title"
+      :disabled="disabled?.includes('code5')"
       :placeholder="admin5List[0]?.title"
       no-data-text="Немає даних"
       item-title="title"
@@ -152,6 +162,7 @@ const admin5List = computed((): Territory[] => {
 
 interface Props {
   modelValue: NonNullable<Address>
+  disabled?: string[]
 }
 
 const props = defineProps<Props>()

@@ -70,7 +70,10 @@
 
         <h5 class="text-h5 mt-6 mb-4">Адреса</h5>
         <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
-        <territory v-model="model.address" />
+        <territory
+          v-model="model.address"
+          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
+        />
         <custom-address
           v-if="[
             'Житлові будинки, будівлі, споруди (їх окремі частини)',
@@ -84,7 +87,10 @@
         <h5 class="text-h5 mt-6 mb-4">Адреса</h5>
         <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
 
-        <territory v-model="model.address" />
+        <territory
+          v-model="model.address"
+          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
+        />
 
         <h5 class="text-h5 mt-6 mb-4">Загальна інформація</h5>
         <p class="text-subtitle-1 mb-6">Зазаначте кадастровий номер земельної ділянки та її площу</p>
@@ -266,6 +272,9 @@ import type { Act } from '@/types'
 import { act as schema } from '@/schemas/act.schema'
 import { useActs } from '@/composables/database'
 import { useRouter } from 'vue-router'
+import { useAppStore } from '@/stores/app'
+const { commission } = useAppStore() 
+
 const router = useRouter()
 const { acts } = useActs()
 

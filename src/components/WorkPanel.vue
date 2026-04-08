@@ -57,7 +57,6 @@ import { generateId } from '@/composables/generate-id'
 const { acts } = useActs()
 
 const { user, commission, commissionMembers } = useAppStore() 
-
 const route = useRoute()
 const { _id } = route.params as Record<string, string | undefined>
 
@@ -72,7 +71,12 @@ const getDefaultAct = (): Partial<Act> => {
     ownerType: undefined,
     ownerPerson: {},
     ownerOrganization: {},
-    address: {},
+    address: {
+      ...(commission?.address?.admin1 !== undefined ? { admin1: commission.address.admin1 } : {}),
+      ...(commission?.address?.admin2 !== undefined ? { admin2: commission.address.admin2 } : {}),
+      ...(commission?.address?.code1 !== undefined ? { code1: commission.address.code1 } : {}),
+      ...(commission?.address?.code2 !== undefined ? { code2: commission.address.code2 } : {})
+    },
     functionalPurpose: {},
     parentOrganization: {},
     buildingClass: {},
