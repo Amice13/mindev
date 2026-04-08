@@ -1,5 +1,6 @@
 import type { JSONSchema } from 'json-schema-to-ts'
 import personalDocumentTypes from '@/dicts/personal-document-types'
+import { organization } from './organization.schema'
 
 export const person = {
   title: 'Фізична особа',
@@ -29,7 +30,12 @@ export const person = {
     additionalName: {
       title: 'По батькові',
       type: 'string'
-    }
+    },
+    position: {
+      title: 'Посада в організації',
+      type: 'string'
+    },
+    organization
   },
   additionalProperties: false
 } as const satisfies JSONSchema

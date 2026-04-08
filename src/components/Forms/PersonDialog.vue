@@ -22,7 +22,7 @@
         />
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.givenName.title }}</div>
-        <v-text-field
+        <ukrainian-text
           v-model="model.givenName"
           placeholder="Надія"
           variant="solo-inverted"
@@ -30,11 +30,33 @@
         />
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.additionalName.title }}</div>
-        <v-text-field
+        <ukrainian-text
           v-model="model.additionalName"
           placeholder="Володимирівна"
           variant="solo-inverted"
           name="person.additionalName"
+        />
+
+
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.position.title }}</div>
+        <ukrainian-text
+          v-model="model.position"
+          placeholder="Інженер-проектувальник"
+          variant="solo-inverted"
+          name="person.title"
+        />
+
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.organization.properties.title.title }}</div>
+        <v-text-field
+          v-model="model.organization!.title"
+          placeholder="Міністерство розвитку громад та територій України"
+          variant="solo-inverted"
+          name="person.organization.title"
+        />
+
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.organization.properties.code.title }}</div>
+        <organization-code
+          v-model="model.organization!.code"
         />
 
       </v-card-text>
@@ -55,7 +77,9 @@ const dialog = computed(() => {
   return props.id !== undefined
 })
 
-const model = ref<Partial<User>>({})
+const model = ref<Partial<User>>({
+  organization: {}
+})
 
 const emit = defineEmits<{
   (e: 'cancel'): void,
@@ -69,6 +93,7 @@ const save = () => {
   const person = toRaw(model.value)
   person.id = props.id
   emit('add', person as User)
+  model.value = Object.assign({ organization: {} })
   emit('cancel')
 }
 </script>
