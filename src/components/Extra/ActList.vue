@@ -20,13 +20,13 @@
       hide-actions
     >
       <template v-slot:[`item.id`]="{ item }">
-        <v-tooltip text="Редагувати" location="top">
+        <v-tooltip :text="item.isSigned ? 'Переглянути' : 'Редагувати'" location="top">
           <template v-slot:activator="{ props }">
             <v-btn
               v-bind="props"
               :to="`/acts/${item.id}`"
               fab
-              icon="mdi-pencil"
+              :icon="item.isSigned ? 'mdi-eye' : 'mdi-pencil'"
               size="x-small"
               color="primary-darken-1"
               class="mr-2"
@@ -37,6 +37,7 @@
           <template v-slot:activator="{ props }">
             <v-btn
               v-bind="props"
+              v-if="!item.isSigned"
               @click="remove(item.id)"
               fab
               icon="mdi-delete"

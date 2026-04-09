@@ -14,6 +14,7 @@ declare module 'vue' {
     ActFilters: typeof import('./components/Extra/ActFilters.vue')['default']
     ActForm: typeof import('./components/Forms/ActForm.vue')['default']
     ActList: typeof import('./components/Extra/ActList.vue')['default']
+    ActSignedForm: typeof import('./components/Forms/ActSignedForm.vue')['default']
     AdditionalData: typeof import('./components/BasicFields/AdditionalData.vue')['default']
     AdminPanel: typeof import('./components/AdminPanel.vue')['default']
     Apartment: typeof import('./components/ComplexFields/Apartment.vue')['default']

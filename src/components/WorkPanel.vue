@@ -5,10 +5,17 @@
       <v-col cols="12" md="5" class="d-md-flex h-100 pa-0 pa-sm-5" :class="{ 'hidden-sm-and-down': showPreview }">
         <v-card color="main" class="d-flex flex-column h-100 w-100">
           <v-card-text class="flex-grow-1 overflow-auto custom-scroll pa-1 pa-md-4">
-            <v-breadcrumbs :items="['Акти', 'Створення акту']">
+            <v-breadcrumbs :items="['Акти', model.isSigned ? 'Перегляд акту' : 'Створення акту']">
               <template v-slot:divider>|</template>
             </v-breadcrumbs>
-            <act-form v-model="model" />
+            <act-form
+              v-if="!model.isSigned"
+              v-model="model"
+            />
+            <act-signed-form
+              v-if="model.isSigned"
+              v-model="model"
+            />
           </v-card-text>
         </v-card>
       </v-col>
