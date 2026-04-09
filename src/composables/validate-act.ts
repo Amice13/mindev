@@ -3,6 +3,7 @@ import type { JSONSchema } from "json-schema-to-ts"
 import { act as actSchema } from '@/schemas/act.schema'
 import { checkCode } from './edrpou-validator'
 import get from 'get-value'
+import conclusionDetails from '@/dicts/conclusion-details'
 
 const requiredFields = [
   'id',
@@ -16,7 +17,8 @@ const requiredFields = [
   'commissionMembers',
   'estateType',
   'ownershipType',
-  'conclusionType'
+  'conclusionType',
+  'conclusionDetail'
 ]
 
 const requiredForHouses = [
@@ -179,7 +181,7 @@ const checkEmptyField = (obj: Record<string, any>, field: string, schema: JSONSc
   const value = get(obj, field)
   if (typeof schema === 'boolean') return false
   if (schema.properties === undefined) return false
-  if (value === undefined) {
+  if (value === undefined || value === null || value === '') {
     const rawKey = field.split(/\./)[0] as keyof typeof schema.properties
     if (schema.properties[rawKey] === undefined) return false
     if (typeof schema.properties[rawKey] === 'boolean') return false
@@ -188,7 +190,6 @@ const checkEmptyField = (obj: Record<string, any>, field: string, schema: JSONSc
   }
   return false
 }
-
 
 export const validateAct = (act: Act) => {
   const errors: string[] = []
@@ -379,6 +380,22 @@ export const validateAct = (act: Act) => {
   for (const key of addressForLands) {
     const error = checkEmptyField(act.commission.address!, key, actSchema.properties.commission)
     if (error) errors.push(error + ' комісії')
+  }
+
+  // Extra fields for conclusion
+  if (act.conclusionType === 'Інший висновок') {
+    const error = checkEmptyField(act.commission.address!, 'conclusionText', actSchema.properties.commission)
+    if (error) errors.push(error)
+  }
+
+  if (act.estateType === 'Житлові будинки, будівлі, споруди (їх окремі частини)') {
+    const error = checkEmptyField(act.commission.address!, 'additionalObservation', actSchema.properties.commission)
+    if (error) errors.push(error)    
+  }
+
+  if (act.additionalObservation === 'Інше') {
+    const error = checkEmptyField(act.commission.address!, 'additionalObservationExtra', actSchema.properties.commission)
+    if (error) errors.push(error)
   }
 
   return errors

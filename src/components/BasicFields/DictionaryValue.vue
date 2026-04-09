@@ -21,6 +21,8 @@ import landCategories from '@/dicts/land-categories'
 import ownershipTypes from '@/dicts/ownership-types'
 import ownerTypes from '@/dicts/owner-types'
 import personalDocumentTypes from '@/dicts/personal-document-types'
+import additionalObservations from '@/dicts/additional-observations'
+import landActions from '@/dicts/land-actions'
 
 interface Props {
   dictionary: string
@@ -39,15 +41,17 @@ const model = computed({
 })
 
 const availableDicts = {
+  additionalObservations,
   commissionMemberTypes,
   consequenceClasses,
-  personalDocumentTypes,
   estateTypes,
   heritageCategories,
   heritageTypes,
+  landActions,
   landCategories,
   ownershipTypes,
-  ownerTypes
+  ownerTypes,
+  personalDocumentTypes
 } as Record<string, string[] | object[]>
 
 const items = computed(() => {

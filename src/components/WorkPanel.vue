@@ -139,4 +139,13 @@ watch(() => model.value.buildingClass?.code3, () => {
   model.value.buildingProperty = {}
 })
 
+// Reset conclusion deatils
+watch(() => model.value.conclusionType, () => {
+  if (!initialized.value) return
+  delete model.value.conclusionDetail
+  delete model.value.landAction
+  delete model.value.landActionExtra
+},
+{ deep: true })
+
 </script>

@@ -28,6 +28,7 @@ declare module 'vue' {
     CommissionMemberDialog: typeof import('./components/Forms/CommissionMemberDialog.vue')['default']
     CommissionMembersList: typeof import('./components/Extra/CommissionMembersList.vue')['default']
     CommissionSelector: typeof import('./components/BasicFields/CommissionSelector.vue')['default']
+    ConclusionDetail: typeof import('./components/BasicFields/ConclusionDetail.vue')['default']
     ConclusionType: typeof import('./components/BasicFields/ConclusionType.vue')['default']
     ConfirmationDialog: typeof import('./components/Forms/ConfirmationDialog.vue')['default']
     ConstructionElements: typeof import('./components/ComplexFields/ConstructionElements.vue')['default']

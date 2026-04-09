@@ -49,6 +49,8 @@ const generateDocument = (source: Act): ArrayBuffer => {
   const data = JSON.parse(JSON.stringify(toRaw(source)))
   if (data.createdBy) data.createdBy.shortName = shortenName(data.createdBy)
   data.json = JSON.stringify(data)
+  data.otherConclusion = data.conclusionType === 'Інший висновок'
+  data.landActionsRequired = data.conclusionDetail === 'Необхідне вчинення дій для можливості використання земельної ділянки для будівництва об\'єктів нерухомого майна для проживання внутрішньо переміщених осіб та/або розміщення тимчасових споруд, їх комплексів, призначених для життєзабезпечення (тимчасового проживання та обслуговування) внутрішньо переміщених осіб'
   data.isFirst = ['112', '113'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isSecond = ['121', '122', '123', '124', '126'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.isThird = ['125', '127'].includes(data.buildingClass?.code3 ?? 'N/A')

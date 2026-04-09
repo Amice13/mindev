@@ -23,8 +23,12 @@ import conclusionTypes from '@/dicts/conclusion-types.ts'
 import ownerTypes from '@/dicts/owner-types.ts'
 import ownershipTypes from '@/dicts/ownership-types.ts'
 import consequenceClasses from '@/dicts/consequence-classes.ts'
+import conclusionDetails from '@/dicts/conclusion-details.ts'
+import landActions from '@/dicts/land-actions.ts'
+import additionalObservations from '@/dicts/additional-observations.ts'
 
 const conclusionTypesValues = conclusionTypes.map((el: Record<'value', string>) => el.value)
+const conclusionDetailsValues = conclusionDetails.map((el: Record<'value', string>) => el.value)
 
 export const act = {
   title: 'Акт обстеження об’єктів нерухомого майна',
@@ -203,6 +207,34 @@ export const act = {
       type: 'string',
       enum: conclusionTypesValues
     },
+    conclusionDetail: {
+      title: 'Уточнення висновку',
+      type: 'string',
+      enum: conclusionDetailsValues
+    },
+
+    // Additional observation for the building
+    additionalObservation: {
+      title: 'Доцільність проведення додаткового обстеження відповідно постанові КМУ від 12 квітня 2017 року № 257',
+      description: 'Доцільність проведення додаткового обстеження об\'єкта нерухомого майна відповідно до порядку проведення обстеження прийнятих в експлуатацію об\'єктів будівництва, затвердженого постановою КМУ від 12 квітня 2017 року № 257',
+      enum: additionalObservations
+    },
+    additionalObservationExtra: {
+      title: 'Інші висновки щодо доцільності додаткового обстеження',
+      type: 'string'
+    },
+
+    // Additional actions for the lands
+    landAction: {
+      title: 'Необхідні дії щодо земельної ділянки',
+      type: 'string',
+      enum: landActions
+    },
+    landActionExtra: {
+      title: 'Інші дії щодо земельної ділянки',
+      type: 'string'
+    },
+
     conclusionText: {
       title: 'Текстовий висновок',
       type: 'string'

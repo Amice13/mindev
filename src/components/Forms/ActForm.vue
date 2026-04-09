@@ -256,8 +256,67 @@
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.conclusionType.title }}</div>
       <conclusion-type
         v-model="model.conclusionType"
+        :aria-label="schema.properties.conclusionType.title"
         :filter="model.estateType"
       />
+
+      <div v-if="model.conclusionType !== 'Інший висновок' && model.conclusionType !== undefined && model.estateType !== undefined">
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.conclusionDetail.title }}</div>
+        <conclusion-detail
+          v-model="model.conclusionDetail"
+          :aria-label="schema.properties.conclusionDetail.title"
+          :filter="{
+            conclusionType: model.conclusionType,
+            estateType: model.estateType
+          }"
+        />
+      </div>
+
+      <div v-if="model.estateType === 'Житлові будинки, будівлі, споруди (їх окремі частини)'">
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.additionalObservation.title }}</div>
+        <dictionary-value
+          v-model="model.additionalObservation"
+          :aria-label="schema.properties.additionalObservation.title"
+          dictionary="additionalObservations"
+        />
+
+        <div
+          v-if="model.additionalObservation === 'Інше'"
+          class="font-weight-bold mb-1 text-subtitle-2"
+        >{{ schema.properties.additionalObservationExtra.title }}</div>
+
+        <v-textarea
+          v-if="model.additionalObservation === 'Інше'"
+          v-model="model.additionalObservationExtra"
+          :aria-label="schema.properties.additionalObservationExtra.title"
+          rows="4"
+          variant="solo-inverted"
+        />
+      </div>
+
+      <div
+        v-if="model.conclusionDetail === 'Необхідне вчинення дій для можливості використання земельної ділянки для будівництва об\'єктів нерухомого майна для проживання внутрішньо переміщених осіб та/або розміщення тимчасових споруд, їх комплексів, призначених для життєзабезпечення (тимчасового проживання та обслуговування) внутрішньо переміщених осіб'"
+      >
+        <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.landAction.title }}</div>
+        <dictionary-value
+          v-model="model.landAction"
+          :aria-label="schema.properties.landAction.title"
+          dictionary="landActions"
+        />
+
+        <div
+          v-if="model.landAction === 'Інше'"
+          class="font-weight-bold mb-1 text-subtitle-2"
+        >{{ schema.properties.landActionExtra.title }}</div>
+
+        <v-textarea
+          v-if="model.landAction === 'Інше'"
+          v-model="model.landActionExtra"
+          :aria-label="schema.properties.landActionExtra.title"
+          rows="4"
+          variant="solo-inverted"
+        />
+      </div>
 
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.conclusionText.title }}</div>
       <v-textarea
@@ -272,8 +331,8 @@
     <p class="text-subtitle-1 mb-6">Якщо на засіданні були присутні залучені до обстеження особи, зазначте їх</p>
     <involved-list v-model="model.involved" />
 
-    <h5 class="text-h5 mt-6 mb-4">Завантажити та підписати</h5>
-    <p class="text-subtitle-1 mb-6">Натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
+    <h5 class="text-h5 mt-8 mb-4">Завантажити та підписати</h5>
+    <p class="text-subtitle-1 mb-6">Впевніться, що заповнені всі поля, після цього натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
     <v-btn @click="uploadDocument" color="primary-darken-1">Завантажити</v-btn>
     <sign-form v-model="actToSave" @cancel="discardDocument" />
