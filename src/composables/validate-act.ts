@@ -3,7 +3,6 @@ import type { JSONSchema } from "json-schema-to-ts"
 import { act as actSchema } from '@/schemas/act.schema'
 import { checkCode } from './edrpou-validator'
 import get from 'get-value'
-import conclusionDetails from '@/dicts/conclusion-details'
 
 const requiredFields = [
   'id',
@@ -233,7 +232,7 @@ export const validateAct = (act: Act) => {
       }
       if (act.ownerPerson.documentType === 'Паспорт громадянина України') {
         const error = /^\d{9}$|^[а-я]{2} \d{6}$/i.test(act.ownerPerson.passportNumber ?? '')
-        if (error) errors.push('Невірний номер паспорта власника')
+        if (!error) errors.push('Невірний номер паспорта власника')
       }
       if (act.ownerPerson.documentType === 'РНОКПП') {
         const error = checkCode(act.ownerOrganization.code)
@@ -367,7 +366,7 @@ export const validateAct = (act: Act) => {
       if (error) errors.push(error + ' батьківської організації')
     }
     const error = checkCode(act.parentOrganization.code)
-    if (error) errors.push('Невірний номер РНОКПП батьківської організації')
+    if (!error) errors.push('Невірний номер РНОКПП батьківської організації')
   }
 
   if (!act.commission) errors.push('Інформація про комісію не зазначена')

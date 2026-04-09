@@ -108,6 +108,7 @@
 <script lang="ts" setup>
 import { type CustomFile } from '@/types/files'
 import { generateId } from '@/composables/generate-id'
+import { compressImage } from '@/composables/compress-image';
 
 interface Props {
   modelValue?: CustomFile[]
@@ -139,7 +140,13 @@ const fileInput = useTemplateRef<HTMLInputElement>('fileInput')
 
 const upload = async (fileList: FileList | null | undefined) => {
   if (!fileList?.length) return
-  for (const file of [...fileList]) {
+  const accept = props.accept?.slice(1).split(/,\./g) ?? []
+  for (let file of [...fileList]) {
+    const extension = file.name.split(/\./g).at(-1)
+    if (!accept.includes(extension ?? '')) continue
+    if (['jpg', 'jpeg'].includes(extension ?? '')) {
+      if (file.size > 409600) file = await compressImage({ file })
+    }
     model.value.push({
       id: generateId(),
       name: file.name,

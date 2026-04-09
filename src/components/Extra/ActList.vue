@@ -128,7 +128,7 @@ const errors = computed(() => {
 })
 
 const headers = [
-  { key: 'id', title: 'Дії' },
+  { key: 'id', title: 'Дії', width: 110 },
   { key: 'date', title: 'Дата' },
   { key: 'number', title: 'Номер' },
   { key: 'estateType', title: 'Тип' },
@@ -174,7 +174,7 @@ const generateTitle = (act: Act) => {
     act.address.building,
     (act.address.block ? ['корпус', act.address.block] : []).join(' '),
     (act.address.apartmentNumber ? ['кв.', act.address.apartmentNumber] : []).join(' ')
-  ].join(', ')
+  ].filter(Boolean).join(', ')
   return address
 }
 

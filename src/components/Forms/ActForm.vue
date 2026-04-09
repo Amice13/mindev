@@ -1,23 +1,5 @@
 <template>
   <div class="pa-4">
-    <h5 class="text-h5 mb-4">Інформація про акт</h5>
-
-    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actDate.title }}</div>
-    <custom-date
-      v-model="model.actDate"
-      :aria-label="schema.properties.actDate.title"
-      :max="new Date()"
-    />
-
-    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actNumber.title }}</div>
-    <v-text-field
-      v-model="model.actNumber"
-      :aria-label="schema.properties.actNumber.title"
-      name="number"
-      id="number"
-      placeholder="123/12"
-      variant="solo-inverted"
-    />
 
     <h5 class="text-h5 mb-4">Інформація про затвердження акту</h5>
 
@@ -32,6 +14,25 @@
     <v-text-field
       v-model="model.number"
       :aria-label="schema.properties.number.title"
+      name="number"
+      id="number"
+      placeholder="123/12"
+      variant="solo-inverted"
+    />
+
+    <h5 class="text-h5 mb-4">Інформація про акт</h5>
+
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actDate.title }}</div>
+    <custom-date
+      v-model="model.actDate"
+      :aria-label="schema.properties.actDate.title"
+      :max="new Date()"
+    />
+
+    <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actNumber.title }}</div>
+    <v-text-field
+      v-model="model.actNumber"
+      :aria-label="schema.properties.actNumber.title"
       name="number"
       id="number"
       placeholder="123/12"
@@ -55,6 +56,20 @@
           'Квартири, житлові та нежитлові приміщення'
         ].includes(model.estateType ?? 'N/A')"
       >
+        <h5 class="text-h5 mt-6 mb-4">Адреса</h5>
+        <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
+        <territory
+          v-model="model.address"
+          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
+        />
+        <custom-address
+          v-if="[
+            'Житлові будинки, будівлі, споруди (їх окремі частини)',
+            'Квартири, житлові та нежитлові приміщення'
+          ].includes(model.estateType ?? 'N/A')"
+          v-model="model.address"
+        />
+
         <h5 class="text-h5 mt-6 mb-4">Власник ОНМ</h5>
         <p class="text-subtitle-1 mb-6">Відомості про власника об’єкта, зокрема територіальну громаду (утворені нею органи місцевого самоврядування), суб’єкта управління об’єктами державної власності</p>
 
@@ -79,20 +94,6 @@
         <organization-form
           v-if="model.ownerType === 'Юридична особа'"
           v-model="model.ownerOrganization"
-        />
-
-        <h5 class="text-h5 mt-6 mb-4">Адреса</h5>
-        <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
-        <territory
-          v-model="model.address"
-          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
-        />
-        <custom-address
-          v-if="[
-            'Житлові будинки, будівлі, споруди (їх окремі частини)',
-            'Квартири, житлові та нежитлові приміщення'
-          ].includes(model.estateType ?? 'N/A')"
-          v-model="model.address"
         />
       </div>
 
@@ -380,10 +381,12 @@ const actToSave = ref<Partial<Act>>({})
 const uploadDocument = async () => {
   model.value.updatedAt = new Date().toISOString()
   const errors = validateAct(toRaw(model.value))
-  await validationDialog.value.open({
-    errors
-  })
-  if (errors.length > 0) return
+  if (errors.length > 0) {
+    await validationDialog.value.open({
+      errors
+    })
+    return
+  }
   actToSave.value = model.value
 }
 

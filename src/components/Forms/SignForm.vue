@@ -34,7 +34,8 @@
           <template v-slot:item.2>
             <v-card title="Підписання документу" flat class="bg-transparent">
               <v-card-text>
-                <div class="mb-6">Для підписання документу натисніть кнопку "Підписати". Ви будете направлені на сервіс Дія-Підпис. Скористайтеся вашим кваліфікованим електронним підписом, щоб отримати підписаний документ</div>
+                <div class="mb-6">Для підписання документу натисніть кнопку "Підписати". Ви будете направлені на сервіс Дія-Підпис. Скористайтеся вашим кваліфікованим електронним підписом, щоб отримати підписаний документ.</div>
+                <div class="mb-6"><strong>Зверніть увагу!</strong> Акт має бути піписаний головою комісії! Якщо ви не є головою комісії, то надішліть згенерований файл голові комісії та дочекайтеся від нього файл із підписом. А до цього моменту ви можете скасувати процедуру, зберегти акт та повернутися до завантаження пізніше.</div>
                 <v-btn href="https://ca.diia.gov.ua/sign" target="_blank" color="primary-darken-1">Підписати</v-btn>
               </v-card-text>
             </v-card>
@@ -43,7 +44,7 @@
           <template v-slot:item.3>
             <v-card title="Завантаження документу" flat class="bg-transparent">
               <v-card-text>
-                <div class="mb-6">Завантажте архів із підписаними документами та отриманим файлом підпису (*.p7s, *.asice, *.asics) до системи. Ви можете також завантажити додаткові файли у форматах *.pdf, *.jpg та *.jpeg розміром не більше 5 Мб. Після завантаження натисніть кнопку "Завершити".</div>
+                <div class="mb-6">Завантажте архів <strong>(*.zip)</strong> із підписаними документами (*.docx) та отриманим файлом підпису <strong>(*.p7s, *.asice, *.asics)</strong> до системи. Ви можете також завантажити додаткові файли у форматах <strong>*.pdf, *.jpg та *.jpeg</strong> розміром не більше 5 Мб. Після завантаження натисніть кнопку "Завершити".</div>
                 <upload-box v-model="files" accept=".docx,.p7s,.zip,.asice,.asics,.jpg,.jpeg,.pdf" />
                 <v-btn @click="upload" color="primary-darken-1">Завершити</v-btn>
               </v-card-text>
@@ -115,7 +116,15 @@ const files = ref<CustomFile[]>([])
 
 const downloadDocument = () => {
   const doc = generateDocument(model.value as Act)
-  download(doc, new Date().toLocaleString('sv').substring(0, 10) + ' - Акт обстеження.docx')
+  const today = new Date().toLocaleString('sv').substring(0, 10)
+  const number = model.value.actNumber?.replace(/[\/\\]/g, '_')
+  const date = new Date(model.value?.actDate ?? 0).toLocaleDateString('uk-UA', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric'
+  })
+
+  download(doc, `${today} - Акт обстеження № ${number} від ${date} (${model.value.id}).docx`)
 }
 
 const upload = async () => {
