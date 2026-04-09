@@ -1,11 +1,11 @@
 import type { JSONSchema } from 'json-schema-to-ts'
-import internalSystemTypes from '@/dicts/internal-system-types'
-import defectsPresence from '@/dicts/defects-presence'
-import powerSupplyTypes from '@/dicts/power-supply-types'
-import gasSupplyTypes from '@/dicts/gas-supply-types'
-import ventilationTypes from '@/dicts/ventilation-types'
-import fireProtectionTypes from '@/dicts/fire-protection-types'
 import constructionConditions from '@/dicts/construction-conditions'
+import defectsPresence from '@/dicts/defects-presence'
+import fireProtectionTypes from '@/dicts/fire-protection-types'
+import gasSupplyTypes from '@/dicts/gas-supply-types'
+import internalSystemTypes from '@/dicts/internal-system-types'
+import powerSupplyTypes from '@/dicts/power-supply-types'
+import ventilationTypes from '@/dicts/ventilation-types'
 
 export const internalSystems = {
   title: 'Внутрішні інженерні системи',
@@ -14,139 +14,139 @@ export const internalSystems = {
     coldWaterType: {
       title: 'Тип системи холодного водопостачання',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     coldWaterDefects: {
       title: 'Наявність пошкоджень та дефектів системи холодного водопостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     coldWater: {
       title: 'Опис системи холодного водопостачання',
-      type: 'string'
+      type: 'string',
     },
     hotWaterType: {
       title: 'Тип системи гарячого водопостачання',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     hotWaterDefects: {
       title: 'Наявність пошкоджень та дефектів системи гарячого водопостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     hotWater: {
       title: 'Опис системи гарячого водопостачання',
-      type: 'string'
+      type: 'string',
     },
     drainageType: {
       title: 'Тип системи водовідведення',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     drainageDefects: {
       title: 'Наявність пошкоджень та дефектів системи водовідведення',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     drainage: {
       title: 'Опис система водовідведення',
-      type: 'string'
+      type: 'string',
     },
     heatingType: {
       title: 'Тип системи опалення (теплопостачання)',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     heatingDefects: {
       title: 'Наявність пошкоджень та дефектів системи опалення (теплопостачання)',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     heating: {
       title: 'Опис системи опалення (теплопостачання)',
-      type: 'string'
+      type: 'string',
     },
     powerSupplyType: {
       title: 'Тип системи електропостачання',
       type: 'string',
-      enum: powerSupplyTypes
+      enum: powerSupplyTypes,
     },
     powerSupplyDefects: {
       title: 'Наявність пошкоджень та дефектів системи електропостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     powerSupply: {
       title: 'Опис системи електропостачання',
-      type: 'string'
+      type: 'string',
     },
     gasType: {
       title: 'Тип системи газопостачання',
       type: 'string',
-      enum: gasSupplyTypes
+      enum: gasSupplyTypes,
     },
     gasDefects: {
       title: 'Наявність пошкоджень та дефектів системи газопостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     gas: {
       title: 'Опис системи газопостачання',
-      type: 'string'
+      type: 'string',
     },
     ventilationType: {
       title: 'Тип системи вентиляції',
       type: 'string',
-      enum: ventilationTypes
+      enum: ventilationTypes,
     },
     ventilationDefects: {
       title: 'Наявність пошкоджень та дефектів системи вентиляції',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     ventilation: {
       title: 'Опис системи вентиляції',
-      type: 'string'
+      type: 'string',
     },
     fireProtectionType: {
       title: 'Наявність системи протипожежного захисту',
       type: 'string',
-      enum: fireProtectionTypes
+      enum: fireProtectionTypes,
     },
     fireProtectionCondition: {
       title: 'Стан системи протипожежного захисту',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     fireProtectionDefects: {
       title: 'Наявність пошкоджень та дефектів системи протипожежного захисту',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     fireProtection: {
       title: 'Опис системи протипожежного захисту та функціонально пов\'язані інженерні системи',
-      type: 'string'
+      type: 'string',
     },
     firefightingWaterSupplyType: {
       title: 'Наявність протипожежного водопостачання',
       type: 'string',
-      enum: fireProtectionTypes
+      enum: fireProtectionTypes,
     },
     firefightingWaterSupplyCondition: {
       title: 'Стан протипожежного водопостачання',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     firefightingWaterSupplyDefects: {
       title: 'Наявність пошкоджень та дефектів протипожежного водопостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     firefightingWaterSupply: {
       title: 'Опис протипожежного водопостачання (зовнішнього та внутрішнього)',
-      type: 'string'
-    }
+      type: 'string',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

@@ -6,12 +6,12 @@
         :key="[person.familyName, person.givenName, person.additionalName].join(',')"
         :title="[person.familyName, person.givenName, person.additionalName].join(' ')"
       >
-        <template v-slot:append>
+        <template #append>
           <v-btn
-            @click="remove(i)"
-            size="small"
             color="grey-darken-1"
+            size="small"
             variant="tonal"
+            @click="remove(i)"
           >Видалити</v-btn>
         </template>
       </v-list-item>
@@ -19,48 +19,48 @@
     <div v-if="!model?.length">Ви не додали жодної залученої особи</div>
     <PersonDialog :id="personId" @add="add" @cancel="cancel" />
     <v-btn
-      @click="create"
       class="mt-4"
       color="primary-darken-1"
       prepend-icon="mdi-plus"
+      @click="create"
     >Додати</v-btn>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Act, User } from '@/types'
-import { generateId } from '@/composables/generate-id';
+  import type { Act, User } from '@/types'
+  import { generateId } from '@/composables/generate-id'
 
-interface Props {
-  modelValue: Act['involved']
-}
+  interface Props {
+    modelValue: Act['involved']
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: Act['involved']): void
-}>()
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: Act['involved']): void
+  }>()
 
-const model = computed({
-  get: () => props.modelValue as Act['involved'],
-  set: (value: Act['involved']) => emit('update:modelValue', value)
-})
+  const model = computed({
+    get: () => props.modelValue as Act['involved'],
+    set: (value: Act['involved']) => emit('update:modelValue', value),
+  })
 
-const personId = ref<string | undefined>()
+  const personId = ref<string | undefined>()
 
-const add = (person: User) => {
-  model.value = [...(model.value ?? []), person]
-}
+  function add (person: User) {
+    model.value = [...(model.value ?? []), person]
+  }
 
-const remove = (n: number) => {
-  model.value.splice(n, 1)
-}
+  function remove (n: number) {
+    model.value.splice(n, 1)
+  }
 
-const create = () => {
-  personId.value = generateId()
-}
+  function create () {
+    personId.value = generateId()
+  }
 
-const cancel = () => {
-  personId.value = undefined
-}
+  function cancel () {
+    personId.value = undefined
+  }
 </script>

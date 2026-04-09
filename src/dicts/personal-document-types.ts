@@ -1,6 +1,6 @@
 const personalDocumentTypes = [
   'Паспорт громадянина України',
-  'РНОКПП'
+  'РНОКПП',
 ]
 
 export default personalDocumentTypes

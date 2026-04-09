@@ -1,7 +1,7 @@
 const constructionConditions = [
   'задовільний',
   'незадовільний',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default constructionConditions

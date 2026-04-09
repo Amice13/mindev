@@ -6,44 +6,45 @@
         :key="`file-${i}`"
         :title="file.name"
       >
-        <template v-slot:append>
+        <template #append>
           <v-btn
-            @click="remove(i)"
-            size="x-small"
             color="grey-darken-1"
-            variant="tonal"
             icon="mdi-delete"
+            size="x-small"
+            variant="tonal"
+            @click="remove(i)"
           />
         </template>
       </v-list-item>
     </v-list>
     <form
-      @drag.prevent.stop
-      @dragstart.prevent.stop
-      @dragend.prevent.stop="isDragover = false"
-      @dragover.prevent.stop="isDragover = true"
-      @dragenter.prevent.stop="isDragover = true"
-      @dragleave.prevent.stop="isDragover = false"
-      @drop.prevent.stop="upload($event.dataTransfer?.files)"
+      action=""
       class="box mb-4 pa-4"
       :class="[isDragover ? 'bg-primary-lighten-2' : 'bg-primary-lighten-3']"
-      method="post"
-      action=""
       enctype="multipart/form-data"
+      method="post"
+      @drag.prevent.stop
+      @dragend.prevent.stop="isDragover = false"
+      @dragenter.prevent.stop="isDragover = true"
+      @dragleave.prevent.stop="isDragover = false"
+      @dragover.prevent.stop="isDragover = true"
+      @dragstart.prevent.stop
+      @drop.prevent.stop="upload($event.dataTransfer?.files)"
     >
       <div class="box_input text-center pt-2 pb-2">
         <input
-          ref="fileInput"
-          @input="upload(($event.target as HTMLInputElement).files)"
-          class="d-none box__file" type="file"
-          :accept="accept"
-          :name="'files' + uid() + '[]'"
           :id="'file' + uid()"
+          ref="fileInput"
+          :accept="accept"
+          class="d-none box__file"
           data-multiple-caption="{count} files selected"
           multiple
-        />
-        <v-icon x-large class="mb-4">mdi-upload</v-icon>
-        <br/>
+          :name="'files' + uid() + '[]'"
+          type="file"
+          @input="upload(($event.target as HTMLInputElement).files)"
+        >
+        <v-icon class="mb-4" x-large>mdi-upload</v-icon>
+        <br>
         <label :for="'file' + uid" @click="fileInput?.click()">
           <strong class="mr-2">Оберіть файли</strong>
           <div class="box__dragndrop"> або перетягніть їх до цього вікна</div>
@@ -51,10 +52,68 @@
       </div>
       <div class="box__uploading">Завантаження…</div>
       <div class="box__success">Готово</div>
-      <div class="box__error">Помилка<span></span>.</div>
+      <div class="box__error">Помилка<span />.</div>
     </form>
   </div>
 </template>
+
+<script lang="ts" setup>
+  import type { CustomFile } from '@/types/files'
+  import { compressImage } from '@/composables/compress-image'
+  import { generateId } from '@/composables/generate-id'
+
+  interface Props {
+    modelValue?: CustomFile[]
+    accept?: string
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    modelValue: () => ([]),
+    uploadImmediately: true,
+    mode: 'edit',
+  })
+
+  const isDragover = ref(false)
+
+  const model = computed<CustomFile[]>({
+    get: () => props.modelValue ?? [],
+    set: (value: CustomFile[]) => {
+      emit('update:modelValue', value)
+    },
+  })
+
+  const emit = defineEmits<{
+    (e: 'update:modelValue', files: CustomFile[]): void
+  }>()
+
+  const uid = () => Math.random()
+
+  const fileInput = useTemplateRef<HTMLInputElement>('fileInput')
+
+  async function upload (fileList: FileList | null | undefined) {
+    if (!fileList?.length) return
+    const accept = props.accept?.slice(1).split(/,\./g) ?? []
+    for (let file of fileList) {
+      const extension = file.name.split(/\./g).at(-1)
+      if (!accept.includes(extension ?? '')) continue
+      if (['jpg', 'jpeg'].includes(extension ?? '') && file.size > 409_600) file = await compressImage({ file })
+      model.value.push({
+        id: generateId(),
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        lastModified: file.lastModified,
+        file,
+      })
+    }
+    if (fileInput.value !== null) fileInput.value.value = ''
+    isDragover.value = false
+  }
+
+  function remove (i: number): void {
+    model.value.splice(i, 1)
+  }
+</script>
 
 <style scoped>
 .box__dragndrop,
@@ -104,63 +163,3 @@
 }
 
 </style>
-
-<script lang="ts" setup>
-import { type CustomFile } from '@/types/files'
-import { generateId } from '@/composables/generate-id'
-import { compressImage } from '@/composables/compress-image';
-
-interface Props {
-  modelValue?: CustomFile[]
-  accept?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: () => ([]),
-  uploadImmediately: true,
-  mode: 'edit'
-})
-
-const isDragover = ref(false)
-
-const model = computed<CustomFile[]>({
-  get: () => props.modelValue ?? [],
-  set: (value: CustomFile[]) => {
-    emit('update:modelValue', value)
-  }
-})
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', files: CustomFile[]): void
-}>()
-
-const uid = () => Math.random()
-
-const fileInput = useTemplateRef<HTMLInputElement>('fileInput')
-
-const upload = async (fileList: FileList | null | undefined) => {
-  if (!fileList?.length) return
-  const accept = props.accept?.slice(1).split(/,\./g) ?? []
-  for (let file of [...fileList]) {
-    const extension = file.name.split(/\./g).at(-1)
-    if (!accept.includes(extension ?? '')) continue
-    if (['jpg', 'jpeg'].includes(extension ?? '')) {
-      if (file.size > 409600) file = await compressImage({ file })
-    }
-    model.value.push({
-      id: generateId(),
-      name: file.name,
-      type: file.type,
-      size: file.size,
-      lastModified: file.lastModified,
-      file
-    })
-  }
-  if (fileInput.value !== null) fileInput.value.value = ''
-  isDragover.value = false
-}
-
-const remove = (i: number): void => {
-  model.value.splice(i, 1)
-}
-</script>

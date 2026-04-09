@@ -6,43 +6,43 @@ export const territory = {
   properties: {
     admin1: {
       title: 'Область або місто зі спеціальним статусом',
-      type: 'string'
+      type: 'string',
     },
     code1: {
       title: 'КАТОТТГ області',
-      type: 'string'
+      type: 'string',
     },
     admin2: {
       title: 'Район',
-      type: 'string'
+      type: 'string',
     },
     code2: {
       title: 'КАТОТТГ району',
-      type: 'string'
+      type: 'string',
     },
     admin3: {
       title: 'Громада',
-      type: 'string'
+      type: 'string',
     },
     code3: {
       title: 'КАТОТТГ громади',
-      type: 'string'
+      type: 'string',
     },
     admin4: {
       title: 'Населений пункт',
-      type: 'string'
+      type: 'string',
     },
     code4: {
       title: 'КАТОТТГ населеного пункту',
-      type: 'string'
+      type: 'string',
     },
     admin5: {
       title: 'Район у місті',
-      type: 'string'
+      type: 'string',
     },
     code5: {
       title: 'КАТОТТГ району у місті',
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 } as const satisfies JSONSchema

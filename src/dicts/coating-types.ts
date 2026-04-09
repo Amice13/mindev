@@ -5,7 +5,7 @@ const coatingTypes = [
   'плівковий',
   'мастиковий',
   'відсутні',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default coatingTypes

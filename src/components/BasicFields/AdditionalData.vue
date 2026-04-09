@@ -2,8 +2,7 @@
   <v-table class="bg-transparent">
     <thead>
       <tr>
-        <th class="text-center">
-        </th>
+        <th class="text-center" />
         <th class="text-left">
           Найменування показника
         </th>
@@ -13,49 +12,49 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-if="!model.length">
-        <td></td>
+      <tr v-if="model.length === 0">
+        <td />
         <td colspan="2">
           Ви не додали жодного показника
         </td>
       </tr>
       <tr
         v-for="(item, i) in model"
-        :key="'custom-item-' + i" 
+        :key="'custom-item-' + i"
       >
         <td>
-          <v-btn @click="remove(i)" size="small" variant="tonal" icon="mdi-delete"/>
+          <v-btn icon="mdi-delete" size="small" variant="tonal" @click="remove(i)" />
         </td>
-        <td class="pt-2 pb-2" v-if="model[i] !== undefined">
+        <td v-if="model[i] !== undefined" class="pt-2 pb-2">
           <v-textarea
             v-model="model[i].title"
             aria-label="Найменування показника"
-            rows="1"
             density="compact"
-            variant="solo-inverted"
+            hide-details
             inputmode="decimal"
             novalidate
-            hide-details
+            rows="1"
+            variant="solo-inverted"
           />
         </td>
-        <td class="pt-2 pb-2" v-if="model[i] !== undefined">
+        <td v-if="model[i] !== undefined" class="pt-2 pb-2">
           <v-text-field
             v-model.number="model[i].value"
             v-maska="numericMaska"
             aria-label="Значення показника"
             density="compact"
-            variant="solo-inverted"
+            hide-details
             inputmode="decimal"
             novalidate
-            hide-details
+            variant="solo-inverted"
           />
         </td>
       </tr>
       <tr>
-        <td></td>
+        <td />
         <td colspan="2">
-          <v-btn @click="add" size="small">
-            <v-icon icon="mdi-plus"/> Додати
+          <v-btn size="small" @click="add">
+            <v-icon icon="mdi-plus" /> Додати
           </v-btn>
         </td>
       </tr>
@@ -64,52 +63,52 @@
 </template>
 
 <script setup lang="ts">
-import type { Act } from '@/types'
-import { vMaska } from 'maska/vue'
+  import type { Act } from '@/types'
+  import { vMaska } from 'maska/vue'
 
-type AdditionalData = Act['otherIndicators']
+  type AdditionalData = Act['otherIndicators']
 
-interface Props {
-  modelValue: NonNullable<AdditionalData>
-}
-
-const props = defineProps<Props>()
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: AdditionalData): void
-}>()
-
-const model = computed({
-  get: () => props.modelValue,
-  set: (value: AdditionalData) => emit('update:modelValue', value)
-})
-
-const tokens = {
-  D: {
-    pattern: /\./,
-    optional: true
-  },
-  A: {
-    pattern: /\d/,
-    multiple: true
+  interface Props {
+    modelValue: NonNullable<AdditionalData>
   }
-}
 
-const numericMaska = {
-  mask: 'ADA',
-  tokens
-}
+  const props = defineProps<Props>()
 
-const add = (): void => {
-  model.value.push({
-    title: '',
-    value: 0
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: AdditionalData): void
+  }>()
+
+  const model = computed({
+    get: () => props.modelValue,
+    set: (value: AdditionalData) => emit('update:modelValue', value),
   })
-}
 
-const remove = (i: number): void => {
-  if (model.value[i] === undefined) return
-  model.value.splice(i, 1)
-}
+  const tokens = {
+    D: {
+      pattern: /\./,
+      optional: true,
+    },
+    A: {
+      pattern: /\d/,
+      multiple: true,
+    },
+  }
+
+  const numericMaska = {
+    mask: 'ADA',
+    tokens,
+  }
+
+  function add (): void {
+    model.value.push({
+      title: '',
+      value: 0,
+    })
+  }
+
+  function remove (i: number): void {
+    if (model.value[i] === undefined) return
+    model.value.splice(i, 1)
+  }
 
 </script>

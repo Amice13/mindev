@@ -4,21 +4,21 @@
  * Framework documentation: https://vuetifyjs.com`
  */
 
-// Styles
-import '@mdi/font/css/materialdesignicons.css'
-import 'vuetify/styles'
-import mindev from './mindev-theme.ts'
-
 // Composables
 import { createVuetify } from 'vuetify'
+import mindev from './mindev-theme.ts'
+// Styles
+import '@mdi/font/css/materialdesignicons.css'
+
+import 'vuetify/styles'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
     defaultTheme: 'mindev',
     themes: {
-      mindev
-    }
+      mindev,
+    },
   },
   locale: {
     locale: 'uk',
@@ -29,7 +29,7 @@ export default createVuetify({
         close: 'Закрити',
         open: 'Відкрити',
         input: {
-          clear: 'Очистити'
+          clear: 'Очистити',
         },
         datePicker: {
           ariaLabel: {
@@ -43,10 +43,10 @@ export default createVuetify({
             selectYear: 'Обрати рік',
             selectMonth: 'Обрати місяць',
             currentDate: 'Поточна дата',
-            close: 'Закрити'
-          }
-        }
-      }
-    }
-  }
+            close: 'Закрити',
+          },
+        },
+      },
+    },
+  },
 })

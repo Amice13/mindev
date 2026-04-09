@@ -12,10 +12,10 @@
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.number.title }}</div>
     <v-text-field
+      id="number"
       v-model="model.number"
       :aria-label="schema.properties.number.title"
       name="number"
-      id="number"
       placeholder="123/12"
       variant="solo-inverted"
     />
@@ -31,10 +31,10 @@
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.actNumber.title }}</div>
     <v-text-field
+      id="number"
       v-model="model.actNumber"
       :aria-label="schema.properties.actNumber.title"
       name="number"
-      id="number"
       placeholder="123/12"
       variant="solo-inverted"
     />
@@ -45,8 +45,8 @@
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.estateType.title }}</div>
     <dictionary-value
       v-model="model.estateType"
-     :aria-label="schema.properties.actNumber.title"
-     dictionary="estateTypes"
+      :aria-label="schema.properties.actNumber.title"
+      dictionary="estateTypes"
     />
 
     <div v-if="model.estateType">
@@ -175,8 +175,8 @@
         <cultural-heritage v-model="model.culturalHeritage" />
 
         <h5
-          class="text-h5 mt-6 mb-4"
           v-if="['112', '113', '121', '122', '123', '124', '126', '125', '127'].includes(model.buildingClass?.code3 ?? 'N/A')"
+          class="text-h5 mt-6 mb-4"
         >
           Основні технічні показники об'єкта
         </h5>
@@ -195,7 +195,8 @@
 
         <h5
           v-if="['112', '113'].includes(model.buildingClass?.code3 ?? 'N/A')"
-          class="text-h5 mt-6 mb-4">
+          class="text-h5 mt-6 mb-4"
+        >
           Інші технічні показники
         </h5>
         <additional-data
@@ -221,8 +222,7 @@
         <apartment-internal-systems v-model="model.apartmentInternalSystems" />
       </div>
 
-      <div v-show="model.estateType === 'Квартири, житлові та нежитлові приміщення'">
-      </div>
+      <div v-show="model.estateType === 'Квартири, житлові та нежитлові приміщення'" />
 
       <div v-if="model.estateType === 'Земельні ділянки'">
         <h5 class="text-h5 mt-6 mb-4">Документи</h5>
@@ -335,88 +335,94 @@
     <h5 class="text-h5 mt-8 mb-4">Завантажити та підписати</h5>
     <p class="text-subtitle-1 mb-6">Впевніться, що заповнені всі поля, після цього натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
 
-    <v-btn @click="uploadDocument" color="primary-darken-1">Завантажити</v-btn>
+    <v-btn color="primary-darken-1" @click="uploadDocument">Завантажити</v-btn>
     <sign-form v-model="actToSave" @cancel="discardDocument" />
 
     <h5 class="text-h5 mt-6 mb-4">Завершити роботу</h5>
 
-    <v-btn @click="saveDocument" color="primary-darken-1">Зберегти</v-btn>
-    <v-btn v-if="model.id" @click="deleteDocument" color="error" class="ml-4" variant="tonal">Видалити</v-btn>
+    <v-btn color="primary-darken-1" @click="saveDocument">Зберегти</v-btn>
+    <v-btn
+      v-if="model.id"
+      class="ml-4"
+      color="error"
+      variant="tonal"
+      @click="deleteDocument"
+    >Видалити</v-btn>
     <ValidationDialog ref="validationDialog" />
     <ConfirmationDialog ref="confirmationDialog" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Act } from '@/types'
-import { act as schema } from '@/schemas/act.schema'
-import { useActs } from '@/composables/database'
-import { useRouter } from 'vue-router'
-import { useAppStore } from '@/stores/app'
-import { validateAct } from '@/composables/validate-act'
+  import type { Act } from '@/types'
+  import { useRouter } from 'vue-router'
+  import { useActs } from '@/composables/database'
+  import { validateAct } from '@/composables/validate-act'
+  import { act as schema } from '@/schemas/act.schema'
+  import { useAppStore } from '@/stores/app'
 
-const { commission } = useAppStore()
-const router = useRouter()
-const { acts } = useActs()
-const confirmationDialog = ref()
-const validationDialog = ref()
+  const { commission } = useAppStore()
+  const router = useRouter()
+  const { acts } = useActs()
+  const confirmationDialog = ref()
+  const validationDialog = ref()
 
-interface Props {
-  modelValue: Partial<Act>
-}
-
-const props = defineProps<Props>()
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: Partial<Act>): void
-}>()
-
-const model = computed<Act>({
-  get: () => props.modelValue as Act,
-  set: (value: Partial<Act>) => emit('update:modelValue', value)
-})
-
-const actToSave = ref<Partial<Act>>({})
-
-const uploadDocument = async () => {
-  model.value.updatedAt = new Date().toISOString()
-  const errors = validateAct(toRaw(model.value))
-  if (errors.length > 0) {
-    await validationDialog.value.open({
-      errors
-    })
-    return
+  interface Props {
+    modelValue: Partial<Act>
   }
-  actToSave.value = model.value
-}
 
-const discardDocument = () => {
-  actToSave.value = {}
-}
+  const props = defineProps<Props>()
 
-const saveDocument = async () => {
-  const act = JSON.parse(JSON.stringify(model.value))
-  act.updatedAt = new Date().toISOString()
-  try {
-    await acts.put(act)
-  } catch (err) {
-    alert('Сталася невідома помилка')
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: Partial<Act>): void
+  }>()
+
+  const model = computed<Act>({
+    get: () => props.modelValue as Act,
+    set: (value: Partial<Act>) => emit('update:modelValue', value),
+  })
+
+  const actToSave = ref<Partial<Act>>({})
+
+  async function uploadDocument () {
+    model.value.updatedAt = new Date().toISOString()
+    const errors = validateAct(toRaw(model.value))
+    if (errors.length > 0) {
+      await validationDialog.value.open({
+        errors,
+      })
+      return
+    }
+    actToSave.value = model.value
   }
-  router.push({ name: '/' })
-}
 
-const deleteDocument = async () => {
-  try {
-    const isConfirmed = await confirmationDialog.value.open({
-      title: 'Видалення акту',
-      description: 'Ви дійсно хочете видалити цей акт?'
-    })
-    if (!isConfirmed) return false
-    await acts.delete(model.value.id)
-  } catch (err) {
-    alert('Сталася невідома помилка')
+  function discardDocument () {
+    actToSave.value = {}
   }
-  router.push({ name: '/' })
-}
+
+  async function saveDocument () {
+    const act = structuredClone(model.value)
+    act.updatedAt = new Date().toISOString()
+    try {
+      await acts.put(act)
+    } catch {
+      alert('Сталася невідома помилка')
+    }
+    router.push({ name: '/' })
+  }
+
+  async function deleteDocument () {
+    try {
+      const isConfirmed = await confirmationDialog.value.open({
+        title: 'Видалення акту',
+        description: 'Ви дійсно хочете видалити цей акт?',
+      })
+      if (!isConfirmed) return false
+      await acts.delete(model.value.id)
+    } catch {
+      alert('Сталася невідома помилка')
+    }
+    router.push({ name: '/' })
+  }
 
 </script>

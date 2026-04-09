@@ -1,7 +1,7 @@
 const additionalObservations = [
   'Доцільне',
   'Недоцільне',
-  'Інше'
+  'Інше',
 ]
 
 export default additionalObservations

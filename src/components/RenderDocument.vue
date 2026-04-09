@@ -1,8 +1,38 @@
 <template>
   <div class="pa-4 document">
-    <div :class="data.involved?.length ? 'two-tables' : 'one-table'" v-html="html"></div>
+    <div :class="data.involved?.length ? 'two-tables' : 'one-table'" v-html="html" />
   </div>
 </template>
+
+<script setup lang="ts">
+  import type { Act } from '@/types'
+  import useGenerateDocument from '@/composables/generate-document'
+  import useRenderHtml from '@/composables/render-html'
+
+  const { generateDocument } = useGenerateDocument()
+  const { renderHtml } = useRenderHtml()
+
+  interface Props {
+    data: Partial<Act>
+  }
+
+  const props = defineProps<Props>()
+
+  async function fetchDoc () {
+    const doc = generateDocument(props.data as Act)
+    const newHtml = await renderHtml(doc)
+    html.value = newHtml
+  }
+  const html = ref('')
+
+  fetchDoc()
+
+  watch(props, () => {
+          fetchDoc()
+        },
+        { deep: true },
+  )
+</script>
 
 <style>
 .document table td {
@@ -106,33 +136,3 @@
 }
 
 </style>
-
-<script setup lang="ts">
-import useGenerateDocument from '@/composables/generate-document'
-import useRenderHtml from '@/composables/render-html'
-import type { Act } from '@/types'
-
-const { generateDocument } = useGenerateDocument()
-const { renderHtml } = useRenderHtml()
-
-interface Props {
-  data: Partial<Act>
-}
-
-const props = defineProps<Props>()
-
-const fetchDoc = async () => {
-  const doc = generateDocument(props.data as Act)
-  const newHtml = await renderHtml(doc)
-  html.value = newHtml
-}
-const html = ref('')
-
-fetchDoc()
-
-watch(props, () => {
-    fetchDoc()
-  },
-  { deep: true }
-)
-</script>

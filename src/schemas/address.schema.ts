@@ -1,6 +1,6 @@
 import type { JSONSchema } from 'json-schema-to-ts'
-import { territory } from './territory.schema.ts'
 import streetTypes from '@/dicts/street-types.ts'
+import { territory } from './territory.schema.ts'
 const streetCodes = streetTypes.map(el => el.code)
 const streetTypesTitles = streetTypes.map(el => el.title)
 
@@ -8,7 +8,7 @@ export const address = {
   title: 'Адреса',
   type: 'object',
   properties: {
-    ...(territory.properties ?? {}),
+    ...territory.properties,
     postalCode: {
       title: 'Поштовий індекс',
       type: 'string',
@@ -16,28 +16,28 @@ export const address = {
     streetType: {
       title: 'Тип вулиці',
       type: 'string',
-      enum: streetTypesTitles
+      enum: streetTypesTitles,
     },
     streetTypeCode: {
       title: 'Код типу вулиці',
       type: 'string',
-      enum: streetCodes
+      enum: streetCodes,
     },
     streetName: {
       title: 'Назва вулиці',
-      type: 'string'
+      type: 'string',
     },
     building: {
       title: 'Номер будинку',
-      type: 'string'
+      type: 'string',
     },
     block: {
       title: 'Номер корпуса/блоку',
-      type: 'string'
+      type: 'string',
     },
     apartmentNumber: {
       title: 'Номер квартири',
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 } as const satisfies JSONSchema

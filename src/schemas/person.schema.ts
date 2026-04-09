@@ -9,19 +9,19 @@ export const person = {
     documentType: {
       title: 'Тип документа фізичної особи',
       type: 'string',
-      enum: personalDocumentTypes
+      enum: personalDocumentTypes,
     },
     taxId: {
       title: 'РНОКПП',
-      type: 'string'
+      type: 'string',
     },
     passportNumber: {
       title: 'Номер паспорту',
-      type: 'string'
+      type: 'string',
     },
     familyName: {
       title: 'Прізвище',
-      type: 'string'
+      type: 'string',
     },
     givenName: {
       title: 'Ім\'я',
@@ -29,13 +29,13 @@ export const person = {
     },
     additionalName: {
       title: 'По батькові',
-      type: 'string'
+      type: 'string',
     },
     position: {
       title: 'Посада в організації',
-      type: 'string'
+      type: 'string',
     },
-    organization
+    organization,
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

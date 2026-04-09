@@ -1,7 +1,7 @@
 import type { JSONSchema } from 'json-schema-to-ts'
-import { documentData } from './document-data.schema.ts'
 import heritageCategories from '@/dicts/heritage-categories.ts'
 import heritageTypes from '@/dicts/heritage-types.ts'
+import { documentData } from './document-data.schema.ts'
 
 export const heritage = {
   title: 'Культурна пам\'ятка',
@@ -9,31 +9,31 @@ export const heritage = {
   properties: {
     isHeritage: {
       title: 'Об\'єкт відноситься до пам\'яток культурної спадщини',
-      type: 'boolean'
+      type: 'boolean',
     },
     monumentName: {
       title: 'Назва пам\'ятки / об\'єкта',
-      type: 'string'
+      type: 'string',
     },
     monumentType: {
       title: 'Вид пам\'ятки / об\'єкта',
       type: 'string',
-      enum: heritageTypes
+      enum: heritageTypes,
     },
     monumentCategory: {
       title: 'Категорія пам\'ятки / об\'єкта',
       type: 'string',
-      enum: heritageCategories
+      enum: heritageCategories,
     },
     protectionDecision: {
       ...documentData,
-      title: 'Номер та дата рішення про взяття під охорону'
+      title: 'Номер та дата рішення про взяття під охорону',
     },
     protectionNumber: {
-      title: 'Охоронний номер'
-    }
+      title: 'Охоронний номер',
+    },
   },
   required: [
-    'protectionDecision'
-  ]
+    'protectionDecision',
+  ],
 } as const satisfies JSONSchema

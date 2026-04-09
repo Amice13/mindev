@@ -2,7 +2,7 @@ const disabilitiesSupportTypes = [
   'наявне',
   'можливе за умови здійснення додаткового облаштування',
   'відсутнє',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default disabilitiesSupportTypes

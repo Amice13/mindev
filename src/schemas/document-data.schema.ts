@@ -7,19 +7,19 @@ export const documentData = {
     name: {
       type: 'string',
       title: 'Назва документу',
-      description: 'Постанова Ради Міністрів УРСР, Рішення обласної ради, Наказ МКУ тощо'
+      description: 'Постанова Ради Міністрів УРСР, Рішення обласної ради, Наказ МКУ тощо',
     },
     number: {
       title: 'Номер документу',
-      type: 'string'
+      type: 'string',
     },
     date: {
       title: 'Дата прийняття документу',
-      type: 'string'
+      type: 'string',
     },
     comment: {
       title: 'Інформація про редакції документу',
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 } as const satisfies JSONSchema

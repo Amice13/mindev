@@ -1,10 +1,10 @@
-export const compressImage = async ({
+export async function compressImage ({
   file,
-  targetSize = 409600,
+  targetSize = 409_600,
   maxWidth = 1280,
   maxHeight = 1280,
   type = 'image/jpeg',
-  maxIterations = 10
+  maxIterations = 10,
 }: {
   file: File
   targetSize?: number
@@ -12,7 +12,7 @@ export const compressImage = async ({
   maxHeight?: number
   type?: string
   maxIterations?: number
-}): Promise<File> => {
+}): Promise<File> {
   const imageBitmap = await createImageBitmap(file)
 
   let { width, height } = imageBitmap
@@ -31,12 +31,12 @@ export const compressImage = async ({
   ctx.drawImage(imageBitmap, 0, 0, width, height)
 
   const toBlob = (quality: number) =>
-    new Promise<Blob>((resolve) => {
-      canvas.toBlob((blob) => resolve(blob!), type, quality)
+    new Promise<Blob>(resolve => {
+      canvas.toBlob(blob => resolve(blob!), type, quality)
     })
 
   let minQ = 0.1
-  let maxQ = 1.0
+  let maxQ = 1
   let bestBlob: Blob | null = null
 
   for (let i = 0; i < maxIterations; i++) {
@@ -57,6 +57,6 @@ export const compressImage = async ({
 
   return new File([bestBlob], file.name, {
     type: bestBlob.type,
-    lastModified: Date.now()
+    lastModified: Date.now(),
   })
 }

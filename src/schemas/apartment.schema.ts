@@ -6,32 +6,32 @@ export const apartment = {
   properties: {
     area: {
       title: 'загальна площа, кв. метрів',
-      type: 'number'
+      type: 'number',
     },
     livingArea: {
       title: 'житлова площа, кв. метрів',
-      type: 'number'
+      type: 'number',
     },
     idpLivingArea: {
       title: 'Площа приміщень, що використовуються для проживання внутрішньо переміщених осіб',
-      type: 'number'
+      type: 'number',
     },
     idpProjectedArea: {
       title: 'Площа приміщень, що можуть бути використані для проживання внутрішньо переміщених осіб (вільна площа)',
-      type: 'number'
+      type: 'number',
     },
     rooms: {
       title: 'Кількість кімнат',
-      type: 'number'
+      type: 'number',
     },
     idpRooms: {
       title: 'Кількість кімнат, що використовуються для проживання внутрішньо переміщених осіб',
-      type: 'number'
+      type: 'number',
     },
     idpProjectedRooms: {
       title: 'Кількість кімнат, що можуть бути використані для проживання внутрішньо переміщених осіб (вільна площа)',
-      type: 'number'
-    }
+      type: 'number',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

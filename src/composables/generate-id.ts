@@ -1,3 +1,1 @@
-import { createId } from '@paralleldrive/cuid2'
-
-export const generateId = createId
+export { createId as generateId } from '@paralleldrive/cuid2'

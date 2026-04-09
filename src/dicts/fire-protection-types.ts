@@ -1,7 +1,7 @@
 const fireProtectionTypes = [
   'наявне',
   'відсутнє',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default fireProtectionTypes

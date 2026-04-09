@@ -5,6 +5,6 @@ export const administration = {
   title: 'Адміністрація',
   type: 'object',
   properties: {
-    ...(organization.properties ?? {})
-  }
+    ...organization.properties,
+  },
 } as const satisfies JSONSchema

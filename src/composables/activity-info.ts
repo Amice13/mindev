@@ -1,21 +1,23 @@
-import { type Act } from '@/types'
+import type { Act } from '@/types'
 import type { CustomFile } from '@/types/files'
 
 const BASE_URL = 'https://mindev-proxy.vercel.app/api'
 
-export const uploadAct = async (body: Act) => {
+export async function uploadAct (body: Act) {
   const url = `${BASE_URL}/create`
 
   await fetch(url, {
     method: 'POST',
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   })
 
   return { status: 200 }
 }
 
-export const uploadFile = async (file: CustomFile) => {
-  if (file.parentId === undefined) return false
+export async function uploadFile (file: CustomFile) {
+  if (file.parentId === undefined) {
+    return false
+  }
   const url = `${BASE_URL}/upload`
 
   const form = new FormData()
@@ -25,8 +27,8 @@ export const uploadFile = async (file: CustomFile) => {
 
   await fetch(url, {
     method: 'POST',
-    body: form
+    body: form,
   })
-  
+
   return { status: 200 }
 }

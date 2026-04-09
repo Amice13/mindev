@@ -6,28 +6,28 @@ export const landCategory = {
   properties: {
     sectionCode: {
       title: 'Код категорії земель',
-      type: 'string'
+      type: 'string',
     },
     section: {
       title: 'Категорія земель',
-      type: 'string'
+      type: 'string',
     },
     subsectionCode: {
       title: 'Код цільового призначення земельної ділянки',
-      type: 'string'
+      type: 'string',
     },
     subsection: {
       title: 'Цільове призначення земельної ділянки',
-      type: 'string'
+      type: 'string',
     },
     ukcvz: {
       title: 'Застарілий класифікатор УКЦВЗ',
-      type: 'string'
+      type: 'string',
     },
     kvcpz: {
       title: 'Застарілий класифікатор КВЦПЗ',
-      type: 'string'
-    }
+      type: 'string',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

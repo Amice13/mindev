@@ -15,8 +15,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Хмельницьке Шосе',
-      building: '17'
-    }
+      building: '17',
+    },
   },
   {
     code: '04051046',
@@ -34,8 +34,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: '1 Травня',
-      building: '40'
-    }
+      building: '40',
+    },
   },
   {
     code: '03084227',
@@ -53,8 +53,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Б. Хмельницького',
-      building: '14'
-    }
+      building: '14',
+    },
   },
   {
     code: '04051135',
@@ -72,8 +72,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Шевченка',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04051129',
@@ -91,8 +91,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Миколи Леонтовича',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04051158',
@@ -110,8 +110,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Столярчука',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04051359',
@@ -129,8 +129,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Небесної Сотні',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04051371',
@@ -148,8 +148,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Воля',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '04051402',
@@ -167,8 +167,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Незалежності',
-      building: '73'
-    }
+      building: '73',
+    },
   },
   {
     code: '04051425',
@@ -186,8 +186,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Ковельська',
-      building: '53'
-    }
+      building: '53',
+    },
   },
   {
     code: '04052264',
@@ -205,8 +205,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Героїв України',
-      building: '5'
-    }
+      building: '5',
+    },
   },
   {
     code: '44299257',
@@ -224,8 +224,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Затишна',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04052270',
@@ -243,8 +243,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Меліоративна',
-      building: '1А'
-    }
+      building: '1А',
+    },
   },
   {
     code: '04052318',
@@ -262,8 +262,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '130'
-    }
+      building: '130',
+    },
   },
   {
     code: '04052324',
@@ -281,8 +281,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '7'
-    }
+      building: '7',
+    },
   },
   {
     code: '04052330',
@@ -300,8 +300,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Центральна',
-      building: '98'
-    }
+      building: '98',
+    },
   },
   {
     code: '04052376',
@@ -319,8 +319,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Богми',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04053476',
@@ -338,8 +338,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Лесі Українки',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04053513',
@@ -357,8 +357,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Грушевського',
-      building: '60/2'
-    }
+      building: '60/2',
+    },
   },
   {
     code: '04053654',
@@ -376,8 +376,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '16'
-    }
+      building: '16',
+    },
   },
   {
     code: '04053619',
@@ -395,8 +395,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Соборна',
-      building: '23'
-    }
+      building: '23',
+    },
   },
   {
     code: '04053708',
@@ -414,8 +414,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Мукачівська',
-      building: '6'
-    }
+      building: '6',
+    },
   },
   {
     code: '04053789',
@@ -433,8 +433,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Штефана Августина',
-      building: '21'
-    }
+      building: '21',
+    },
   },
   {
     code: '22106207',
@@ -452,8 +452,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Миру',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04053832',
@@ -471,8 +471,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Незалежності',
-      building: '30'
-    }
+      building: '30',
+    },
   },
   {
     code: '04053849',
@@ -490,8 +490,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Загорська',
-      building: '10'
-    }
+      building: '10',
+    },
   },
   {
     code: '04053861',
@@ -509,8 +509,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Карпатської Січі',
-      building: '21'
-    }
+      building: '21',
+    },
   },
   {
     code: '20488417',
@@ -528,8 +528,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Центральна',
-      building: '192'
-    }
+      building: '192',
+    },
   },
   {
     code: '20568352',
@@ -547,8 +547,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Франка І.',
-      building: '20'
-    }
+      building: '20',
+    },
   },
   {
     code: '44000350',
@@ -566,8 +566,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Грушевського',
-      building: '21'
-    }
+      building: '21',
+    },
   },
   {
     code: '20551682',
@@ -585,8 +585,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '6'
-    }
+      building: '6',
+    },
   },
   {
     code: '23806257',
@@ -604,8 +604,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'М. Верещинського',
-      building: '17'
-    }
+      building: '17',
+    },
   },
   {
     code: '24686114',
@@ -623,8 +623,8 @@ const comissionsList = [
       streetType: 'Майдан',
       streetTypeCode: '3',
       streetName: 'Незалежності',
-      building: '11'
-    }
+      building: '11',
+    },
   },
   {
     code: '23804557',
@@ -642,8 +642,8 @@ const comissionsList = [
       streetType: 'Майдан',
       streetTypeCode: '3',
       streetName: 'Шевченка',
-      building: '33'
-    }
+      building: '33',
+    },
   },
   {
     code: '19425498',
@@ -661,8 +661,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Ярослава Мудрого',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '24209740',
@@ -680,8 +680,8 @@ const comissionsList = [
       streetType: 'Шлях',
       streetTypeCode: '13',
       streetName: 'Київський',
-      building: '74'
-    }
+      building: '74',
+    },
   },
   {
     code: '04054820',
@@ -699,8 +699,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Героїв України',
-      building: '15'
-    }
+      building: '15',
+    },
   },
   {
     code: '44014159',
@@ -718,8 +718,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Тарасівська',
-      building: '12-Б'
-    }
+      building: '12-Б',
+    },
   },
   {
     code: '23569369',
@@ -737,8 +737,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Шевченка',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04054725',
@@ -756,8 +756,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Малишка',
-      building: '10'
-    }
+      building: '10',
+    },
   },
   {
     code: '04054642',
@@ -775,8 +775,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Соборна',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04055044',
@@ -794,8 +794,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '48'
-    }
+      building: '48',
+    },
   },
   {
     code: '04055067',
@@ -813,8 +813,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Дарвіна',
-      building: '25'
-    }
+      building: '25',
+    },
   },
   {
     code: '04055110',
@@ -832,8 +832,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '59'
-    }
+      building: '59',
+    },
   },
   {
     code: '04055144',
@@ -851,8 +851,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '132'
-    }
+      building: '132',
+    },
   },
   {
     code: '04056477',
@@ -870,8 +870,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Дрогобицька',
-      building: '5'
-    }
+      building: '5',
+    },
   },
   {
     code: '20858831',
@@ -889,8 +889,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Чорновола',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '44046683',
@@ -908,8 +908,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Винниченка В.',
-      building: '18'
-    }
+      building: '18',
+    },
   },
   {
     code: '04056322',
@@ -927,8 +927,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Мазепи',
-      building: '8'
-    }
+      building: '8',
+    },
   },
   {
     code: '04056428',
@@ -946,8 +946,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'С. Бандери',
-      building: '28'
-    }
+      building: '28',
+    },
   },
   {
     code: '44265757',
@@ -965,8 +965,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Паркова',
-      building: '4А'
-    }
+      building: '4А',
+    },
   },
   {
     code: '04055883',
@@ -984,8 +984,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Івана Франка',
-      building: '8'
-    }
+      building: '8',
+    },
   },
   {
     code: '04056687',
@@ -1003,8 +1003,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Героїв Небесної Сотні',
-      building: '37'
-    }
+      building: '37',
+    },
   },
   {
     code: '04056641',
@@ -1022,8 +1022,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Центральна',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04056500',
@@ -1041,8 +1041,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Одеске Шосе',
-      building: '18А'
-    }
+      building: '18А',
+    },
   },
   {
     code: '04056546',
@@ -1060,8 +1060,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Варварівська',
-      building: '12'
-    }
+      building: '12',
+    },
   },
   {
     code: '04056888',
@@ -1079,8 +1079,8 @@ const comissionsList = [
       streetType: 'Тупик',
       streetTypeCode: '11',
       streetName: 'Г. Шевченка',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04056813',
@@ -1098,8 +1098,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Грецька',
-      building: '24'
-    }
+      building: '24',
+    },
   },
   {
     code: '04057103',
@@ -1117,8 +1117,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Соборний',
-      building: '149'
-    }
+      building: '149',
+    },
   },
   {
     code: '04057126',
@@ -1136,8 +1136,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Незалежності',
-      building: '62'
-    }
+      building: '62',
+    },
   },
   {
     code: '44010662',
@@ -1155,8 +1155,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Шевченка',
-      building: '4'
-    }
+      building: '4',
+    },
   },
   {
     code: '04057161',
@@ -1174,8 +1174,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Шевченка',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '04056859',
@@ -1193,8 +1193,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Незалежності',
-      building: '9'
-    }
+      building: '9',
+    },
   },
   {
     code: '04057586',
@@ -1212,8 +1212,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '14/23'
-    }
+      building: '14/23',
+    },
   },
   {
     code: '04057422',
@@ -1231,8 +1231,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Академіка Олексія Бекетова',
-      building: '19'
-    }
+      building: '19',
+    },
   },
   {
     code: '04057451',
@@ -1250,8 +1250,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Гоголя',
-      building: '120'
-    }
+      building: '120',
+    },
   },
   {
     code: '04057505',
@@ -1269,8 +1269,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Центральна',
-      building: '9'
-    }
+      building: '9',
+    },
   },
   {
     code: '43954202',
@@ -1288,8 +1288,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Грушевського',
-      building: '56'
-    }
+      building: '56',
+    },
   },
   {
     code: '04057830',
@@ -1307,8 +1307,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Д. Галицького',
-      building: '17'
-    }
+      building: '17',
+    },
   },
   {
     code: '04057735',
@@ -1326,8 +1326,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '195'
-    }
+      building: '195',
+    },
   },
   {
     code: '04057681',
@@ -1345,8 +1345,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Демократична',
-      building: '51'
-    }
+      building: '51',
+    },
   },
   {
     code: '04058143',
@@ -1364,8 +1364,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '23'
-    }
+      building: '23',
+    },
   },
   {
     code: '04058114',
@@ -1383,8 +1383,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Заводська',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '04057936',
@@ -1402,8 +1402,8 @@ const comissionsList = [
       streetType: 'Бульвар',
       streetTypeCode: '6',
       streetName: 'Свободи',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04057864',
@@ -1421,8 +1421,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Іллінська',
-      building: '97'
-    }
+      building: '97',
+    },
   },
   {
     code: '23640854',
@@ -1440,8 +1440,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Свободи',
-      building: '54'
-    }
+      building: '54',
+    },
   },
   {
     code: '14042930',
@@ -1459,8 +1459,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '56'
-    }
+      building: '56',
+    },
   },
   {
     code: '04058284',
@@ -1478,8 +1478,8 @@ const comissionsList = [
       streetType: 'Майдан',
       streetTypeCode: '3',
       streetName: 'Перемоги',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04058427',
@@ -1497,8 +1497,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '23'
-    }
+      building: '23',
+    },
   },
   {
     code: '04059616',
@@ -1516,8 +1516,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Свято-Духівська',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '04059527',
@@ -1535,8 +1535,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Центральна',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04059549',
@@ -1554,8 +1554,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Соборна',
-      building: '58-А'
-    }
+      building: '58-А',
+    },
   },
   {
     code: '04058739',
@@ -1573,8 +1573,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Конституції',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04058746',
@@ -1592,8 +1592,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Куцина Олега',
-      building: '10-А'
-    }
+      building: '10-А',
+    },
   },
   {
     code: '04058775',
@@ -1611,8 +1611,8 @@ const comissionsList = [
       streetType: 'Шосе',
       streetTypeCode: '4',
       streetName: 'Григорівське',
-      building: '52'
-    }
+      building: '52',
+    },
   },
   {
     code: '04058723',
@@ -1630,8 +1630,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Старонікольська',
-      building: '29'
-    }
+      building: '29',
+    },
   },
   {
     code: '04059987',
@@ -1649,8 +1649,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Перемоги',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '44348932',
@@ -1668,8 +1668,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Незалежності',
-      building: '47'
-    }
+      building: '47',
+    },
   },
   {
     code: '21319591',
@@ -1687,8 +1687,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Виговського Івана',
-      building: '30 А'
-    }
+      building: '30 А',
+    },
   },
   {
     code: '21318806',
@@ -1706,8 +1706,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Довжанська',
-      building: '21а'
-    }
+      building: '21а',
+    },
   },
   {
     code: '21325769',
@@ -1725,8 +1725,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Героїв Небесної Сотні',
-      building: '47'
-    }
+      building: '47',
+    },
   },
   {
     code: '04061180',
@@ -1744,8 +1744,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Шевченка',
-      building: '68'
-    }
+      building: '68',
+    },
   },
   {
     code: '04061197',
@@ -1763,8 +1763,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Садовий Проїзд',
-      building: '5'
-    }
+      building: '5',
+    },
   },
   {
     code: '04061292',
@@ -1782,8 +1782,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Соборності',
-      building: '1'
-    }
+      building: '1',
+    },
   },
   {
     code: '04061317',
@@ -1801,8 +1801,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'В\'ячеслава Чорновола',
-      building: '157'
-    }
+      building: '157',
+    },
   },
   {
     code: '04062086',
@@ -1820,8 +1820,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Українська',
-      building: '88'
-    }
+      building: '88',
+    },
   },
   {
     code: '21422840',
@@ -1839,8 +1839,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Центральна',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '44090800',
@@ -1858,8 +1858,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Стеценка Кирила',
-      building: '3'
-    }
+      building: '3',
+    },
   },
   {
     code: '04061926',
@@ -1877,8 +1877,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '60'
-    }
+      building: '60',
+    },
   },
   {
     code: '04061636',
@@ -1896,8 +1896,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Батюка',
-      building: '5 А'
-    }
+      building: '5 А',
+    },
   },
   {
     code: '04061642',
@@ -1915,8 +1915,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Б. Майстренка',
-      building: '6'
-    }
+      building: '6',
+    },
   },
   {
     code: '04061808',
@@ -1934,8 +1934,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Київська',
-      building: '220'
-    }
+      building: '220',
+    },
   },
   {
     code: '04061688',
@@ -1953,8 +1953,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Шевченка',
-      building: '48'
-    }
+      building: '48',
+    },
   },
   {
     code: '37308812',
@@ -1972,8 +1972,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Голосіївський',
-      building: '42'
-    }
+      building: '42',
+    },
   },
   {
     code: '37388222',
@@ -1991,8 +1991,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Олександра Кошиця',
-      building: '11'
-    }
+      building: '11',
+    },
   },
   {
     code: '37415088',
@@ -2010,8 +2010,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Червоної Калини',
-      building: '29'
-    }
+      building: '29',
+    },
   },
   {
     code: '37203257',
@@ -2029,8 +2029,8 @@ const comissionsList = [
       streetType: 'Бульвар',
       streetTypeCode: '6',
       streetName: 'Котляревського Івана',
-      building: '1/1'
-    }
+      building: '1/1',
+    },
   },
   {
     code: '37371727',
@@ -2048,8 +2048,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Лук\'яненка Левка',
-      building: '16'
-    }
+      building: '16',
+    },
   },
   {
     code: '37401206',
@@ -2067,8 +2067,8 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Михайла Омеляновича-Павленка',
-      building: '15'
-    }
+      building: '15',
+    },
   },
   {
     code: '37333608',
@@ -2086,8 +2086,8 @@ const comissionsList = [
       streetType: 'Площа',
       streetTypeCode: '2',
       streetName: 'Контрактова',
-      building: '2'
-    }
+      building: '2',
+    },
   },
   {
     code: '37395418',
@@ -2105,8 +2105,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Берестейський',
-      building: '97'
-    }
+      building: '97',
+    },
   },
   {
     code: '37378937',
@@ -2124,8 +2124,8 @@ const comissionsList = [
       streetType: 'Проспект',
       streetTypeCode: '5',
       streetName: 'Повітряних Сил',
-      building: '41'
-    }
+      building: '41',
+    },
   },
   {
     code: '37405111',
@@ -2143,9 +2143,9 @@ const comissionsList = [
       streetType: 'Вулиця',
       streetTypeCode: '1',
       streetName: 'Богдана Хмельницького',
-      building: '24'
-    }
-  }
+      building: '24',
+    },
+  },
 ]
 
 export default comissionsList

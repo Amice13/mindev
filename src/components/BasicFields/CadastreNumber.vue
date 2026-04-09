@@ -9,31 +9,31 @@
 </template>
 
 <script setup lang="ts">
-import { vMaska } from 'maska/vue'
+  import { vMaska } from 'maska/vue'
 
-interface Props {
-  modelValue?: string
-}
-
-const props = defineProps<Props>()
-
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void
-}>()
-
-const model = computed({
-  get: () => props.modelValue,
-  set: (value: string) => emit('update:modelValue', value)
-})
-
-const tokens = {
-  A: {
-    pattern: /\d/
+  interface Props {
+    modelValue?: string
   }
-}
 
-const cadastreMaska = {
-  mask: 'AAAAAAAAAA:AA:AAA:AAAA',
-  tokens
-}
+  const props = defineProps<Props>()
+
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: string): void
+  }>()
+
+  const model = computed({
+    get: () => props.modelValue,
+    set: (value: string) => emit('update:modelValue', value),
+  })
+
+  const tokens = {
+    A: {
+      pattern: /\d/,
+    },
+  }
+
+  const cadastreMaska = {
+    mask: 'AAAAAAAAAA:AA:AAA:AAAA',
+    tokens,
+  }
 </script>

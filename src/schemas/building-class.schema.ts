@@ -6,35 +6,35 @@ export const buildingClass = {
   properties: {
     class1: {
       title: 'Класс 1 рівня',
-      type: 'string'
+      type: 'string',
     },
     class2: {
       title: 'Класс 2 рівня',
-      type: 'string'
+      type: 'string',
     },
     class3: {
       title: 'Класс 3 рівня',
-      type: 'string'
+      type: 'string',
     },
     class: {
       title: 'Класс 4 рівня',
-      type: 'string'
+      type: 'string',
     },
     code1: {
       title: 'Код 1 рівня',
-      type: 'string'
+      type: 'string',
     },
     code2: {
       title: 'Код 2 рівня',
-      type: 'string'
+      type: 'string',
     },
     code3: {
       title: 'Код 3 рівня',
-      type: 'string'
+      type: 'string',
     },
     code: {
       title: 'Код 4 рівня',
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 } as const satisfies JSONSchema

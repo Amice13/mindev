@@ -3,7 +3,7 @@ const fenestrationTypes = [
   'металеві',
   'пластикові',
   'відсутні',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default fenestrationTypes

@@ -1,15 +1,15 @@
 export default {
   dark: false,
   colors: {
-    main: '#F5F3E9',
+    'main': '#F5F3E9',
     'main-darken-1': '#ecebd8',
-    background: '#FFFFFF',
-    surface: '#FFFFFF',
+    'background': '#FFFFFF',
+    'surface': '#FFFFFF',
     'surface-bright': '#FFFFFF',
     'surface-light': '#EEEEEE',
     'surface-variant': '#424242',
     'on-surface-variant': '#EEEEEE',
-    primary: '#4CAEAE',
+    'primary': '#4CAEAE',
     'primary-darken-1': '#3d8b8b',
     'primary-darken-2': '#2e6868',
     'primary-darken-3': '#1e4646',
@@ -18,6 +18,6 @@ export default {
     'primary-lighten-2': '#92d0d0',
     'primary-lighten-3': '#b7dfdf',
     'primary-lighten-4': '#dbefef',
-    teal: '#F5F3E9'
-  }
+    'teal': '#F5F3E9',
+  },
 }

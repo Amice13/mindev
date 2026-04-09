@@ -1,4 +1,4 @@
-const download = (buffer: ArrayBuffer, filename: string, mime = 'application/octet-stream') => {
+function download (buffer: ArrayBuffer, filename: string, mime = 'application/octet-stream') {
   const blob = new Blob([buffer], { type: mime })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
@@ -8,7 +8,7 @@ const download = (buffer: ArrayBuffer, filename: string, mime = 'application/oct
   URL.revokeObjectURL(url)
 }
 
-const useDownload = () => {
+function useDownload () {
   return { download }
 }
 

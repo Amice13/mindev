@@ -19,37 +19,37 @@
     <div class="font-weight-bold mb-1 text-subtitle-2">Максимальна дата прийтяття акту</div>
     <custom-date v-model="model.maxDate" :max="new Date()" />
 
-    <v-btn @click="reset" сlass="mt-4" color="primary-darken-1">Скинути всі</v-btn>
+    <v-btn color="primary-darken-1" сlass="mt-4" @click="reset">Скинути всі</v-btn>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { act as schema } from '@/schemas/act.schema'
+  import { act as schema } from '@/schemas/act.schema'
 
-interface Filters {
-  minDate: string
-  maxDate: string
-  estateType: string
-  conclusionType: string
-}
+  interface Filters {
+    minDate: string
+    maxDate: string
+    estateType: string
+    conclusionType: string
+  }
 
-interface Props {
-  modelValue: Partial<Filters>
-}
+  interface Props {
+    modelValue: Partial<Filters>
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: Partial<Filters>): void
-}>()
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: Partial<Filters>): void
+  }>()
 
-const model = computed<Partial<Filters>>({
-  get: () => props.modelValue,
-  set: (value: Partial<Filters>) => emit('update:modelValue', value)
-})
+  const model = computed<Partial<Filters>>({
+    get: () => props.modelValue,
+    set: (value: Partial<Filters>) => emit('update:modelValue', value),
+  })
 
-const reset = () => {
-  model.value = {}
-}
+  function reset () {
+    model.value = {}
+  }
 
 </script>

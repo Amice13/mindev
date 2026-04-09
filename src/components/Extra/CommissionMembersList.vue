@@ -3,69 +3,69 @@
     <h5 class="text-h5 mb-4">Склад комісії</h5>
     <div class="mb-6">Будь ласка, зазначте усіх членів комісії з їх відповідним статусом. Якщо ви вносите інформацію про себе, поставте відмітку "Це мій власний запис", щоб у подальшому можна було визначити особу, яка вносила дані.</div>
     <v-data-table
-      :headers="headers"
-      :items="commissionMembers"
-      hide-actions
       class="elevation-1 hidden-sm-and-down"
-      item-key="id"
+      :headers="headers"
+      hide-actions
       hide-default-footer
+      item-key="id"
+      :items="commissionMembers"
       no-data-text="Ви ще не додали жодного члена комісії"
     >
-      <template v-slot:[`item.status`]="{ item }">
-        <v-chip label color="primary-darken-2">{{ item.status }}</v-chip>
+      <template #[`item.status`]="{ item }">
+        <v-chip color="primary-darken-2" label>{{ item.status }}</v-chip>
       </template>
-      <template v-slot:[`item.name`]="{ item }">
+      <template #[`item.name`]="{ item }">
         <span class="text-no-wrap">{{ [item.familyName, item.givenName, item.additionalName].filter(Boolean).join(' ') }}</span>
       </template>
-      <template v-slot:[`item.isCurrentUser`]="{ item }">
+      <template #[`item.isCurrentUser`]="{ item }">
         <v-icon v-if="item.id === user.id">mdi-check</v-icon>
       </template>
-      <template v-slot:[`item.id`]="{ item }">
-        <v-btn @click="remove(item.id)" color="error" variant="tonal" size="small">Видалити</v-btn>
+      <template #[`item.id`]="{ item }">
+        <v-btn color="error" size="small" variant="tonal" @click="remove(item.id)">Видалити</v-btn>
       </template>
     </v-data-table>
     <div class="hidden-md-and-up">
       <v-card v-for="commissionMember in commissionMembers" :key="commissionMember.id" class="mb-4" style="border-left: 12px solid #2e6868;">
         <v-card-text>
-          <v-chip label color="primary-darken-2">{{ commissionMember.status }}</v-chip>
+          <v-chip color="primary-darken-2" label>{{ commissionMember.status }}</v-chip>
           <div v-if="commissionMember.id === user.id" class="font-weight-bold my-4">Поточний користувач</div>
           <div class="my-4">{{ [commissionMember.familyName, commissionMember.givenName, commissionMember.additionalName].filter(Boolean).join(' ') }}</div>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn @click="remove(commissionMember.id)" color="error" size="small" prepend-icon="mdi-delete">Видалити</v-btn>
+          <v-btn color="error" prepend-icon="mdi-delete" size="small" @click="remove(commissionMember.id)">Видалити</v-btn>
         </v-card-actions>
       </v-card>
     </div>
 
-    <v-btn @click="add" color="primary" class="mt-6">Додати</v-btn>
+    <v-btn class="mt-6" color="primary" @click="add">Додати</v-btn>
     <commission-member-dialog :id="commissionMemberId" @cancel="commissionMemberId = undefined" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useAppStore } from '@/stores/app'
-import type { DataTableHeader } from 'vuetify'
-import { generateId } from '@/composables/generate-id'
+  import type { DataTableHeader } from 'vuetify'
+  import { generateId } from '@/composables/generate-id'
+  import { useAppStore } from '@/stores/app'
 
-const store = useAppStore()
-const { commissionMembers, user } = storeToRefs(store)
-const { removeCommissionMember } = store
+  const store = useAppStore()
+  const { commissionMembers, user } = storeToRefs(store)
+  const { removeCommissionMember } = store
 
-const headers: DataTableHeader[] = [
-  { key: 'name', title: 'Прізвище, ім\'я та по батькові' },
-  { key: 'status', title: 'Статус' },
-  { key: 'isCurrentUser', title: 'Поточний користувач', align: 'center' },
-  { key: 'id', title: 'Видалити' }
-]
+  const headers: DataTableHeader[] = [
+    { key: 'name', title: 'Прізвище, ім\'я та по батькові' },
+    { key: 'status', title: 'Статус' },
+    { key: 'isCurrentUser', title: 'Поточний користувач', align: 'center' },
+    { key: 'id', title: 'Видалити' },
+  ]
 
-const commissionMemberId = ref<string | undefined>()
+  const commissionMemberId = ref<string | undefined>()
 
-const add = () => {
-  commissionMemberId.value = generateId()
-}
-const remove = (id: string) => {
-  removeCommissionMember(id)
-}
+  function add () {
+    commissionMemberId.value = generateId()
+  }
+  function remove (id: string) {
+    removeCommissionMember(id)
+  }
 
 </script>

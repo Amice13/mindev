@@ -1,17 +1,17 @@
 import type { JSONSchema } from 'json-schema-to-ts'
 import ceilingTypes from '@/dicts/ceiling-types'
-import constructionConditions from '@/dicts/construction-conditions'
-import defectsPresence from '@/dicts/defects-presence'
 import coatingTypes from '@/dicts/coating-types'
-import stairsTypes from '@/dicts/stairs-types'
-import roofingTypes from '@/dicts/roofing-types'
-import partitionsTypes from '@/dicts/partitions-types'
-import floorTypes from '@/dicts/floor-types'
-import fenestrationTypes from '@/dicts/fenestration-types'
-import facadeTypes from '@/dicts/facade-types'
+import constructionConditions from '@/dicts/construction-conditions'
 import decorationTypes from '@/dicts/decoration-types'
-import disabilitiesSupportTypes from '@/dicts/disabilities-support-types'
+import defectsPresence from '@/dicts/defects-presence'
 import defenseTypes from '@/dicts/defense-types'
+import disabilitiesSupportTypes from '@/dicts/disabilities-support-types'
+import facadeTypes from '@/dicts/facade-types'
+import fenestrationTypes from '@/dicts/fenestration-types'
+import floorTypes from '@/dicts/floor-types'
+import partitionsTypes from '@/dicts/partitions-types'
+import roofingTypes from '@/dicts/roofing-types'
+import stairsTypes from '@/dicts/stairs-types'
 
 export const constructionElements = {
   type: 'object',
@@ -19,177 +19,177 @@ export const constructionElements = {
     ceilingType: {
       title: 'Тип конструкції перекриттів',
       type: 'string',
-      enum: ceilingTypes
+      enum: ceilingTypes,
     },
     ceilingCondition: {
       title: 'Стан конструкції перекриттів',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     ceilingDefects: {
       title: 'Наявність дефектів у конструкціях перекриттів',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     ceiling: {
       title: 'Опис конструкції перекриттів',
-      type: 'string'
+      type: 'string',
     },
     coatingType: {
       title: 'Тип конструкції покриття',
       type: 'string',
-      enum: coatingTypes
+      enum: coatingTypes,
     },
     coatingCondition: {
       title: 'Стан конструкції покриття',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     coating: {
       title: 'Опис онструкції покриття',
-      type: 'string'
+      type: 'string',
     },
     stairsType: {
       title: 'Тип сходів',
       type: 'string',
-      enum: stairsTypes
+      enum: stairsTypes,
     },
     stairs: {
       title: 'Опис сходів',
-      type: 'string'
+      type: 'string',
     },
     roofingType: {
       title: 'Тип покрівлі',
       type: 'string',
-      enum: roofingTypes
+      enum: roofingTypes,
     },
     roofingCondition: {
       title: 'Стан покрівлі',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     roofingDefects: {
       title: 'Наявність дефектів покрівлі',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     roofing: {
       title: 'Опис покрівлі',
-      type: 'string'
+      type: 'string',
     },
     partitionsType: {
       title: 'Тип перегородок',
       type: 'string',
-      enum: partitionsTypes
+      enum: partitionsTypes,
     },
     partitionsCondition: {
       title: 'Стан перегородок',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     partitionsDefects: {
       title: 'Наявність дефектів перегородок',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     partitions: {
       title: 'Опис перегородок',
-      type: 'string'
+      type: 'string',
     },
     floorType: {
       title: 'Тип підлоги',
       type: 'string',
-      enum: floorTypes
+      enum: floorTypes,
     },
     floorCondition: {
       title: 'Стан підлоги',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     floorDefects: {
       title: 'Наявність дефектів підлоги',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     floor: {
       title: 'Опис підлоги',
-      type: 'string'
+      type: 'string',
     },
     windowsAndDoorsType: {
       title: 'Тип вікон та дверей',
       type: 'string',
-      enum: fenestrationTypes
+      enum: fenestrationTypes,
     },
     windowsAndDoorsCondition: {
       title: 'Стан вікон та дверей',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     windowsAndDoorsDefects: {
       title: 'Наявність дефектів вікон та дверей',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     windowsAndDoors: {
       title: 'Опис вікон та дверей',
-      type: 'string'
+      type: 'string',
     },
     facadeType: {
       title: 'Тип опорядження фасадів',
       type: 'string',
-      enum: facadeTypes
+      enum: facadeTypes,
     },
     facadeCondition: {
       title: 'Стан опорядження фасадів',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     facadeDefects: {
       title: 'Наявність дефектів опорядження фасадів',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     facade: {
       title: 'Опис опорядження фасадів',
-      type: 'string'
+      type: 'string',
     },
     decorationType: {
       title: 'Тип внутрішнього опорядження',
       type: 'string',
-      enum: decorationTypes
+      enum: decorationTypes,
     },
     decorationCondition: {
       title: 'Стан внутрішнього опорядження',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     decorationDefects: {
       title: 'Наявність дефектів внутрішнього опорядження',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     decoration: {
       title: 'Опис внутрішнього опорядження',
-      type: 'string'
+      type: 'string',
     },
     disabilitiesSupportType: {
       title: 'Тип пристосування для задоволення потреб осіб з інвалідністю та інших маломобільних груп населення',
       type: 'string',
-      enum: disabilitiesSupportTypes
+      enum: disabilitiesSupportTypes,
     },
     disabilitiesSupport: {
       title: 'Опис пристосування для задоволення потреб осіб з інвалідністю та інших маломобільних груп населення',
-      type: 'string'
+      type: 'string',
     },
     defenseType: {
       title: 'Наявність об\'єктів фонду захисних споруд цивільного захисту',
       type: 'string',
-      enum: defenseTypes
+      enum: defenseTypes,
     },
     defense: {
       title: 'Опис об\'єктів фонду захисних споруд цивільного захисту, зокрема тих, що використовуються як найпростіші укриття (на об\'єкті або на відстані до 500 метрів)',
-      type: 'string'
-    }
+      type: 'string',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

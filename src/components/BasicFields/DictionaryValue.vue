@@ -1,71 +1,71 @@
 <template>
   <v-select
     v-model="model"
-    :items="items"
-    :item-title="getTitle"
-    placeholder="Натисніть, щоб обрати"
-    variant="solo-inverted"
-    return-object
     clearable
+    :item-title="getTitle"
+    :items="items"
+    placeholder="Натисніть, щоб обрати"
+    return-object
+    variant="solo-inverted"
   />
 </template>
 
 <script setup lang="ts">
-import type { SelectItemKey } from 'vuetify/lib/util/helpers.mjs'
-import commissionMemberTypes from '@/dicts/commission-member-types'
-import consequenceClasses from '@/dicts/consequence-classes'
-import estateTypes from '@/dicts/estate-types'
-import heritageCategories from '@/dicts/heritage-categories'
-import heritageTypes from '@/dicts/heritage-types'
-import landCategories from '@/dicts/land-categories'
-import ownershipTypes from '@/dicts/ownership-types'
-import ownerTypes from '@/dicts/owner-types'
-import personalDocumentTypes from '@/dicts/personal-document-types'
-import additionalObservations from '@/dicts/additional-observations'
-import landActions from '@/dicts/land-actions'
+  import type { SelectItemKey } from 'vuetify/lib/util/helpers.mjs'
+  import additionalObservations from '@/dicts/additional-observations'
+  import commissionMemberTypes from '@/dicts/commission-member-types'
+  import consequenceClasses from '@/dicts/consequence-classes'
+  import estateTypes from '@/dicts/estate-types'
+  import heritageCategories from '@/dicts/heritage-categories'
+  import heritageTypes from '@/dicts/heritage-types'
+  import landActions from '@/dicts/land-actions'
+  import landCategories from '@/dicts/land-categories'
+  import ownerTypes from '@/dicts/owner-types'
+  import ownershipTypes from '@/dicts/ownership-types'
+  import personalDocumentTypes from '@/dicts/personal-document-types'
 
-interface Props {
-  dictionary: string
-  modelValue?: string
-}
+  interface Props {
+    dictionary: string
+    modelValue?: string
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | object | undefined): void
-}>()
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: string | object | undefined): void
+  }>()
 
-const model = computed({
-  get: () => props.modelValue,
-  set: value => emit('update:modelValue', value)
-})
+  const model = computed({
+    get: () => props.modelValue,
+    set: value => emit('update:modelValue', value),
+  })
 
-const availableDicts = {
-  additionalObservations,
-  commissionMemberTypes,
-  consequenceClasses,
-  estateTypes,
-  heritageCategories,
-  heritageTypes,
-  landActions,
-  landCategories,
-  ownershipTypes,
-  ownerTypes,
-  personalDocumentTypes
-} as Record<string, string[] | object[]>
+  const availableDicts = {
+    additionalObservations,
+    commissionMemberTypes,
+    consequenceClasses,
+    estateTypes,
+    heritageCategories,
+    heritageTypes,
+    landActions,
+    landCategories,
+    ownershipTypes,
+    ownerTypes,
+    personalDocumentTypes,
+  } as Record<string, string[] | object[]>
 
-const items = computed(() => {
-  if (!props.dictionary) return []
-  const currentItems = availableDicts[props.dictionary]
-  if (currentItems === undefined) return []
-  return currentItems
-})
+  const items = computed(() => {
+    if (!props.dictionary) return []
+    const currentItems = availableDicts[props.dictionary]
+    if (currentItems === undefined) return []
+    return currentItems
+  })
 
-const getTitle: SelectItemKey<string | object> = (value: string | object) => {
-  if (typeof value === 'string') return value
-  const title = (value as unknown as Record<string, string>).title
-  if (title === undefined) return 'N/A'
-  return title
-}
+  const getTitle: SelectItemKey<string | object> = (value: string | object) => {
+    if (typeof value === 'string') return value
+    const title = (value as unknown as Record<string, string>).title
+    if (title === undefined) return 'N/A'
+    return title
+  }
 
 </script>

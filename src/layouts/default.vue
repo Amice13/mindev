@@ -1,9 +1,9 @@
 <template>
-  <app-bar @changeDrawer="open = !open" />
-  <v-navigation-drawer temporary v-model="open">
+  <app-bar @change-drawer="open = !open" />
+  <v-navigation-drawer v-model="open" temporary>
     <v-list nav>
-      <v-list-item to="/" title="Акти"></v-list-item>
-      <v-list-item to="/admin" title="Комісія"></v-list-item>
+      <v-list-item title="Акти" to="/" />
+      <v-list-item title="Комісія" to="/admin" />
     </v-list>
   </v-navigation-drawer>
   <v-main>
@@ -12,5 +12,5 @@
 </template>
 
 <script lang="ts" setup>
-const open = ref<boolean>(false)
+  const open = ref<boolean>(false)
 </script>

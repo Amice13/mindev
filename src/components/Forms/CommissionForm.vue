@@ -8,7 +8,7 @@
       label="Обрати комісію з існуючого переліку"
     />
 
-    <commission-selector v-model="model" />
+    <commission-selector v-if="commissionIsPredefined" v-model="model" />
 
     <div v-if="!commissionIsPredefined">
       <organization-form v-model="model" />
@@ -18,49 +18,51 @@
     </div>
 
     <v-btn
-      @click="saveNewCommission"
       class="mt-4"
       color="primary-darken-1"
       :disabled="!isChanged"
+      @click="saveNewCommission"
     >Зберегти</v-btn>
 
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { Organization } from '@/types'
-import { useAppStore } from '@/stores/app'
-import { checkCode } from '@/composables/edrpou-validator'
+  import type { Organization } from '@/types'
+  import { checkCode } from '@/composables/edrpou-validator'
+  import { useAppStore } from '@/stores/app'
 
-const model = ref<Organization>({ address: {} })
+  const model = ref<Organization>({ address: {} })
 
-const store = useAppStore()
-const { commission, saveCommission } = store
-const { commissionIsPredefined } = storeToRefs(store)
+  const store = useAppStore()
+  const { commission, saveCommission } = store
+  const { commissionIsPredefined } = storeToRefs(store)
 
-const isChanged = ref<boolean>(false)
+  const isChanged = ref<boolean>(false)
 
-onBeforeMount(() => {
-  model.value = {
-    ...toRaw(commission),
-    address: commission.address ?? {}
-  } as Organization
-  nextTick(() => { isChanged.value = false })
-})
+  onBeforeMount(() => {
+    model.value = {
+      ...toRaw(commission),
+      address: commission.address ?? {},
+    } as Organization
+    nextTick(() => {
+      isChanged.value = false
+    })
+  })
 
-watch(() => model, (): void => {
-  if (isChanged.value) return
-  isChanged.value = true
-}, {
-  deep: true
-})
+  watch(() => model, (): void => {
+    if (isChanged.value) return
+    isChanged.value = true
+  }, {
+    deep: true,
+  })
 
-const saveNewCommission = () => {
-  if (!model.value.address?.admin4) return alert('Не визначено місцезнаходження комісії')
-  if (!model.value.title) return alert('Не визначена назва комісії')
-  if (!model.value.code) return alert('Не визначено код ЄДРПОУ комісії')
-  if (checkCode(model.value.code) !== true) return alert('Зазначений код ЄДРПОУ є невірним')
-  saveCommission(model.value)
-  isChanged.value = false
-}
+  function saveNewCommission () {
+    if (!model.value.address?.admin4) return alert('Не визначено місцезнаходження комісії')
+    if (!model.value.title) return alert('Не визначена назва комісії')
+    if (!model.value.code) return alert('Не визначено код ЄДРПОУ комісії')
+    if (checkCode(model.value.code) !== true) return alert('Зазначений код ЄДРПОУ є невірним')
+    saveCommission(model.value)
+    isChanged.value = false
+  }
 </script>

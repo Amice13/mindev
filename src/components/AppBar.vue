@@ -1,37 +1,45 @@
 <template>
-  <v-app-bar app dark color="main" density="comfortable" class="position-fixed">
+  <v-app-bar
+    app
+    class="position-fixed"
+    color="main"
+    dark
+    density="comfortable"
+  >
     <div class="d-flex align-center">
-      <router-link to="/" tag="a">
+      <router-link to="/">
         <v-img
+          alt="Мінрозвитку - Акти обстеження об'єктів нерухомого майна"
           class="hidden-sm-and-down shrink ml-2 mr-2 cursor-pointer"
+          contain
+          height="34"
           router-link
-          alt="Мінрозвитку - Акти обстеження об'єктів нерухомого майна"
           :src="logo()"
-          contain
-          height="34"
-          width="150"/>
+          width="150"
+        />
         <v-img
-          class="hidden-md-and-up shrink ml-2 mr-2 cursor-pointer"
-          router-link
           alt="Мінрозвитку - Акти обстеження об'єктів нерухомого майна"
-          :src="smallLogo()"
+          class="hidden-md-and-up shrink ml-2 mr-2 cursor-pointer"
           contain
           height="34"
-          width="40"/>
+          router-link
+          :src="smallLogo()"
+          width="40"
+        />
       </router-link>
     </div>
     <v-app-bar-title>Акти <span class="hidden-sm-and-down">обстеження об'єктів нерухомого майна</span></v-app-bar-title>
-    <template v-slot:append>
+    <template #append>
       <div class="hidden-sm-and-down">
-        <v-btn to="/" class="mr-2" color="primary-darken-1" variant="flat">Акти</v-btn>
-        <v-btn to="/admin" class="mr-2" color="primary-darken-1" variant="flat">Комісія</v-btn>
+        <v-btn class="mr-2" color="primary-darken-1" to="/" variant="flat">Акти</v-btn>
+        <v-btn class="mr-2" color="primary-darken-1" to="/admin" variant="flat">Комісія</v-btn>
       </div>
       <v-btn
-        @click="emit('changeDrawer')"
         class="hidden-md-and-up"
         color="primary-darken-2"
         icon="mdi-dots-vertical"
         variant="tonal"
+        @click="emit('change-drawer')"
       />
     </template>
   </v-app-bar>
@@ -39,15 +47,15 @@
 
 <script lang="ts" setup>
 
-const emit = defineEmits<{
-  (e: 'changeDrawer'): void
-}>()
+  const emit = defineEmits<{
+    (e: 'change-drawer'): void
+  }>()
 
-const logo = () => {
-  return `${import.meta.env.BASE_URL}/logo.svg`
-}
+  function logo () {
+    return `${import.meta.env.BASE_URL}/logo.svg`
+  }
 
-const smallLogo = () => {
-  return `${import.meta.env.BASE_URL}/android-chrome-512x512.png`
-}
+  function smallLogo () {
+    return `${import.meta.env.BASE_URL}/android-chrome-512x512.png`
+  }
 </script>

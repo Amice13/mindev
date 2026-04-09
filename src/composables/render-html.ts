@@ -14,17 +14,17 @@ const styleMap = [
   'p[style-name=\'Highlighted-bold\'] => p.highlighted',
   'r[style-name=\'Highlighted-bold Char\'] => span.highlighted-char',
   'p[style-name=\'Superscript\'] => p.superscript',
-  'r[style-name=\'Superscript Char\'] => span.superscript'
+  'r[style-name=\'Superscript Char\'] => span.superscript',
 ]
 
-const renderHtml = async (arrayBuffer: ArrayBuffer) => {
+async function renderHtml (arrayBuffer: ArrayBuffer) {
   const result = await mammoth.convertToHtml({ arrayBuffer }, { styleMap })
   return DOMPurify.sanitize(result.value)
 }
 
-const useRenderHtml = () => {
+function useRenderHtml () {
   return {
-    renderHtml
+    renderHtml,
   }
 }
 

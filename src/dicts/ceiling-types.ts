@@ -5,7 +5,7 @@ const ceilingTypes = [
   'дерев\'яні',
   'металеві',
   'відсутні',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default ceilingTypes

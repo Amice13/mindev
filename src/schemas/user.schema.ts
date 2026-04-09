@@ -1,6 +1,6 @@
 import type { JSONSchema } from 'json-schema-to-ts'
-import { person } from './person.schema.ts'
 import commissionMemberTypes from '@/dicts/commission-member-types.ts'
+import { person } from './person.schema.ts'
 
 export const user = {
   title: 'Користувач',
@@ -8,14 +8,14 @@ export const user = {
   properties: {
     id: {
       title: 'Унікальний ідентифікатор',
-      type: 'string'
+      type: 'string',
     },
     status: {
       title: 'Статус члена комісії',
       type: 'string',
-      enum: commissionMemberTypes
+      enum: commissionMemberTypes,
     },
-    ...(person.properties ?? {})
+    ...person.properties,
   },
-  required: ['id']
+  required: ['id'],
 } as const satisfies JSONSchema

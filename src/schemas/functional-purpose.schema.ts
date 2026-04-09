@@ -6,19 +6,19 @@ export const functionalPurpose = {
   properties: {
     class1: {
       title: 'Класс 1 рівня',
-      type: 'string'
+      type: 'string',
     },
     class: {
       title: 'Класс 2 рівня',
-      type: 'string'
+      type: 'string',
     },
     code1: {
       title: 'Код 1 рівня',
-      type: 'string'
+      type: 'string',
     },
     code: {
       title: 'Код 2 рівня',
-      type: 'string'
-    }
-  }
+      type: 'string',
+    },
+  },
 } as const satisfies JSONSchema

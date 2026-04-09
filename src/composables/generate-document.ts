@@ -1,20 +1,22 @@
-import type { Act, Person } from '@/types';
-import expressionParser from 'docxtemplater/expressions.js'
+import type { Act, Person } from '@/types'
 import docxtemplater from 'docxtemplater'
+import expressionParser from 'docxtemplater/expressions.js'
 import PizZip from 'pizzip'
 import docUrl from '@/templates/act.docx?url'
 
 // Formatters
-const formatDate = (date: string | undefined): string => {
-  if (!date) date = new Date() as unknown as string
+function formatDate (date: string | undefined): string {
+  if (!date) {
+    date = new Date() as unknown as string
+  }
   return new Date(date).toLocaleDateString('uk-UA', {
     day: '2-digit',
     month: 'long',
-    year: 'numeric'
+    year: 'numeric',
   })
 }
 
-const shortenName = (user: Person) => {
+function shortenName (user: Person) {
   const nameInitial = user.givenName ? user.givenName.slice(0, 1) + '.' : ''
   const additionalNameInitial = user.additionalName ? user.additionalName.slice(0, 1) + '.' : ''
   return [user.familyName, nameInitial, additionalNameInitial].filter(Boolean).join(' ')
@@ -23,31 +25,39 @@ const shortenName = (user: Person) => {
 const parser = expressionParser.configure({ filters: {
   formatDate,
   firstLetter (s: string): string {
-    return s.substring(0, 1)
+    return s.slice(0, 1)
   },
   zeroText (s: string | number | undefined): string {
-    if (s === undefined) return ''
-    if (s === 0) return '0'
+    if (s === undefined) {
+      return ''
+    }
+    if (s === 0) {
+      return '0'
+    }
     return String(s)
   },
   safe (s: string | number | undefined): string {
-    if (s === undefined) return ''
+    if (s === undefined) {
+      return ''
+    }
     return String(s)
   },
-  toLowerCase (s:string) {
+  toLowerCase (s: string) {
     return s?.toLowerCase() ?? ''
-  }
-}})
+  },
+} })
 
 // Base document
 const res = await fetch(docUrl)
 const docx = await res.arrayBuffer()
 
-const generateDocument = (source: Act): ArrayBuffer => {
+function generateDocument (source: Act): ArrayBuffer {
   const zip = new PizZip(docx)
   const newDoc = new docxtemplater(zip, { parser, linebreaks: true })
-  const data = JSON.parse(JSON.stringify(toRaw(source)))
-  if (data.createdBy) data.createdBy.shortName = shortenName(data.createdBy)
+  const data = structuredClone(toRaw(source))
+  if (data.createdBy) {
+    data.createdBy.shortName = shortenName(data.createdBy)
+  }
   data.json = JSON.stringify(data)
   data.otherConclusion = data.conclusionType === 'Інший висновок'
   data.landActionsRequired = data.conclusionDetail === 'Необхідне вчинення дій для можливості використання земельної ділянки для будівництва об\'єктів нерухомого майна для проживання внутрішньо переміщених осіб та/або розміщення тимчасових споруд, їх комплексів, призначених для життєзабезпечення (тимчасового проживання та обслуговування) внутрішньо переміщених осіб'
@@ -60,7 +70,7 @@ const generateDocument = (source: Act): ArrayBuffer => {
   return docToRender as unknown as ArrayBuffer
 }
 
-const useGenerateDocument = () => {
+function useGenerateDocument () {
   return { generateDocument }
 }
 

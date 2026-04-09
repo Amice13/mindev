@@ -12,98 +12,98 @@ export const apartmentInternalSystems = {
     powerSupplyType: {
       title: 'Тип системи електропостачання',
       type: 'string',
-      enum: powerSupplyTypes
+      enum: powerSupplyTypes,
     },
     powerSupplyCondition: {
       title: 'Стан системи електропостачання',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     powerSupplyDefects: {
       title: 'Наявність дефектів і пошкоджень системи електропостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     powerSupply: {
       title: 'Опис системи електропостачання (обладнання функціонуючою системою електропостачання (крім випадків аварійного або планового відключення)',
-      type: 'string'
+      type: 'string',
     },
     heatingType: {
       title: 'Тип системи опалення',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     heatingCondition: {
       title: 'Стан системи опалення',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     heatingDefects: {
       title: 'Наявність дефектів і пошкоджень системи опалення',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     heating: {
       title: 'Опис системи опалення (обладнання безперебійно функціонуючою системою опалення (крім випадків аварійного або планового відключення) ',
-      type: 'string'
+      type: 'string',
     },
     waterSupplyType: {
       title: 'Тип системи водопостачання',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     waterSupplyCondition: {
       title: 'Стан системи водопостачання',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     waterSupplyDefects: {
       title: 'Наявність дефектів і пошкоджень системи водопостачання',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     waterSupply: {
       title: 'Опис системи водопостачання (обладнання безперебійно функціонуючою системою водопостачання (крім випадків аварійного або планового відключення)',
-      type: 'string'
+      type: 'string',
     },
     drainageType: {
       title: 'Тип системи водовідведення',
       type: 'string',
-      enum: internalSystemTypes
+      enum: internalSystemTypes,
     },
     drainageCondition: {
       title: 'Стан системи водовідведення',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     drainageDefects: {
       title: 'Наявність дефектів і пошкоджень системи водовідведення',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     drainage: {
       title: 'Опис системи водовідведення (обладнання безперебійно функціонуючою системою водовідведення)',
-      type: 'string'
+      type: 'string',
     },
     ventilationType: {
       title: 'Тип системи вентиляції',
       type: 'string',
-      enum: ventilationTypes
+      enum: ventilationTypes,
     },
     ventilationCondition: {
       title: 'Стан системи вентиляції',
       type: 'string',
-      enum: constructionConditions
+      enum: constructionConditions,
     },
     ventilationDefects: {
       title: 'Наявність дефектів і пошкоджень системи вентиляції',
       type: 'string',
-      enum: defectsPresence
+      enum: defectsPresence,
     },
     ventilation: {
       title: 'Опис системи вентиляції (обладнання безперебійно функціонуючою системою вентиляції)',
-      type: 'string'
-    }
+      type: 'string',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

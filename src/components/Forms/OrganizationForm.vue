@@ -5,9 +5,9 @@
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.title.title }}</div>
     <v-text-field
       v-model="model.title"
+      name="organization.title"
       placeholder="Міністерство розвитку громад та територій України"
       variant="solo-inverted"
-      name="organization.title"
     />
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.code.title }}</div>
@@ -18,24 +18,24 @@
 </template>
 
 <script lang="ts" setup>
-import type { Act } from '@/types'
-type Organization = Act['ownerOrganization']
+  import type { Act } from '@/types'
 
-import { organization as schema } from '@/schemas/organization.schema'
+  import { organization as schema } from '@/schemas/organization.schema'
+  type Organization = Act['ownerOrganization']
 
-interface Props {
-  modelValue: NonNullable<Organization>
-}
+  interface Props {
+    modelValue: NonNullable<Organization>
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 
-const emit = defineEmits<{
-  (e: 'update:modelValue', value: Partial<Organization>): void
-}>()
+  const emit = defineEmits<{
+    (e: 'update:modelValue', value: Partial<Organization>): void
+  }>()
 
-const model = computed({
-  get: () => props.modelValue,
-  set: (value: Partial<Organization>) => emit('update:modelValue', value)
-})
+  const model = computed({
+    get: () => props.modelValue,
+    set: (value: Partial<Organization>) => emit('update:modelValue', value),
+  })
 
 </script>

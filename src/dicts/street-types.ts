@@ -25,7 +25,7 @@ const streetTypes = [
   { code: '105', title: 'Урочище' },
   { code: '106', title: 'Хутір' },
   { code: '107', title: 'Садове товариство' },
-  { code: '108', title: 'Гаражний кооператив' }
+  { code: '108', title: 'Гаражний кооператив' },
 ]
 
 export default streetTypes

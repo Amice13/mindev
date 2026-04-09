@@ -1,6 +1,6 @@
 const ownerTypes = [
   'Фізична особа',
-  'Юридична особа'
+  'Юридична особа',
 ]
 
 export default ownerTypes

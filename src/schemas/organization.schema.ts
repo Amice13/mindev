@@ -7,13 +7,13 @@ export const organization = {
   properties: {
     title: {
       title: 'Назва юридичної особи',
-      type: 'string'
+      type: 'string',
     },
     code: {
       title: 'Код ЄДРПОУ юридичної особи',
-      type: 'string'
+      type: 'string',
     },
-    address
+    address,
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

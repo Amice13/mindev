@@ -3,7 +3,7 @@ const decorationTypes = [
   'захисне',
   'конструктивне',
   'відсутні',
-  'відомості відсутні'
+  'відомості відсутні',
 ]
 
 export default decorationTypes

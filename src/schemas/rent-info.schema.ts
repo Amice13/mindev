@@ -6,19 +6,19 @@ export const rentInfo = {
   properties: {
     isRent: {
       title: 'Квартира перебуває у користуванні (оренді)',
-      type: 'boolean'
+      type: 'boolean',
     },
     reason: {
       title: 'Правові підстави для користування',
-      type: 'string'
+      type: 'string',
     },
     endDate: {
       title: 'Строк, на який квартиру надано в користування',
-      type: 'string'
+      type: 'string',
     },
     habitants: {
       title: 'Кількість осіб, що проживають у квартирі',
-      type: 'number'
-    }
-  }
+      type: 'number',
+    },
+  },
 } as const satisfies JSONSchema

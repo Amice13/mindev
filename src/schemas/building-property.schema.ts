@@ -6,111 +6,111 @@ export const buildingProperty = {
   properties: {
     numberOfFloors: {
       title: 'Поверховість',
-      type: 'number'
+      type: 'number',
     },
     // Common parameters
     area: {
       title: 'Площа, кв. метрів',
-      type: 'number'
+      type: 'number',
     },
     areaGeneral: {
       title: 'Площа загальна',
-      type: 'number'
+      type: 'number',
     },
 
     // Living buildings
     apartmentArea: {
       title: 'Площа квартир (житлових номерів)',
-      type: 'number'
+      type: 'number',
     },
     commonSpaceArea: {
       title: 'Площа приміщень загального користування',
-      type: 'number'
+      type: 'number',
     },
     nonLivingArea: {
       title: 'Площа нежитлових (офісних) приміщень',
-      type: 'number'
+      type: 'number',
     },
 
     // Office buildings
     functionalArea: {
       title: 'Площа приміщень основного призначення',
-      type: 'number'
+      type: 'number',
     },
     officeArea: {
       title: 'Площа офісних (адміністративних) приміщень',
-      type: 'number'
+      type: 'number',
     },
     cateringArea: {
       title: 'Площа приміщень для громадського харчування',
-      type: 'number'
+      type: 'number',
     },
     commercialArea: {
       title: 'Площа торговельних приміщень',
-      type: 'number'
+      type: 'number',
     },
 
     // Warehouses
     floorHeight: {
       title: 'Висота поверхів, метрів',
-      type: 'number'
+      type: 'number',
     },
     productionArea: {
       title: 'Площа виробничих приміщень',
-      type: 'number'
+      type: 'number',
     },
     warehouseArea: {
       title: 'Площа складських приміщень',
-      type: 'number'
+      type: 'number',
     },
     administrativeArea: {
       title: 'Площа адміністративних приміщень',
-      type: 'number'
+      type: 'number',
     },
     householdArea: {
       title: 'Площа побутових приміщень',
-      type: 'number'
+      type: 'number',
     },
     additionalArea: {
       title: 'Площа приміщень, що не використовуються за призначенням',
-      type: 'number'
+      type: 'number',
     },
     categoryOfDanger: {
       title: 'Категорія підвищеної небезпеки',
-      type: 'string'
+      type: 'string',
     },
     fireSafety: {
       title: 'Категорія вибухопожежної і пожежної небезпеки',
-      type: 'string'
+      type: 'string',
     },
 
     // Misc
     otherArea: {
       title: 'Площа інших приміщень',
-      type: 'number'
+      type: 'number',
     },
 
     // IDP related data
     notUsedArea: {
       title: 'Площа приміщень, що не використовуються за призначенням, для проживання внутрішньо переміщених осіб',
-      type: 'number'
+      type: 'number',
     },
     idpLivingArea: {
       title: 'Площа приміщень, що використовуються для проживання внутрішньо переміщених осіб',
-      type: 'number'
+      type: 'number',
     },
     idpProjectedArea: {
       title: 'Площа приміщень, що можуть бути використані для проживання внутрішньо переміщених осіб (вільна площа)',
-      type: 'number'
+      type: 'number',
     },
     numberOfHabitants: {
       title: 'Кількість осіб, які проживають у приміщеннях',
-      type: 'number'
+      type: 'number',
     },
     numberOfFreePlaces: {
       title: 'Кількість вільних місць для проживання',
-      type: 'number'
-    }
+      type: 'number',
+    },
   },
-  additionalProperties: false
+  additionalProperties: false,
 } as const satisfies JSONSchema

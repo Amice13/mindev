@@ -1,15 +1,15 @@
+import type { Organization, User } from '@/types'
 import { defineStore } from 'pinia'
-import type { User, Organization } from '@/types'
 const persistStoreKey = 'mindev-acts'
 
 const priority: Record<string, number> = {
   'Голова комісії': 3,
   'Заступник голови комісії': 2,
-  'Секретар комісії': 1
+  'Секретар комісії': 1,
 }
 
 export const useAppStore = defineStore('app', () => {
-  const commissionIsPredefined = ref<Boolean>(true)
+  const commissionIsPredefined = ref<boolean>(true)
   const commission = ref<Organization>({})
   const user = ref<Partial<User>>({})
   const commissionMembers = ref<User[]>([])
@@ -32,7 +32,9 @@ export const useAppStore = defineStore('app', () => {
     members.sort((a, b) => {
       const pa = priority[a.status ?? ''] ?? 0
       const pb = priority[b.status ?? ''] ?? 0
-      if (pa !== pb) return pb - pa
+      if (pa !== pb) {
+        return pb - pa
+      }
       return (a.familyName ?? '').localeCompare(b.familyName ?? '')
     })
     commissionMembers.value = [...members]
@@ -40,9 +42,13 @@ export const useAppStore = defineStore('app', () => {
 
   const removeCommissionMember = (id: string): void => {
     const currentUserIndex = commissionMembers.value.map(el => String(el.id)).indexOf(id)
-    if (currentUserIndex === -1) return alert('Цей користувач не існує')
+    if (currentUserIndex === -1) {
+      return alert('Цей користувач не існує')
+    }
     const currentUser = commissionMembers.value[currentUserIndex]
-    if (currentUser?.id === user.value.id) user.value = {}
+    if (currentUser?.id === user.value.id) {
+      user.value = {}
+    }
     commissionMembers.value.splice(currentUserIndex, 1)
   }
 
@@ -55,10 +61,10 @@ export const useAppStore = defineStore('app', () => {
     saveUser,
     saveCommission,
     addCommisionMember,
-    removeCommissionMember
+    removeCommissionMember,
   }
 }, {
   persist: {
-    key: persistStoreKey
-  }
+    key: persistStoreKey,
+  },
 })
