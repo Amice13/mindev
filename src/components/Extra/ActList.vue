@@ -56,6 +56,9 @@
       <template #[`item.conclusionType`]="{ item }">
         {{ getType(item.conclusionType) }}
       </template>
+      <template #[`item.signature`]="{ item }">
+        <span>{{ item.isSigned ? 'Підписано' : 'Не підписано' }}</span> <span v-if="item.synced">та завантажено</span>
+      </template>
     </v-data-table>
     <div class="hidden-md-and-up">
       <v-card v-for="act in items" :key="act.id" class="mb-4" style="border-left: 12px solid #2e6868;">

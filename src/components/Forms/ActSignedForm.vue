@@ -59,7 +59,6 @@
       .where('parentId')
       .equals(model.value.id)
       .toArray()
-    console.log(files)
     attachedFiles.value = files
   })
 

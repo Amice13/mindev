@@ -109,8 +109,15 @@
   // Reset the form if estateType is changed
   watch(() => model.value.estateType, estateType => {
     if (!initialized.value) return
+    const setData = {
+      date: model.value.date,
+      actDate: model.value.actDate,
+      number: model.value.number,
+      actNumber: model.value.actNumber
+    }
     model.value = {
       ...getDefaultAct(),
+      ...setData,
       estateType,
     } as Act
   })

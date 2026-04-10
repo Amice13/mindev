@@ -5,4 +5,7 @@
 </template>
 
 <script lang="ts" setup>
+import { syncData } from './composables/sync-data'
+syncData()
+
 </script>
