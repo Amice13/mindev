@@ -244,7 +244,7 @@
         if (actIsUploaded === false) return
         model.value.synced = true
       }
-      acts.put(structuredClone(toRaw(model.value)))
+      acts.put(JSON.parse(JSON.stringify(toRaw(model.value))))
       actStatus.value = 'uploaded'
     }
 

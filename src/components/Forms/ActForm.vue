@@ -401,7 +401,7 @@
   }
 
   async function saveDocument () {
-    const act = structuredClone(model.value)
+    const act = JSON.parse(JSON.stringify(model.value))
     act.updatedAt = new Date().toISOString()
     try {
       await acts.put(act)
