@@ -152,7 +152,7 @@
       </div>
 
       <div v-show="model.estateType === 'Житлові будинки, будівлі, споруди (їх окремі частини)'">
-        <h5 class="text-h5 mt-6 mb-4">Батьківська організація</h5>
+        <h5 class="text-h5 mt-6 mb-4">Належність об'єкта до підприємства (комплексу)</h5>
         <p class="text-subtitle-1 mb-6">Визначте підприємство (комплекс), до складу якого входить об'єкт (за потреби)</p>
 
         <organization-form v-model="model.parentOrganization" />
