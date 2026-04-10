@@ -1,7 +1,7 @@
 {
-	"name": "miu",
-	"short_name": "miu",
-	"description": "miu",
+	"name": "Складення актів обстеження",
+	"short_name": "Акти 4080",
+	"description": "Складення актів обстеження в рамках Закону України №4080 (Мінрозвитку)",
 	"lang": "uk-Uk",
 	"start_url": "/",
 	"scope": "/",
