@@ -229,9 +229,8 @@
   async function upload () {
     if (model.value.id === undefined) return
     model.value.synced = false
-    model.value.isSigned = true
     const act = await acts.get(model.value.id)
-    if (act?.synced !== true) {
+    if (act?.isSigned !== true) {
       // Upload act to the database
       if (!process.env.IS_TEST && navigator.onLine) {
         const actIsUploaded = await uploadAct(model.value as Act).catch(error => {
@@ -242,8 +241,10 @@
         })
         actStatus.value = 'uploaded'
         if (actIsUploaded === false) return
+        model.value.isSigned = true
         model.value.synced = true
       }
+      model.value.isSigned = true
       acts.put(JSON.parse(JSON.stringify(toRaw(model.value))))
       actStatus.value = 'uploaded'
     }
