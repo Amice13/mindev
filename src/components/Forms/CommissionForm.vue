@@ -43,7 +43,7 @@
   onBeforeMount(() => {
     model.value = {
       ...toRaw(commission),
-      address: commission.address ?? {},
+      address: commission?.address ?? {},
     } as Organization
     nextTick(() => {
       isChanged.value = false

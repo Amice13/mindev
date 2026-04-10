@@ -54,7 +54,7 @@ const docx = await res.arrayBuffer()
 function generateDocument (source: Act): ArrayBuffer {
   const zip = new PizZip(docx)
   const newDoc = new docxtemplater(zip, { parser, linebreaks: true })
-  const data = structuredClone(toRaw(source))
+  const data = JSON.parse(JSON.stringify(toRaw(source)))
   if (data.createdBy) {
     data.createdBy.shortName = shortenName(data.createdBy)
   }

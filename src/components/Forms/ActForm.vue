@@ -60,7 +60,7 @@
         <p class="text-subtitle-1 mb-6">Зазначте місцезнаходження об'єкта</p>
         <territory
           v-model="model.address"
-          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
+          :disabled="commission?.address?.code2 === undefined ? [] : ['code1', 'code2']"
         />
         <custom-address
           v-if="[
@@ -103,7 +103,7 @@
 
         <territory
           v-model="model.address"
-          :disabled="commission.address?.code2 === undefined ? [] : ['code1', 'code2']"
+          :disabled="commission?.address?.code2 === undefined ? [] : ['code1', 'code2']"
         />
 
         <h5 class="text-h5 mt-6 mb-4">Загальна інформація</h5>

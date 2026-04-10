@@ -10,7 +10,7 @@ const priority: Record<string, number> = {
 
 export const useAppStore = defineStore('app', () => {
   const commissionIsPredefined = ref<boolean>(true)
-  const commission = ref<Organization>({})
+  const commission = ref<Organization>()
   const user = ref<Partial<User>>({})
   const commissionMembers = ref<User[]>([])
 
