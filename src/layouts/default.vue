@@ -9,6 +9,7 @@
   <v-main>
     <router-view />
   </v-main>
+  <the-pwa-reload-dialog />
 </template>
 
 <script lang="ts" setup>

@@ -61,6 +61,7 @@ declare module 'vue' {
     TabularData: typeof import('./components/ComplexFields/TabularData.vue')['default']
     Territory: typeof import('./components/BasicFields/Territory.vue')['default']
     TextData: typeof import('./components/ComplexFields/TextData.vue')['default']
+    ThePwaReloadDialog: typeof import('./components/Extra/ThePwaReloadDialog.vue')['default']
     UkrainianText: typeof import('./components/BasicFields/UkrainianText.vue')['default']
     UploadBox: typeof import('./components/BasicFields/CustomFile/UploadBox.vue')['default']
     ValidationDialog: typeof import('./components/Forms/ValidationDialog.vue')['default']
