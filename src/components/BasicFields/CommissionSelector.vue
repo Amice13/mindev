@@ -1,7 +1,7 @@
 <template>
   <div>
     <p class="font-weight-bold mb-1 text-subtitle-2">Комісія з обстеження нерухомого майна</p>
-    <v-select
+    <v-autocomplete
       v-model="model"
       aria-label="Комісія"
       clearable

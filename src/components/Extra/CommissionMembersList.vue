@@ -28,7 +28,7 @@
       <v-card v-for="commissionMember in commissionMembers" :key="commissionMember.id" class="mb-4" style="border-left: 12px solid #2e6868;">
         <v-card-text>
           <v-chip color="primary-darken-2" label>{{ commissionMember.status }}</v-chip>
-          <div v-if="commissionMember.id === user.id" class="font-weight-bold my-4">Поточний користувач</div>
+          <div v-if="commissionMember.id === user.id" class="font-weight-bold my-4">Активний користувач</div>
           <div class="my-4">{{ [commissionMember.familyName, commissionMember.givenName, commissionMember.additionalName].filter(Boolean).join(' ') }}</div>
         </v-card-text>
         <v-card-actions>

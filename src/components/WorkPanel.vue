@@ -68,6 +68,11 @@
         ...(commission?.address?.admin2 === undefined ? {} : { admin2: commission.address.admin2 }),
         ...(commission?.address?.code1 === undefined ? {} : { code1: commission.address.code1 }),
         ...(commission?.address?.code2 === undefined ? {} : { code2: commission.address.code2 }),
+        ...(commission?.address?.code1 === 'UA80000000000093317' ? {
+          code2: commission.address.code1, admin2: 'відсутній',
+          code3: commission.address.code1, admin3: 'Київська',
+          code4: commission.address.code4, admin4: 'Київ'
+        } : {}),
       },
       functionalPurpose: {},
       parentOrganization: {},

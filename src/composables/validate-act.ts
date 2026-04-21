@@ -173,7 +173,14 @@ const rent = [
   'habitants',
 ]
 
-const isNa = (value: unknown) => ['відсутні', 'відомості відсутні', undefined, null].includes(value as string)
+const isNa = (value: unknown) => [
+  'відсутні',
+  'відсутня',
+  'відсутнє',
+  'відомості відсутні',
+  undefined,
+  null
+].includes(value as string)
 
 function checkEmptyField (obj: Record<string, any>, field: string, schema: JSONSchema): false | string {
   if (obj === undefined) {
@@ -204,7 +211,6 @@ function checkEmptyField (obj: Record<string, any>, field: string, schema: JSONS
 
 export function validateAct (act: Act) {
   const errors: string[] = []
-
   // Global fields check
   for (const key of requiredFields) {
     const error = checkEmptyField(act, key, actSchema)

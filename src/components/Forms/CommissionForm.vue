@@ -32,7 +32,10 @@
   import { checkCode } from '@/composables/edrpou-validator'
   import { useAppStore } from '@/stores/app'
 
-  const model = ref<Organization>({ address: {} })
+  const model = ref<Organization>({
+    address: {},
+    title: ''
+  })
 
   const store = useAppStore()
   const { commission, saveCommission } = store
@@ -43,6 +46,7 @@
   onBeforeMount(() => {
     model.value = {
       ...toRaw(commission),
+      title: commission?.title ?? '',
       address: commission?.address ?? {},
     } as Organization
     nextTick(() => {
@@ -58,9 +62,9 @@
   })
 
   function saveNewCommission () {
-    if (!model.value.address?.admin4) return alert('Не визначено місцезнаходження комісії')
-    if (!model.value.title) return alert('Не визначена назва комісії')
-    if (!model.value.code) return alert('Не визначено код ЄДРПОУ комісії')
+    if (!model.value?.address?.admin4) return alert('Не визначено місцезнаходження комісії')
+    if (!model.value?.title) return alert('Не визначена назва комісії')
+    if (!model.value?.code) return alert('Не визначено код ЄДРПОУ комісії')
     if (checkCode(model.value.code) !== true) return alert('Зазначений код ЄДРПОУ є невірним')
     saveCommission(model.value)
     isChanged.value = false

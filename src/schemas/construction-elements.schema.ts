@@ -93,7 +93,7 @@ export const constructionElements = {
       enum: defectsPresence,
     },
     partitions: {
-      title: 'Опис перегородок',
+      title: 'Стислий опис стану перегородок',
       type: 'string',
     },
     floorType: {

@@ -43,13 +43,12 @@
       multiple: true,
     },
     B: {
-      pattern: /\d/,
-      multiple: true,
+      pattern: /\d/
     },
   }
 
   const numericMaska = {
-    mask: 'ADB',
+    mask: 'ADBB',
     tokens,
   }
 </script>

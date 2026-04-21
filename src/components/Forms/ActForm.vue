@@ -40,7 +40,7 @@
     />
 
     <h5 class="text-h5 mt-6 mb-4">Об'єкт ОНМ</h5>
-    <p class="text-subtitle-1 mb-6">Для початку роботи оберіть тип обстежуваного об'єкту нерухомого майна</p>
+    <p class="text-subtitle-1 mb-6">Оберіть тип об'єкту нерухомого майна щодо якого здійснювалось обстеження</p>
 
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.estateType.title }}</div>
     <dictionary-value
@@ -333,7 +333,8 @@
     <involved-list v-model="model.involved" />
 
     <h5 class="text-h5 mt-8 mb-4">Завантажити та підписати</h5>
-    <p class="text-subtitle-1 mb-6">Впевніться, що заповнені всі поля, після цього натисніть кнопку "Завантажити", щоб отримати згенерований документ</p>
+    <p class="text-subtitle-1 mb-6">Для отримання сформованого засобами системи акту комісійного обстеження перевірте правильність заповнення полів та натисніть "Завантажити".</p>
+    <p class="text-subtitle-1 mb-6">У разі якщо заповнений акт комісійного обстеження потребує доопрацювання натисніть "Зберегти" нижче.</p>
 
     <v-btn color="primary-darken-1" @click="uploadDocument">Завантажити</v-btn>
     <sign-form v-model="actToSave" @cancel="discardDocument" />
@@ -341,13 +342,13 @@
     <h5 class="text-h5 mt-6 mb-4">Завершити роботу</h5>
 
     <v-btn color="primary-darken-1" @click="saveDocument">Зберегти</v-btn>
-    <v-btn
+ <!--    <v-btn
       v-if="model.id"
       class="ml-4"
       color="error"
       variant="tonal"
       @click="deleteDocument"
-    >Видалити</v-btn>
+    >Видалити</v-btn> -->
     <ValidationDialog ref="validationDialog" />
     <ConfirmationDialog ref="confirmationDialog" />
   </div>

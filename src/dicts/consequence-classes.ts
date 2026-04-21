@@ -5,6 +5,7 @@ const consequenceClasses = [
   'СС1 - Незначні наслідки',
   'СС2 - Середні наслідки',
   'СС3 - Значні наслідки',
+  'відомості відсутні'
 ]
 
 export default consequenceClasses

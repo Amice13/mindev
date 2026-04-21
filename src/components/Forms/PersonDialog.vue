@@ -90,6 +90,12 @@
     if (!model.value.familyName) return alert('Не зазначене прізвище')
     if (!model.value.givenName) return alert('Не зазначене ім\'я')
     if (!model.value.additionalName) return alert('Не зазначене по батькові')
+    if (model.value.position && !model.value.title) {
+      return alert('Не зазначена назва організації')
+    }
+    if (!model.value.position && model.value.title) {
+      return alert('Не зазначена посада особи')
+    }
     const person = toRaw(model.value)
     person.id = props.id
     emit('add', person as User)

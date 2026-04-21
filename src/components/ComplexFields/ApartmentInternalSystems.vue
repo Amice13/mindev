@@ -50,7 +50,14 @@
     set: (value: Partial<ApartmentInternalSystems>) => emit('update:modelValue', value),
   })
 
-  const naValues = new Set(['відсутні', 'відомості відсутні', undefined, null])
+  const naValues = new Set([
+    'відсутні',
+    'відсутня',
+    'відсутнє',
+    'відомості відсутні',
+    undefined,
+    null
+  ])
 
   function getElements (blocks: (keyof ApartmentInternalSystems)[]): (keyof ApartmentInternalSystems)[] {
     if (blocks.length === 0) return []

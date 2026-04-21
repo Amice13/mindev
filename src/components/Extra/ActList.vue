@@ -79,7 +79,7 @@
       color="primary-darken-2"
       variant="outlined"
     >
-      <p class="mb-4">Для початку користування системою, вам необхідно вирішити насутпні проблеми</p>
+      <p class="mb-4">Для початку роботи в системі необхідно надати відомості про:</p>
       <ul class="pl-5 mb-4">
         <li v-for="error in errors" :key="error">{{ error }}</li>
       </ul>
@@ -123,11 +123,11 @@
 
   const errors = computed(() => {
     const problems = []
-    if (!user.familyName) problems.push('Не визначено користувача системи')
-    if (!commission?.title) problems.push('Не зазначено інформацію про комісію')
-    if (commissionMembers.length === 0) problems.push('Не внесено жодного члена комісії')
+    if (!user.familyName) problems.push('Активного користувача системи')
+    if (!commission?.title) problems.push('Назву та місцезнаходження комісї')
+    if (commissionMembers.length === 0) problems.push('Персональний склад комісії')
     const headOfCommission = commissionMembers.find(member => member.status === 'Голова комісії')
-    if (headOfCommission === undefined) problems.push('Не зазначено голову комісії')
+    if (headOfCommission === undefined) problems.push('Голову комісії')
     return problems
   })
 
