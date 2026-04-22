@@ -15,7 +15,7 @@
       />
 
       <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.endDate.title }}</div>
-      <v-text-field
+    <custom-date
         v-model="model.endDate"
         name="rentEndDate"
         placeholder="12.10.2026"

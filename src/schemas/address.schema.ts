@@ -36,7 +36,7 @@ export const address = {
       type: 'string',
     },
     apartmentNumber: {
-      title: 'Номер квартири',
+      title: 'Квартира/приміщення',
       type: 'string',
     },
   },

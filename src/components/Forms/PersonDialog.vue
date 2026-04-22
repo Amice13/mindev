@@ -41,6 +41,8 @@
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.position.title }}</div>
         <ukrainian-text
           v-model="model.position"
+          :maxlength="250"
+          counter
           name="person.title"
           placeholder="Інженер-проектувальник"
           variant="solo-inverted"
@@ -90,10 +92,10 @@
     if (!model.value.familyName) return alert('Не зазначене прізвище')
     if (!model.value.givenName) return alert('Не зазначене ім\'я')
     if (!model.value.additionalName) return alert('Не зазначене по батькові')
-    if (model.value.position && !model.value.title) {
+    if (model.value.position && !model.value.organization?.title) {
       return alert('Не зазначена назва організації')
     }
-    if (!model.value.position && model.value.title) {
+    if (!model.value.position && model.value.organization?.title) {
       return alert('Не зазначена посада особи')
     }
     const person = toRaw(model.value)

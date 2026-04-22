@@ -107,7 +107,7 @@
         />
 
         <h5 class="text-h5 mt-6 mb-4">Загальна інформація</h5>
-        <p class="text-subtitle-1 mb-6">Зазаначте кадастровий номер земельної ділянки та її площу</p>
+        <p class="text-subtitle-1 mb-6">Зазначте кадастровий номер земельної ділянки та її площу</p>
 
         <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.cadastreNumber.title }}</div>
         <cadastre-number
@@ -129,6 +129,8 @@
         <v-textarea
           v-model="model.ownershipInfo"
           :aria-label="schema.properties.ownershipInfo.title"
+          :maxlength="360"
+          counter
           rows="4"
           variant="solo-inverted"
         />
@@ -235,6 +237,8 @@
         <v-textarea
           v-model="model.landRestrictions"
           :aria-label="schema.properties.landRestrictions.title"
+          :maxlength="360"
+          counter
           rows="4"
           variant="solo-inverted"
         />
@@ -246,6 +250,8 @@
           v-model="model.landObservations"
           :aria-label="schema.properties.landObservations.title"
           rows="4"
+          :maxlength="360"
+          counter
           variant="solo-inverted"
         />
       </div>
@@ -291,6 +297,8 @@
           v-model="model.additionalObservationExtra"
           :aria-label="schema.properties.additionalObservationExtra.title"
           rows="4"
+          :maxlength="360"
+          counter
           variant="solo-inverted"
         />
       </div>
@@ -315,6 +323,8 @@
           v-model="model.landActionExtra"
           :aria-label="schema.properties.landActionExtra.title"
           rows="4"
+          :maxlength="360"
+          counter
           variant="solo-inverted"
         />
       </div>
@@ -323,8 +333,11 @@
       <v-textarea
         v-model="model.conclusionText"
         :aria-label="schema.properties.conclusionText.title"
+        :maxlength="2500"
+        counter
         rows="4"
         variant="solo-inverted"
+        auto-grow
       />
     </div>
 
