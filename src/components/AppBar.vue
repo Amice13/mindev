@@ -52,10 +52,10 @@
   }>()
 
   function logo () {
-    return `${import.meta.env.BASE_URL}/logo.svg`
+    return `/logo.svg`
   }
 
   function smallLogo () {
-    return `${import.meta.env.BASE_URL}/android-chrome-512x512.png`
+    return `/android-chrome-512x512.png`
   }
 </script>
