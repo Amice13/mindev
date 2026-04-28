@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin1.title }}</div>
-    <v-select
+    <v-autocomplete
       v-model="model.code1"
       :aria-label="schema.properties.admin1.title"
       clearable
@@ -14,7 +14,7 @@
     />
 
     <div v-show="admin2List.length > 0" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin2.title }}</div>
-    <v-select
+    <v-autocomplete
       v-show="admin2List.length > 0"
       v-model="model.code2"
       :aria-label="schema.properties.admin2.title"
@@ -29,7 +29,7 @@
     />
 
     <div v-show="admin3List.length > 0" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin3.title }}</div>
-    <v-select
+    <v-autocomplete
       v-show="admin3List.length > 0"
       v-model="model.code3"
       :aria-label="schema.properties.admin3.title"
@@ -44,7 +44,7 @@
     />
 
     <div v-show="admin4List.length > 0" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin4.title }}</div>
-    <v-select
+    <v-autocomplete
       v-show="admin4List.length > 0"
       v-model="model.code4"
       :aria-label="schema.properties.admin4.title"
@@ -59,7 +59,7 @@
     />
 
     <div v-show="admin5List.length > 0" class="font-weight-bold mb-1 text-subtitle-2">{{ schema.properties.admin5.title }}</div>
-    <v-select
+    <v-autocomplete
       v-show="admin5List.length > 0"
       v-model="model.code5"
       :aria-label="schema.properties.admin5.title"
@@ -109,21 +109,25 @@
       const shortCode = territory.code.slice(0, 4)
       if (admin2Lists[shortCode] === undefined) admin2Lists[shortCode] = []
       admin2Lists[shortCode].push(territory)
+      admin2Lists[shortCode].sort((a, b) => a.title.localeCompare(b.title))
     }
     if (admin3Pattern.test(territory.code)) {
       const shortCode = territory.code.slice(0, 6)
       if (admin3Lists[shortCode] === undefined) admin3Lists[shortCode] = []
       admin3Lists[shortCode].push(territory)
+      admin3Lists[shortCode].sort((a, b) => a.title.localeCompare(b.title))
     }
     if (admin4Pattern.test(territory.code)) {
       const shortCode = territory.code.slice(0, 9)
       if (admin4Lists[shortCode] === undefined) admin4Lists[shortCode] = []
       admin4Lists[shortCode].push(territory)
+      admin4Lists[shortCode].sort((a, b) => a.title.localeCompare(b.title))
     }
     if (admin5Pattern.test(territory.code)) {
       const shortCode = territory.code.slice(0, 12)
       if (admin5Lists[shortCode] === undefined) admin5Lists[shortCode] = []
       admin5Lists[shortCode].push(territory)
+      admin5Lists[shortCode].sort((a, b) => a.title.localeCompare(b.title))
     }
   }
 
