@@ -69,7 +69,14 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn color="primary-darken-1" prepend-icon="mdi-pencil" size="small">Редагувати</v-btn>
+          <v-btn
+            color="primary-darken-1"
+            prepend-icon="mdi-pencil"
+            size="small"
+            :to="`/acts/${act.id}`"
+          >
+            Редагувати
+          </v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -145,10 +152,15 @@
 
   async function load () {
     if (!props.filters) {
-      items.value = await acts.toArray()
+      items.value = await acts
+        .orderBy('date')
+        .reverse()
+        .toArray()
       return
     }
     items.value = await acts
+      .orderBy('date')
+      .reverse()
       .filter((act: Act): boolean => {
         if (props.filters.conclusionType && props.filters.conclusionType !== act.conclusionType) return false
         if (props.filters.estateType && props.filters.estateType !== act.estateType) return false
@@ -166,7 +178,7 @@
   function generateTitle (act: Act) {
     if (act.cadastreNumber) return act.cadastreNumber
     const address = [
-      [act.address.admin4, `(${act.address.code4})`].join(' '),
+      [act.address.admin4, `(${act.address.code4 ?? 'Не визначена адреса'})`].filter(Boolean).join(' '),
       [act.address.streetType, act.address.streetName].filter(Boolean).join(' '),
       act.address.building,
       (act.address.block ? ['корпус', act.address.block] : []).join(' '),
