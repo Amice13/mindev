@@ -3,6 +3,7 @@ import docxtemplater from 'docxtemplater'
 import expressionParser from 'docxtemplater/expressions.js'
 import PizZip from 'pizzip'
 import docUrl from '@/templates/act.docx?url'
+import { addCustomProperty } from './add-metadata'
 
 // Formatters
 function formatDate (date: string | undefined): string {
@@ -66,6 +67,10 @@ function generateDocument (source: Act): ArrayBuffer {
   data.isThird = ['125', '127'].includes(data.buildingClass?.code3 ?? 'N/A')
   data.headOfCommission = source.commissionMembers?.find(m => m.status === 'Голова комісії')
   newDoc.render(data)
+  addCustomProperty(zip, {
+    name: 'metadata',
+    value: data.json
+  })
   const docToRender = newDoc.getZip().generate({ type: 'uint8array' })
   return docToRender as unknown as ArrayBuffer
 }
