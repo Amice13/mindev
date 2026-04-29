@@ -110,6 +110,10 @@
           :disabled="commission?.address?.code2 === undefined ? [] : ['code1', 'code2']"
         />
 
+        <h5 class="text-h5 mt-6 mb-4">Координати</h5>
+        <location-picker v-model="model.coordinates" />
+        <custom-coordinates v-model="model.coordinates" :address="model.address" />
+
         <h5 class="text-h5 mt-6 mb-4">Загальна інформація</h5>
         <p class="text-subtitle-1 mb-6">Зазначте кадастровий номер земельної ділянки та її площу</p>
 
