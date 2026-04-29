@@ -121,6 +121,17 @@ export const act = {
       ...address,
       title: 'Адреса ОНМ',
     },
+    coordinates: {
+      type: 'array',
+      items: {
+        type: 'number',
+        description: 'Array with longitude and latitude',
+        minimum: -180,
+        maximum: 180
+      },
+      minItems: 2,
+      maxItems: 2
+    },
     functionalPurpose,
     parentOrganization: {
       ...organization,
@@ -261,6 +272,7 @@ export const act = {
     'date',
     'number',
     'createdBy',
+    'coordinates',
     'ownerPerson',
     'ownerOrganization',
     'parentOrganization',

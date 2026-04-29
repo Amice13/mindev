@@ -70,6 +70,10 @@
           v-model="model.address"
         />
 
+        <h5 class="text-h5 mt-6 mb-4">Координати</h5>
+        <location-picker v-model="model.coordinates" />
+        <custom-coordinates v-model="model.coordinates" :address="model.address" />
+
         <h5 class="text-h5 mt-6 mb-4">Власник ОНМ</h5>
         <p class="text-subtitle-1 mb-6">Відомості про власника об’єкта, зокрема територіальну громаду (утворені нею органи місцевого самоврядування), суб’єкта управління об’єктами державної власності</p>
 
@@ -374,11 +378,12 @@
   import { validateAct } from '@/composables/validate-act'
   import { act as schema } from '@/schemas/act.schema'
   import { useAppStore } from '@/stores/app'
+  import { getLocationByAdmin4 } from '@/composables/locations'
 
   const { commission } = useAppStore()
   const router = useRouter()
   const { acts } = useActs()
-  const confirmationDialog = ref()
+  // const confirmationDialog = ref()
   const validationDialog = ref()
 
   interface Props {
@@ -425,18 +430,25 @@
     router.push({ name: '/' })
   }
 
-  async function deleteDocument () {
-    try {
-      const isConfirmed = await confirmationDialog.value.open({
-        title: 'Видалення акту',
-        description: 'Ви дійсно хочете видалити цей акт?',
-      })
-      if (!isConfirmed) return false
-      await acts.delete(model.value.id)
-    } catch {
-      alert('Сталася невідома помилка')
-    }
-    router.push({ name: '/' })
-  }
+  watch(() => model.value.address.code4, (value: string | undefined): void => {
+    if (value === undefined) return
+    const coords = getLocationByAdmin4(value)
+    if (coords === undefined) return
+    model.value.coordinates = [...coords]
+  })
+
+  // async function deleteDocument () {
+  //   try {
+  //     const isConfirmed = await confirmationDialog.value.open({
+  //       title: 'Видалення акту',
+  //       description: 'Ви дійсно хочете видалити цей акт?',
+  //     })
+  //     if (!isConfirmed) return false
+  //     await acts.delete(model.value.id)
+  //   } catch {
+  //     alert('Сталася невідома помилка')
+  //   }
+  //   router.push({ name: '/' })
+  // }
 
 </script>
