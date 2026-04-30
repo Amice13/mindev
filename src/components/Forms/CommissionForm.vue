@@ -37,7 +37,7 @@
     title: ''
   })
 
-  const selectorModel = computed<Organization | null>({
+  const selectorModel = computed<Organization>({
     get: () => model.value,
     set: (val) => {
       model.value = val ?? { address: {}, title: '' }
