@@ -8,7 +8,7 @@
       label="Обрати комісію з існуючого переліку"
     />
 
-    <commission-selector v-if="commissionIsPredefined" v-model="model" />
+    <commission-selector v-if="commissionIsPredefined" v-model="selectorModel" />
 
     <div v-if="!commissionIsPredefined">
       <organization-form v-model="model" />
@@ -35,6 +35,13 @@
   const model = ref<Organization>({
     address: {},
     title: ''
+  })
+
+  const selectorModel = computed<Organization | null>({
+    get: () => model.value,
+    set: (val) => {
+      model.value = val ?? { address: {}, title: '' }
+    }
   })
 
   const store = useAppStore()

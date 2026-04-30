@@ -165,7 +165,7 @@
   })
 
   interface Props {
-    modelValue: NonNullable<Address>
+    modelValue: Partial<Address>
     disabled?: string[]
   }
 
